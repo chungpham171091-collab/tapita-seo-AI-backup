@@ -70,9 +70,53 @@
    "source": "self",
    "status": "active",
    "text": "Khi chạy script cộng GA4 theo khối dòng, gộp biến thể ?query của trang lõi trước khi đặt ngưỡng, vì số chưa gộp (3.239) thấp hơn số gộp (3.364) khoảng 4%."
+  },
+  {
+   "created_at": 1793804573.35007,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi báo \"đã sửa file X\", ghi đúng tên file đã ghi và mở lại file đó để đối chiếu trước khi báo, vì ở lượt trước em gọi nhầm bản nháp 1 thành bản 2."
+  },
+  {
+   "created_at": 1793804609.8871307,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi xuất bản gửi khách từ bản nội bộ, quét lại bằng grep các từ nội bộ (chủ nhóm, tên vai, bản 1/2, ký hiệu tiền sai) trước khi báo xong."
+  },
+  {
+   "created_at": 1793804637.2771683,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi chủ duyệt một câu hỏi mà không nêu lựa chọn cụ thể, giữ phương án thận trọng đã làm và hỏi lại đúng một câu, không tự suy ra đồng ý."
+  },
+  {
+   "created_at": 1793804726.1010306,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi rút gọn bản gửi khách, gom các ghi chú lặp lại cạnh từng số thành một câu cuối có dấu sao, nhưng vẫn giữ lời thừa nhận chỉ số chưa có baseline."
   }
  ],
  "presentation": [],
- "updated": "2026-11-04T11:05:22Z",
+ "updated": "2026-11-04T15:15:23Z",
  "version": 1
 }

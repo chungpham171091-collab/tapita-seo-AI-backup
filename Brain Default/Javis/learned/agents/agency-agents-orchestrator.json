@@ -81,9 +81,86 @@
    "source": "self",
    "status": "active",
    "text": "Khi ghép báo giá cuối từ nhiều kết quả, đối chiếu số trùng tên giữa các báo cáo (ví dụ 136 đơn ba Value Pack so với 150 tổng nhóm) và ghi rõ vì sao khác nhau để chủ không tưởng là lỗi."
+  },
+  {
+   "created_at": 1793804036.6604886,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi nhiều số baseline lấy từ script, ghi rõ ranh giới dòng chưa kiểm tay ngay cạnh số đó trong báo giá, để chủ biết số nào còn cần đối chiếu."
+  },
+  {
+   "created_at": 1793804154.7224054,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi chủ chốt nhanh vài mục nhưng bỏ sót mục khác (tiền tệ, ngày bắt đầu), liệt kê riêng các mục còn thiếu thay vì coi như đã chốt hết."
+  },
+  {
+   "created_at": 1793804195.7564344,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi chủ xác nhận tiền tệ, rà lại mọi ký hiệu tiền trong báo giá (giá dịch vụ và doanh thu khách có thể khác đơn vị) trước khi chốt."
+  },
+  {
+   "created_at": 1793804245.2026782,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi báo giá có hai loại tiền (giá dịch vụ USD, số liệu khách ZAR), ghi đơn vị cạnh từng số và không quy đổi khi chưa có tỷ giá."
+  },
+  {
+   "created_at": 1793804324.5915718,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi người làm báo là chưa đối chiếu lại file sau khi ghi, chặn gửi khách và giao một lượt đọc lại riêng trước khi chốt."
+  },
+  {
+   "created_at": 1793804498.4018586,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi chủ chốt một hạng mục chưa có giờ vào mức giá cố định, ghi rõ trong báo giá là chưa có giờ riêng thay vì tự thêm giờ."
+  },
+  {
+   "created_at": 1793804589.38241,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi người làm báo đã sửa file, xác nhận tên file bản cuối và đánh dấu bản nháp cũ là không gửi, để tránh gửi nhầm bản."
   }
  ],
  "presentation": [],
- "updated": "2026-11-04T11:05:22Z",
+ "updated": "2026-11-04T15:05:23Z",
  "version": 1
 }
