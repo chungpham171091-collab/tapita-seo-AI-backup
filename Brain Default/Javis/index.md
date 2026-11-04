@@ -2,7 +2,7 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 47 agents · 84 skills · 12 workflows (12 bật) · 0 loops (0 bật) · 25 plugins (24 chạy)
+**Tổng quan:** 45 agents · 83 skills · 13 workflows (13 bật) · 0 loops (0 bật) · 25 plugins (24 chạy)
 
 ## Agents
 - **Người điều phối agent** (`agency-agents-orchestrator`) - Quản lý đường ống tự động, điều phối toàn bộ quy trình phát triển. Đóng vai người dẫn dắt cả quá trình. · tags: Chuyên gia ngành, Agency Agents
@@ -18,7 +18,6 @@
 - **Tối ưu tìm kiếm cho AI agent** (`agency-marketing-agentic-search-optimizer`) - Kiểm xem AI agent có làm được việc trên site không (đặt lịch, mua, đăng ký), triển khai WebMCP và đo tỉ lệ hoàn thành việc trên các trình duyệt AI. · tags: Marketing, Agency Agents
 - **Chiến lược gia được AI trích dẫn** (`agency-marketing-ai-citation-strategist`) - Tối ưu để AI gợi ý thương hiệu (AEO/GEO): đo độ hiện diện trên ChatGPT, Claude, Gemini, Perplexity, tìm lý do đối thủ được nhắc và sửa nội dung để được trích dẫn. · tags: Marketing, Agency Agents
 - **Người sáng tạo nội dung** (`agency-marketing-content-creator`) - Chiến lược và sáng tạo nội dung đa nền tảng: lịch biên tập, viết bài cuốn hút, kể chuyện thương hiệu, tối ưu tương tác trên mọi kênh số. · tags: Marketing, Agency Agents
-- **Người xây cộng đồng lập trình viên** (`agency-marketing-developer-community-builder`) - Phát triển và giữ cộng đồng lập trình viên (Discord, GitHub Discussions, diễn đàn, chương trình đóng góp), biến người dùng thành người ủng hộ và người đóng góp. · tags: Marketing, Agency Agents
 - **Chiến lược gia email marketing** (`agency-marketing-email-strategist`) - Chiến dịch email theo CRM, tự động hoá vòng đời, phân khúc, khả năng vào hộp thư. Thiết kế chuỗi chào mừng, nuôi dưỡng, kéo khách quay lại, xin đánh giá, giới thiệu. · tags: Marketing, Agency Agents
 - **Chiến lược gia Kuaishou** (`agency-marketing-kuaishou-strategist`) - Video ngắn trên Kuaishou cho thị trường các thành phố nhỏ ở Trung Quốc: bán hàng livestream, xây lòng tin cộng đồng và tăng người xem từ gốc. · tags: Marketing, Agency Agents
 - **Người viết nội dung LinkedIn** (`agency-marketing-linkedin-content-creator`) - Nội dung khẳng định chuyên môn, xây thương hiệu cá nhân trên LinkedIn. Nắm thuật toán và văn hoá LinkedIn để kéo cơ hội tự tìm đến. · tags: Marketing, Agency Agents
@@ -33,7 +32,6 @@
 - **Kỹ sư bán hàng (presales)** (`agency-sales-engineer`) - Khai thác kỹ thuật, dựng demo, phạm vi POC, thẻ so sánh đối thủ, nối tính năng sản phẩm với kết quả kinh doanh. Thắng phần quyết định kỹ thuật để deal chốt được. · tags: Bán hàng, Agency Agents
 - **Chiến lược gia offer và tìm khách** (`agency-sales-offer-lead-gen-strategist`) - Đầu phễu: thiết kế offer khó cưỡng và lead magnet thu hút khách đúng ở quy mô lớn. Dựng offer theo phương trình giá trị, tìm khách đa kênh, mở rộng độ phủ. · tags: Bán hàng, Agency Agents
 - **Chiến lược gia tìm khách chủ động** (`agency-sales-outbound-strategist`) - Outbound dựa trên tín hiệu: chuỗi tiếp cận đa kênh, định nghĩa chân dung khách lý tưởng, xây pipeline bằng cá nhân hoá có nghiên cứu chứ không bằng số lượng. · tags: Bán hàng, Agency Agents
-- **Kiểm toán bảo mật code do AI viết** (`agency-security-ai-generated-code-auditor`) - Soát app viết bằng AI: săn khoá bí mật ghi cứng, phân quyền theo dòng hỏng, lỗ hổng chèn prompt mà trợ lý code hay để lại, rồi chạy vòng quét, sửa, quét lại. · tags: Bảo mật, Agency Agents
 - **Kiến trúc sư bảo mật** (`agency-security-architect`) - Mô hình hoá mối đe doạ, kiến trúc an toàn từ thiết kế, phân tích ranh giới tin cậy, phòng thủ nhiều lớp và review bảo mật theo rủi ro cho web, API, đám mây. · tags: Bảo mật, Agency Agents
 - **Kiến trúc sư quy trình** (`agency-specialized-workflow-architect`) - Vẽ cây quy trình đầy đủ cho mọi hệ thống, hành trình người dùng và tương tác agent: đường chính, mọi nhánh rẽ, kiểu lỗi, đường phục hồi, hợp đồng bàn giao. · tags: Chuyên gia ngành, Agency Agents
 - **Người đo hiệu năng** (`agency-testing-performance-benchmarker`) - Đo, phân tích và cải thiện hiệu năng hệ thống trên mọi ứng dụng và hạ tầng. · tags: Kiểm thử, Agency Agents
@@ -129,7 +127,6 @@ language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of
 ### ECC · Marketing
 - **article-writing** (`article-writing`) - Write articles, guides, blog posts and newsletters in a distinct voice taken from supplied examples or brand guidance.
 - **brand-discovery** (`brand-discovery`) - Resumable multi-session brand interview across 8 modules (purpose, audience, voice...) that ends in a master brandbook.
-- **brand-voice** (`brand-voice`) - Build a writing style profile from real posts, essays or site copy, then reuse it so content stops sounding like generic AI.
 - **content-engine** (`content-engine`) - Platform-native content for X, LinkedIn, TikTok, YouTube and newsletters: posts, threads, scripts, calendars, repurposing.
 - **crosspost** (`crosspost`) - Distribute one piece of content across X, LinkedIn, Threads and Bluesky, rewritten per platform, never posted identically.
 - **fal-ai-media** (`fal-ai-media`) - Generate images, video and audio through the fal.ai MCP: text-to-image, image-to-video, text-to-speech, video-to-audio.
@@ -148,6 +145,7 @@ language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of
 - **HTML sang Webcake** (`html-to-webcake`) - Chuyển trang HTML thành file .pke mở được trong trình dựng Webcake, giữ đúng màu, cỡ chữ, ảnh và bố cục của bản gốc.
 
 ## Workflows
+- **Audit website SEO + GEO** (`audit-website-seo-geo`) - active · 7 bước [agency-marketing-seo-specialist -> agency-testing-performance-benchmarker -> agency-paid-media-tracking-specialist -> agency-marketing-aeo-foundations -> agency-marketing-ai-citation-strategist -> agency-marketing-agentic-search-optimizer -> agency-agents-orchestrator] · Audit toàn diện website về SEO, hiệu năng, đo lường, GEO/AEO và AI agent, ra báo cáo việc ưu tiên có bằng chứng.
 - **Bẻ bài dài thành chuỗi post** (`bai-dai-thanh-chuoi-post`) - active · 2 bước [nd-goc-nhin -> nd-viet-bai] · Từ một bài dài hoặc một tài liệu, tách thành chuỗi post đăng dần, mỗi post đứng một mình vẫn đọc được.
 - **Báo cáo quảng cáo tuần** (`bao-cao-quang-cao-tuan`) - active · 2 bước [qc-phan-tich-so-lieu -> qc-phan-tich-quang-cao] · Gom số quảng cáo tuần rồi ra báo cáo kèm việc cần làm, có kiểm chứng độc lập.
 - **Chăm khách sau mua** (`cham-khach-sau-mua`) - active · 2 bước [bh-cham-khach -> bh-cham-khach] · Chuỗi dẫn khách mới tới kết quả đầu tiên rồi xin lời chứng thực dùng được.
@@ -192,4 +190,4 @@ _(chưa có)_
 - **Read YouTube videos** (`youtube-read`) - bundled/chạy · tools: javis_youtube_read · Reads the transcript (subtitles) of a YouTube video from its link so it can be summarised. Cycles through 6 player types, then yt-dlp, when YouTube blocks the server. No sign-in, no API key.
 
 ## Cờ sức khoẻ
-- Agent chưa workflow nào dùng: agency-agents-orchestrator, agency-business-strategist, agency-chief-financial-officer, agency-data-consolidation-agent, agency-design-image-prompt-engineer, agency-design-persona-walkthrough, agency-design-ui-designer, agency-engineering-prompt-engineer, agency-gis-web-gis-developer, agency-marketing-aeo-foundations, agency-marketing-agentic-search-optimizer, agency-marketing-ai-citation-strategist, agency-marketing-content-creator, agency-marketing-developer-community-builder, agency-marketing-email-strategist, agency-marketing-kuaishou-strategist, agency-marketing-linkedin-content-creator, agency-marketing-reddit-community-builder, agency-marketing-seo-specialist, agency-marketing-social-media-strategist, agency-marketing-tiktok-strategist, agency-paid-media-creative-strategist, agency-paid-media-paid-social-strategist, agency-paid-media-tracking-specialist, agency-project-manager-senior, agency-sales-engineer, agency-sales-offer-lead-gen-strategist, agency-sales-outbound-strategist, agency-security-ai-generated-code-auditor, agency-security-architect, agency-specialized-workflow-architect, agency-testing-performance-benchmarker, agency-testing-workflow-optimizer, bh-kiem-chung, em-kiem-chung, nd-kiem-chung, qc-kiem-chung
+- Agent chưa workflow nào dùng: agency-business-strategist, agency-chief-financial-officer, agency-data-consolidation-agent, agency-design-image-prompt-engineer, agency-design-persona-walkthrough, agency-design-ui-designer, agency-engineering-prompt-engineer, agency-gis-web-gis-developer, agency-marketing-content-creator, agency-marketing-email-strategist, agency-marketing-kuaishou-strategist, agency-marketing-linkedin-content-creator, agency-marketing-reddit-community-builder, agency-marketing-social-media-strategist, agency-marketing-tiktok-strategist, agency-paid-media-creative-strategist, agency-paid-media-paid-social-strategist, agency-project-manager-senior, agency-sales-engineer, agency-sales-offer-lead-gen-strategist, agency-sales-outbound-strategist, agency-security-architect, agency-specialized-workflow-architect, agency-testing-workflow-optimizer, bh-kiem-chung, em-kiem-chung, nd-kiem-chung, qc-kiem-chung

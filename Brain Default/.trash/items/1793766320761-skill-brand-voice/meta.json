@@ -1,0 +1,1 @@
+{"id": "1793766320761-skill-brand-voice", "kind": "skill", "slug": "brand-voice", "name": "brand-voice", "deleted_at": 1793766320.7625368, "parts": [{"rel": "skills/brand-voice", "dir": true, "store": "p0"}, {"rel": ".claude/skills/brand-voice", "dir": true, "store": "p1"}]}
