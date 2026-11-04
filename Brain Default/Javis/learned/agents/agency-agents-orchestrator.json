@@ -1,0 +1,67 @@
+{
+ "agent": {
+  "slug": "agency-agents-orchestrator"
+ },
+ "judge": {},
+ "kind": "agent",
+ "lessons": [
+  {
+   "created_at": 1793782245.0204296,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi ghép báo giá nhiều mức từ nhiều phần, quy giờ công ra đơn giá mỗi giờ cho từng mức để bắt mâu thuẫn công sức so với giá, và kiểm hạng mục trùng giữa các phần."
+  },
+  {
+   "created_at": 1793782258.274611,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi gặp số \"bất thường\" trong GA4, đối chiếu logic giữa các cột (ví dụ key events không thể lớn hơn event count) trước khi gán nguyên nhân như \"đếm trùng\"."
+  },
+  {
+   "created_at": 1793782324.3639624,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi cộng giờ công từ nhiều chuyên gia, kiểm đơn vị giờ (mỗi tháng, tổng 3 tháng hay làm một lần) trước khi cộng và quy đơn giá mỗi giờ."
+  },
+  {
+   "created_at": 1793782338.1520092,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi file đính kèm có hai tên khách khác nhau (Fresh và Frozen), ghi thành mục cần chủ xác nhận ngay đầu báo cáo, vì nó quyết định báo giá có gửi đúng khách hay không."
+  },
+  {
+   "created_at": 1793786414.3855188,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi báo cáo cuối gom nhiều mục chờ chủ chốt, đặt chúng thành một danh sách ba việc ở cuối để chủ trả lời một lần."
+  }
+ ],
+ "presentation": [],
+ "updated": "2026-11-04T10:05:21Z",
+ "version": 1
+}

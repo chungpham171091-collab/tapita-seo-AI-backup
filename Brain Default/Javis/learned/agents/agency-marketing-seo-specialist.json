@@ -1,0 +1,23 @@
+{
+ "agent": {
+  "slug": "agency-marketing-seo-specialist"
+ },
+ "judge": {},
+ "kind": "agent",
+ "lessons": [
+  {
+   "created_at": 1793781841.5026736,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "File đính kèm GSC không có đuôi thường là xlsx; cần copy sang .xlsx (xin duyệt sớm) rồi mới đọc được bằng javis_read_file."
+  }
+ ],
+ "presentation": [],
+ "updated": "2026-11-04T08:45:21Z",
+ "version": 1
+}

@@ -1,0 +1,34 @@
+{
+ "agent": {
+  "slug": "agency-paid-media-tracking-specialist"
+ },
+ "judge": {},
+ "kind": "agent",
+ "lessons": [
+  {
+   "created_at": 1793781784.7002113,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi báo giá dựa trên GA4, kiểm tra tỷ lệ key events trên phiên (trên 1 là nghi ngờ đếm trùng) và đối chiếu với đơn Shopify trước khi dùng làm mốc đánh giá."
+  },
+  {
+   "created_at": 1793782155.7709768,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi chủ nhóm không rành thuật ngữ đo lường, giải thích mỗi nghi vấn bằng một câu đời thường kèm hệ quả cho mốc đánh giá, và chốt luôn đơn vị tiền ngay khi chủ cho biết."
+  }
+ ],
+ "presentation": [],
+ "updated": "2026-11-04T08:55:21Z",
+ "version": 1
+}
