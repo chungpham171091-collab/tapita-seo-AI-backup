@@ -26,9 +26,53 @@
    "source": "self",
    "status": "active",
    "text": "Khi chủ nhóm không rành thuật ngữ đo lường, giải thích mỗi nghi vấn bằng một câu đời thường kèm hệ quả cho mốc đánh giá, và chốt luôn đơn vị tiền ngay khi chủ cho biết."
+  },
+  {
+   "created_at": 1793789245.7701302,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Với file GA4 dài hơn 1.000 dòng ở quyền 'cần duyệt', xin duyệt trước lệnh tính tổng chỉ đọc (kèm tên file, dòng, mẫu cần bỏ) thay vì thử nhiều lệnh khác nhau đều bị chặn."
+  },
+  {
+   "created_at": 1793789722.0274503,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Lệnh đã duyệt bị cắt cụt trong prompt thì không replay được; xin duyệt lại với lệnh ngắn gọn, đầy đủ, hoặc xin file xuất sẵn đã lọc."
+  },
+  {
+   "created_at": 1793789781.7951343,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi lệnh đã duyệt bị cắt cụt, lưu logic vào file script nhỏ trong thư mục out/ rồi xin duyệt lệnh ngắn gọi script đó, để lệnh đầy đủ và dễ duyệt lại."
+  },
+  {
+   "created_at": 1793789818.1467671,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi chạy script cộng GA4 theo khối dòng, gộp biến thể ?query của trang lõi trước khi đặt ngưỡng, vì số chưa gộp (3.239) thấp hơn số gộp (3.364) khoảng 4%."
   }
  ],
  "presentation": [],
- "updated": "2026-11-04T08:55:21Z",
+ "updated": "2026-11-04T11:05:22Z",
  "version": 1
 }

@@ -15,9 +15,31 @@
    "source": "self",
    "status": "active",
    "text": "Khi chia hạng mục GEO theo mức giá, đặt hạng mục trùng phần SEO (canonical/301) ở một mức rõ ràng và ghi chú để người ghép báo giá không tính giá hai lần."
+  },
+  {
+   "created_at": 1793789295.618438,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Lệnh GET đã duyệt chỉ chạy đúng một lần; gom mọi file discovery (robots, llms, sitemap) vào một lệnh để khỏi bị chặn ở lượt đọc tiếp theo."
+  },
+  {
+   "created_at": 1793789721.9780662,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Lệnh duyệt gộp curl nhiều trang HTML cùng lúc dễ dính 429 cả loạt; lấy 3 trang cách nhau vài giây, hoặc xin chủ view-source/Rich Results Test thay vì fetch."
   }
  ],
  "presentation": [],
- "updated": "2026-11-04T08:55:21Z",
+ "updated": "2026-11-04T10:55:22Z",
  "version": 1
 }

@@ -15,9 +15,64 @@
    "source": "self",
    "status": "active",
    "text": "File đính kèm GSC không có đuôi thường là xlsx; cần copy sang .xlsx (xin duyệt sớm) rồi mới đọc được bằng javis_read_file."
+  },
+  {
+   "created_at": 1793787952.7471354,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Extensionless GSC/GA4 attachments are xlsx zips; ask for approval to copy them to .xlsx at the start of the step instead of trying javis_read_file first."
+  },
+  {
+   "created_at": 1793788752.8282099,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi file xlsx được chủ xuất lại, chỉ phần đầu được nạp sẵn; tổng toàn site cần lượt Làm có công cụ đọc đủ các sheet."
+  },
+  {
+   "created_at": 1793788761.0233884,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Với báo giá SEO cho site đã top 1 ở từ khóa thương hiệu, tách baseline clicks thương hiệu và không thương hiệu, chỉ đặt ngưỡng tăng trưởng cho nhóm không thương hiệu."
+  },
+  {
+   "created_at": 1793789194.805055,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Phép tính tổng trên file GSC bằng awk/Bash bị chặn ở quyền cần duyệt; xin duyệt sớm hoặc dùng số tổng sẵn có (sheet Devices) thay vì tự cộng tay các dòng query."
+  },
+  {
+   "created_at": 1793789295.5684273,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Với file GSC xlsx đã chuyển txt, awk theo NR và cột A..E (clicks, prev clicks, impressions, prev impressions) chạy được sau khi được duyệt. Khi tách thương hiệu, tách riêng phần query ẩn danh bằng cách lấy tổng sheet Devices trừ tổng sheet Queries."
   }
  ],
  "presentation": [],
- "updated": "2026-11-04T08:45:21Z",
+ "updated": "2026-11-04T10:55:22Z",
  "version": 1
 }

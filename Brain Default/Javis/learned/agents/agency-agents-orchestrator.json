@@ -59,9 +59,31 @@
    "source": "self",
    "status": "active",
    "text": "Khi báo cáo cuối gom nhiều mục chờ chủ chốt, đặt chúng thành một danh sách ba việc ở cuối để chủ trả lời một lần."
+  },
+  {
+   "created_at": 1793789143.772188,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi chủ giao việc gồm nhiều file số liệu, giao mỗi file cho đúng chuyên gia chạy song song rồi ghép sau, để mỗi số có nguồn riêng."
+  },
+  {
+   "created_at": 1793789860.3994627,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Audit Website SEO + GEO",
+   "source": "self",
+   "status": "active",
+   "text": "Khi ghép báo giá cuối từ nhiều kết quả, đối chiếu số trùng tên giữa các báo cáo (ví dụ 136 đơn ba Value Pack so với 150 tổng nhóm) và ghi rõ vì sao khác nhau để chủ không tưởng là lỗi."
   }
  ],
  "presentation": [],
- "updated": "2026-11-04T10:05:21Z",
+ "updated": "2026-11-04T11:05:22Z",
  "version": 1
 }
