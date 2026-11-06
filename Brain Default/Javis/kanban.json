@@ -12,7 +12,7 @@
       "capability": "mcp-read",
       "execution_mode": "auto",
       "priority": 2,
-      "status": "done",
+      "status": "archived",
       "needs_approval": false,
       "block_kind": "",
       "block_reason": "",
@@ -28,7 +28,7 @@
       "current_run_id": "",
       "result": "**Search Console đã kết nối thành công qua MCP.** Kết quả chính: 7 ngày gần nhất có ít clicks và impressions hơn rõ rệt so với 7 ngày trước đó. Tuy vậy, **phần lớn mức giảm này đến từ việc Google chưa có dữ liệu ngày 01/11 và 02/11**, chứ chưa hẳn là traffic giảm thật.\n\n### Kết nối và property\n\n- Kết nối `google-search-console` (nhãn \"test - harry\") gọi `list_sites` thành công, ở mức quyền readonly.\n- MCP trả về **đúng 1 property**: `https://www.dreamdresses.com/`, quyền `siteRestrictedUser`.\n- **Property được chọn:** `https://www.dreamdresses.com/`. Đây là property duy nhất truy cập được và nó có dữ liệu thật cho cả hai kỳ.\n\n### So sánh 2 kỳ (search type: web)\n\n| Chỉ số | 27/10 - 02/11/2026 | 20/10 - 26/10/2026 | Chênh lệch tuyệt đối | Chênh lệch % |\n|---|---|---|---|---|\n| Clicks | 404 | 653 | -249 | -38,13% |\n| Impressions | 22.332 | 32.968 | -10.636 | -32,26% |\n| CTR | 1,809% | 1,981% | -0,172 điểm % | -8,67% |\n| Average position | 10,80 | 10,74 | +0,06 (tụt nhẹ) | +0,52% |\n\n**Lưu ý về dữ liệu:** khi kéo theo từng ngày, Search Console chỉ trả dữ liệu đến hết **31/10**. Hai ngày 01/11 và 02/11 chưa có, do Search Console thường cập nhật trễ 2-3 ngày. Như vậy kỳ gần nhất thực chất chỉ có 5 ngày (27/10 - 31/10), trong khi kỳ trước đủ 7 ngày. Cộng tay dữ liệu từng ngày ra đúng 404 clicks và 22.332 impressions, khớp với tổng mà MCP trả về.\n\n### So sánh bổ sung 5 ngày với 5 ngày (để đối chiếu công bằng hơn)\n\nBảng này cộng từ dữ liệu từng ngày do MCP trả về, gồm 27-31/10 và 20-24/10:\n\n| Chỉ số | 27/10 - 31/10 | 20/10 - 24/10 | Chênh lệch | % |\n|---|---|---|---|---|\n| Clicks | 404 | 431 | -27 | -6,26% |\n| Impressions | 22.332 | 23.113 | -781 | -3,38% |\n| CTR | 1,809% | 1,865% | -0,056 điểm % | -2,99% |\n\nBảng này không có average position. Search Console không trả position cho riêng khoảng 20-24/10, và tôi không muốn tự ước tính chỉ số này.\n\n**Đánh giá:** so trên cùng số ngày thì traffic chỉ giảm nhẹ, khoảng 3-6%, và thứ hạng gần như không đổi. Riêng ngày 26/10 cao bất thường (128 clicks, CTR 2,71%), nên kỳ trước trông tốt hơn một chút.\n\n### Đã làm và cách kiểm chứng\n\n- Tôi chỉ gọi các tool đọc: `list_sites`, và `search_analytics` 3 lần (tổng kỳ gần nhất, tổng kỳ trước, và theo từng ngày từ 20/10 đến 02/11).\n- Tôi không gọi lệnh ghi nào. Tool `submit_sitemap` vốn bị ẩn ở mức quyền readonly, và tôi không thêm, xoá hay sửa gì trên Search Console.\n- Tôi không tạo file nào trong vault.\n- Kiểm chứng: tổng dữ liệu từng ngày khớp với tổng của từng kỳ. Các phép tính chênh lệch đều tính trực tiếp từ số MCP trả về.\n\nĐể có số đủ 7 ngày cho kỳ 27/10 - 02/11, nên chạy lại vào khoảng 05/11/2026, khi Search Console đã cập nhật xong hai ngày còn thiếu.",
       "created_at": 1793697706.8775043,
-      "updated_at": 1793697774.1781952,
+      "updated_at": 1793956975.6202655,
       "lane": "",
       "team_id": "",
       "team_seq": 0,
@@ -87,9 +87,13 @@
         {
           "ts": "2026-11-03 16:22",
           "msg": "done"
+        },
+        {
+          "ts": "2026-11-06 16:22",
+          "msg": "done -> archived: đã kết thúc quá 3 ngày"
         }
       ]
     }
   ],
-  "updated": 1793697774.1856444
+  "updated": 1793956975.638421
 }
