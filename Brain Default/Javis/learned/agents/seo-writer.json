@@ -1,0 +1,34 @@
+{
+ "agent": {
+  "slug": "seo-writer"
+ },
+ "judge": {},
+ "kind": "agent",
+ "lessons": [
+  {
+   "created_at": 1794154037.2100706,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "dm",
+   "source": "self",
+   "status": "active",
+   "text": "Với collection TMF, kiểm collection thật bằng `/collections/<handle>/products.json` trước khi nhận từ khóa người giao, vì từ khóa chính có thể không khớp nội dung (vd \"hose parts\" so với collection solution hose)."
+  },
+  {
+   "created_at": 1794154037.2173455,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "dm",
+   "source": "self",
+   "status": "active",
+   "text": "Shopify không có `/blogs/.../<bài>.json`; đo độ dài blog bằng HTML thẻ `<article>` rồi ghi chú là số gần đúng."
+  }
+ ],
+ "presentation": [],
+ "updated": "2026-11-08T16:16:06Z",
+ "version": 1
+}

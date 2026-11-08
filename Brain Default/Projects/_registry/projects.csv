@@ -1,0 +1,12 @@
+slug,client,domain,market,type,platform,scope,owner,status,priority,compliance,content_skill,report_day,notes
+coway-de,Coway DE,,de-DE,ecommerce,,seo;content,,onboarding,,coway-content-compliance,harry-content,,"Thị trường Đức: rủi ro Abmahnung/HWG, theo skill compliance. CẦN ĐIỀN: domain, market, owner."
+coway-nl,Coway NL,,nl-NL,ecommerce,,seo;content,,onboarding,,coway-content-compliance,harry-content,,"Thị trường Hà Lan: ACM. CẦN ĐIỀN: domain, market, owner."
+coway-uk,Coway UK,,en-GB,ecommerce,,seo;content,,pilot,,coway-content-compliance,harry-content,,"Thị trường Anh: ASA. CẦN ĐIỀN: domain, market, owner."
+coway-fr,Coway FR,,fr-FR,ecommerce,,seo;content,,onboarding,,coway-content-compliance,harry-content,,"Thị trường Pháp: DGCCRF. CẦN ĐIỀN: domain, market, owner."
+tmf,TMF (TruckMountForums),shop.truckmountforums.com,en-US,ecommerce,shopify,seo;content,,pilot,,,shopify-collection-seo-tmf,,"Collection dùng shopify-collection-seo-tmf (có Gate xác minh fact). Thị trường en-US là giả định, cần xác nhận."
+dreamdress,dreamdress,,,ecommerce,,seo;content,,onboarding,,,harry-content,," CẦN ĐIỀN: domain, market, owner."
+nursing-pin,Nursing Pin,,,ecommerce,,seo;content,,onboarding,,,harry-content,," CẦN ĐIỀN: domain, market, owner."
+caffeinecam,CaffeineCam,,,,,seo;content,,onboarding,,,harry-content,," CẦN ĐIỀN: domain, market, owner."
+crocs,Crocs,,,ecommerce,,seo;content,,onboarding,,,harry-content,," CẦN ĐIỀN: domain, market, owner."
+labfuria,LabFuria,,,,,seo;content,,onboarding,,,harry-content,," CẦN ĐIỀN: domain, market, owner."
+demo,DEMO (khách giả),example.com,en-GB,ecommerce,shopify,seo;content,team SEO,test,,,harry-content,,Chỉ để test workflow. Xóa dòng này sau khi test.
