@@ -93,7 +93,95 @@
           "msg": "done -> archived: đã kết thúc quá 3 ngày"
         }
       ]
+    },
+    {
+      "id": "t_9524119c593e",
+      "brain_root": "D:\\Javis\\brains\\Brain Default",
+      "title": "tmf: seo-content-brief cho collection high-pressure-solution-line-hoses (hose parts)",
+      "intent": "Lập SEO content brief cho collection trang https://shop.truckmountforums.com/collections/high-pressure-solution-line-hoses (khách tmf), từ khóa chính \"hose parts\". Brief gồm: search intent và SERP đối thủ, cụm từ khóa liên quan, outline đề xuất cho collection description, bản nháp meta title và meta description, gợi ý liên kết tới sub-collection và sản phẩm, và danh sách thông tin sản phẩm cần xác minh từ chính trang. Đọc Projects/SEO-OPS.md và Projects/tmf/ trước khi làm, chỉ dùng dữ liệu của khách tmf. Không viết bản collection hoàn chỉnh (việc đó thuộc seo-writer). Thiếu nguồn ghi [CẦN NGUỒN], không bịa số liệu.",
+      "route": "wf:seo-content-brief",
+      "capability": "research",
+      "execution_mode": "full",
+      "priority": 2,
+      "status": "blocked",
+      "needs_approval": false,
+      "block_kind": "needs_input",
+      "block_reason": "Chưa đạt điều kiện hoàn thành: Tên file brief là 2026-11-09_brief_hose-parts.md, không chứa slug high-pressure-solution-line-hoses; phần lớn nội dung (ghi chú, mục 1-3, 7-11) viết bằng tiếng Việt thay vì tiếng Anh theo thị trường t",
+      "created_by": "chat",
+      "chat_id": "web:92373e28a8dc48b9a0a453bc8c16d2aa",
+      "idempotency_key": "",
+      "attempts": 1,
+      "max_attempts": 3,
+      "claimed_by": "",
+      "claim_expires_at": 0.0,
+      "not_before": 0.0,
+      "last_heartbeat_at": 1794217721.2743616,
+      "current_run_id": "",
+      "result": "Khách: tmf\nQuyết định: sửa\nNhận xét: Projects/tmf/outputs/2026-11-09_review_brief_hose-parts.md",
+      "created_at": 1794217482.0683677,
+      "updated_at": 1794217721.2743616,
+      "lane": "",
+      "team_id": "",
+      "team_seq": 0,
+      "team_prio": null,
+      "team_rev": 0,
+      "assignee_key": "",
+      "coordinator_key": "",
+      "source_ref": "",
+      "acceptance_ready": 0,
+      "acceptance_revision": 0,
+      "acceptance_contract_version": 0,
+      "metadata": {
+        "acceptance": [
+          "Có file brief trong Projects/tmf/ (đúng thư mục khách, không lẫn dữ liệu khách khác), tên file gắn slug high-pressure-solution-line-hoses",
+          "Brief ghi rõ search intent của 'hose parts' và đối chiếu với nội dung thật của trang collection đã đọc (có trích dẫn URL nguồn)",
+          "Có ít nhất 5 cụm từ khóa liên quan kèm ghi chú ý định tìm kiếm, và một đề xuất keyword chính cho trang",
+          "Có outline collection description gồm các mục H2/H3 và thứ tự đề xuất",
+          "Có meta title (khoảng 60 ký tự trở xuống) và meta description (khoảng 155 ký tự trở xuống) đã đếm độ dài",
+          "Có danh sách liên kết nội bộ gợi ý tới sub-collection và sản phẩm, lấy từ menu hoặc trang thật, không bịa URL",
+          "Mọi thông số kỹ thuật (kích thước, áp suất, nhiệt độ, chất liệu, tương thích) hoặc khẳng định về sản phẩm đều có nguồn kèm theo, hoặc được đánh dấu [CẦN NGUỒN]",
+          "Viết bằng tiếng Anh theo thị trường của tmf (xem Projects/_registry/projects.csv), không dùng dấu gạch dài (em dash)",
+          "Không tạo hoặc sửa file ngoài Projects/tmf/ và không ghi vào wiki/ hay memory/"
+        ],
+        "specifier": "ai",
+        "agent": {
+          "slug": "seo-planner",
+          "name": "SEO Planner",
+          "key": ""
+        },
+        "qa": [
+          {
+            "q": "Chưa đạt điều kiện hoàn thành: Tên file brief là 2026-11-09_brief_hose-parts.md, không chứa slug high-pressure-solution-line-hoses; phần lớn nội dung (ghi chú, mục 1-3, 7-11) viết bằng tiếng Việt thay vì tiếng Anh theo thị trường t",
+            "asked_at": 1794217721.2743616,
+            "progress": "Khách: tmf\nQuyết định: sửa\nNhận xét: Projects/tmf/outputs/2026-11-09_review_brief_hose-parts.md"
+          }
+        ]
+      },
+      "artifacts": [],
+      "deps": [],
+      "log": [
+        {
+          "ts": "2026-11-09 16:44",
+          "msg": "created by chat"
+        },
+        {
+          "ts": "2026-11-09 16:44",
+          "msg": "claimed by worker:2696:0c0b299a"
+        },
+        {
+          "ts": "2026-11-09 16:44",
+          "msg": "capability=research"
+        },
+        {
+          "ts": "2026-11-09 16:44",
+          "msg": "claimed by worker:2696:5304dafa"
+        },
+        {
+          "ts": "2026-11-09 16:48",
+          "msg": "Chưa đạt điều kiện hoàn thành: Tên file brief là 2026-11-09_brief_hose-parts.md, không chứa slug high-pressure-solution-line-hoses; phần lớn nội dung (ghi chú, mục 1-3, 7-11) viết bằng tiếng Việt thay vì tiếng Anh theo thị trường t"
+        }
+      ]
     }
   ],
-  "updated": 1793956975.638421
+  "updated": 1794217721.293609
 }
