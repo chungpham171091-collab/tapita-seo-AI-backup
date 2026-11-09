@@ -2,7 +2,7 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 47 agents · 90 skills · 14 workflows (14 bật) · 0 loops (0 bật) · 25 plugins (24 chạy)
+**Tổng quan:** 50 agents · 90 skills · 25 workflows (25 bật) · 0 loops (0 bật) · 25 plugins (24 chạy)
 
 ## Agents
 - **Người điều phối agent** (`agency-agents-orchestrator`) - Quản lý đường ống tự động, điều phối toàn bộ quy trình phát triển. Đóng vai người dẫn dắt cả quá trình. · tags: Chuyên gia ngành, Agency Agents
@@ -50,8 +50,11 @@
 - **Kiểm chứng độc lập (quảng cáo)** (`qc-kiem-chung`) - Đánh giá độc lập báo cáo quảng cáo, mặc định là nó đang sai cho tới khi chứng minh được ngược lại. · skills: grounded-citations, verification-before-completion
 - **Chuyên viên quảng cáo** (`qc-phan-tich-quang-cao`) - Đọc số liệu quảng cáo Meta, Google, TikTok rồi chỉ ra chỗ đang đốt tiền và việc cần làm tuần tới. · skills: grounded-citations, query-wiki, notes
 - **Chuyên viên số liệu** (`qc-phan-tich-so-lieu`) - Gom số từ bảng tính, Search Console, đơn hàng thành một bảng gọn kèm điều bất thường đáng chú ý. · skills: xlsx, notes
-- **SEO Auditor** (`seo-auditor`) - Kiểm tra nội dung SEO theo QRG và quy tắc riêng của khách. Chỉ báo lỗi, không viết lại bài. · tags: SEO-Ops
-- **SEO Writer** (`seo-writer`) - Viết và sửa nội dung SEO cho khách theo skill của team: blog, long-form collection, meta title và description. · tags: SEO-Ops
+- **SEO Auditor** (`seo-auditor`) - Kiểm tra nội dung, trang và kỹ thuật SEO theo QRG và quy tắc riêng của khách. Chỉ báo lỗi, không viết lại. · model sonnet · tags: SEO-Ops
+- **SEO Extractor** (`seo-extractor`) - Đọc file dữ liệu lớn (CSV, export, log), lọc, đếm, so kỳ và tóm tắt. Không đưa khuyến nghị. · tags: SEO-Ops
+- **SEO Planner** (`seo-planner`) - Lập kế hoạch, cluster từ khóa, brief, chia việc và xếp ưu tiên cho một khách. Không viết bài hoàn chỉnh. · model opus · tags: SEO-Ops
+- **SEO Reviewer** (`seo-reviewer`) - Chấm điểm và quyết định đạt hay sửa trước khi giao khách. Chỉ nhận xét, không viết lại. · model opus · tags: SEO-Ops
+- **SEO Writer** (`seo-writer`) - Viết và sửa nội dung SEO cho khách theo skill của team: blog, long-form collection, meta, feedback, kế hoạch ảnh, bản sửa theo GEO. · model sonnet · tags: SEO-Ops
 
 ## Skills
 ### AI
@@ -165,7 +168,18 @@ language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of
 - **Kích hoạt lại danh sách nguội** (`kich-hoat-lai-danh-sach`) - active · 2 bước [em-chien-luoc-pheu -> em-viet-email] · Chuỗi email kéo lại người đã lâu không mở, và dọn danh sách một cách tử tế.
 - **Lịch nội dung một tháng** (`lich-noi-dung-thang`) - active · 2 bước [nd-goc-nhin -> nd-bien-tap] · Từ chủ đề và sản phẩm đang bán, lên lịch nội dung một tháng có nhịp bán xen nhịp cho đi.
 - **Săn ngân sách lãng phí** (`san-ngan-sach-lang-phi`) - active · 2 bước [qc-phan-tich-so-lieu -> qc-phan-tich-quang-cao] · Tìm nhóm quảng cáo đang tiêu tiền mà không ra đơn, ước tính số tiền cứu được.
+- **SEO Content brief** (`seo-content-brief`) - active · 2 bước [seo-planner -> seo-reviewer] · Tạo brief cho một trang (blog hoặc collection) theo template, rồi reviewer kiểm tra brief đủ mục.
+- **SEO Viết nội dung (giai đoạn 2)** (`seo-content-draft`) - active · 1 bước [seo-writer] · Viết bản hoàn chỉnh từ outline đã được người duyệt, rồi ghi draft. Sau đó chạy seo-qa-fix.
+- **SEO Viết nội dung (giai đoạn 1)** (`seo-content-writing`) - active · 1 bước [seo-writer] · Chạy skill viết của khách đến điểm dừng duyệt đầu tiên (strategy và outline), ghi file và dừng chờ người duyệt.
+- **SEO Sửa theo feedback và bản địa hóa** (`seo-feedback-localization`) - active · 2 bước [seo-writer -> seo-auditor] · Sửa bài theo feedback của khách hoặc bản địa hóa sang thị trường đích, rồi kiểm lại.
+- **SEO Tối ưu GEO** (`seo-geo-optimization`) - active · 4 bước [seo-extractor -> seo-auditor -> seo-planner -> seo-writer] · Dựa vào prompts và citations đã theo dõi: tóm tắt, audit trang, xếp ưu tiên, đề xuất bản sửa answer-first.
+- **SEO Kế hoạch ảnh blog** (`seo-image-plan`) - active · 1 bước [seo-writer] · Tạo bảng kế hoạch ảnh cho một bài blog hoàn chỉnh: vị trí, tên file, alt, prompt tạo ảnh.
+- **SEO Keyword research** (`seo-keyword-research`) - active · 2 bước [seo-extractor -> seo-planner] · Tóm tắt dữ liệu từ khóa của khách rồi cluster và ghi clusters.csv. Cần có export Ahrefs hoặc GSC trong data/.
+- **SEO Tối ưu meta và content sản phẩm** (`seo-meta-optimization`) - active · 3 bước [seo-extractor -> seo-writer -> seo-auditor] · Tối ưu meta title, meta description và content sản phẩm cho một lô URL; auditor đếm ký tự và kiểm compliance.
+- **SEO Báo cáo tháng** (`seo-monthly-report`) - active · 4 bước [seo-extractor -> seo-planner -> seo-reviewer -> seo-extractor] · Báo cáo tháng theo template: tóm tắt số liệu từ GSC, GA4, rank, citations, viết báo cáo, reviewer kiểm số liệu, ghi một dòng portfolio_kpi.
+- **SEO Audit on-page** (`seo-onpage-audit`) - active · 3 bước [seo-extractor -> seo-auditor -> seo-reviewer] · Audit on-page cho danh sách URL: dữ liệu từ extractor, audit theo QRG, reviewer kiểm bằng chứng.
 - **SEO QA và sửa** (`seo-qa-fix`) - active · 3 bước [seo-auditor -> seo-writer -> seo-auditor] · Audit một bài đã viết, sửa lỗi P0 và P1, rồi kiểm lại. Chạy một vòng; cần vòng hai thì chạy lại với file _v2.
+- **SEO Audit kỹ thuật** (`seo-technical-audit`) - active · 3 bước [seo-extractor -> seo-auditor -> seo-planner] · Audit kỹ thuật từ file crawl đã export: tóm tắt, báo lỗi theo mức độ, xếp ưu tiên sửa.
 - **Từ ý tưởng ra bài đăng** (`y-tuong-thanh-bai-dang`) - active · 3 bước [nd-goc-nhin -> nd-viet-bai -> nd-bien-tap] · Tìm góc tiếp cận, viết bài, biên tập, rồi kiểm chứng trước khi đăng.
 - **Từ kỹ năng ra sản phẩm số** (`y-tuong-thanh-san-pham-so`) - active · 2 bước [bh-chien-luoc-offer -> bh-chien-luoc-offer] · Từ những gì bạn đã biết làm, ra ý tưởng sản phẩm số bán được kèm lời chào hoàn chỉnh.
 

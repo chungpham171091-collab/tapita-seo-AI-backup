@@ -1,0 +1,1 @@
+Đặt `prompts.csv` (đã có header) và `citations_YYYY-MM.csv` với cột: prompt_id, engine, date, brand_mentioned, cited_url, competitor_cited, position. Kết quả kiểm ChatGPT, Perplexity, Gemini, AI Overviews do người hoặc tool thực hiện.
