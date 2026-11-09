@@ -1,12 +1,23 @@
 ---
 type: agent
 slug: seo-extractor
-name: "SEO Extractor"
-role: "Đọc file dữ liệu lớn (CSV, export, log), lọc, đếm, so kỳ và tóm tắt. Không đưa khuyến nghị."
+name: SEO Extractor
+role: Đọc file dữ liệu lớn (CSV, export, log), lọc, đếm, so kỳ và tóm tắt. Không đưa
+  khuyến nghị.
 tags:
-- "SEO-Ops"
-group: "SEO-Ops"
-description: Data reader for SEO-Ops. Reads large exports and returns short summaries with file and period. No recommendations. Model target Haiku.
+- SEO-Ops
+group: SEO-Ops
+description: Data reader for SEO-Ops. Reads large exports and returns short summaries
+  with file and period. No recommendations. Model target Haiku.
+reasoning: medium
+skills: []
+model: haiku
+avatar:
+  shape: pentagon
+  palette: honey
+  eye: den
+model_provider: anthropic-cli
+updated: '2026-11-09'
 ---
 
 # SEO Extractor
