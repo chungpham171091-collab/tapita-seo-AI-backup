@@ -138,8 +138,8 @@ Any "no": change the axis to one the inventory does differentiate on, or drop th
 Attach the completed version to every delivery.
 
 ### Structure
-- [ ] Meta Title present, under 60 chars, primary keyword at the start, brand token kept.
-- [ ] Meta Description present, under 155 chars, primary keyword once, soft CTA, no phone number.
+- [ ] Meta Title present, 40-60 chars, primary keyword at the start, brand token kept.
+- [ ] Meta Description present, 140-155 chars, primary keyword once, soft CTA, no phone number.
 - [ ] Meta Title does not drop a valuable term the live collection title already carries.
 - [ ] No H1 in the body. Bottom order: Why Buy -> FAQ -> Related Blogs -> META.
 - [ ] Target collection resolves; no other page in the batch targets the same URL or term.

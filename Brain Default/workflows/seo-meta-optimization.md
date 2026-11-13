@@ -1,41 +1,41 @@
 ---
 type: workflow
-name: SEO Tối ưu meta và content sản phẩm
+name: SEO Product 2 - chọn từ khóa chính, meta và content sản phẩm
 slug: seo-meta-optimization
 status: active
-description: Tối ưu meta title, meta description và content sản phẩm cho một lô URL; auditor đếm ký tự và kiểm compliance.
+description: 'Quick optimization phần sau: ghép search volume từ Ahrefs, chọn từ khóa chính theo luật volume, viết meta và content sản phẩm theo skill. Sau đó chạy seo-qa-fix.'
 steps:
 - agent: seo-extractor
   task: |-
     Đầu vào: {{input}}
-    Đầu vào gồm: slug khách | số URL tối đa cho lô này | file URL (mặc định Projects/<slug>/data/inputs/url_list.csv).
-    Đọc Projects/SEO-OPS.md và Projects/<slug>/PROJECT.md của đúng khách trong đầu vào. Chỉ làm cho khách đó.
-    Đọc file URL và Projects/<slug>/data/keywords/ahrefs_*.csv (nếu có). Chọn tối đa số URL đã nêu, ưu tiên URL chưa có meta hoặc meta sai độ dài. Ghi lô đã chọn kèm meta hiện tại và từ khóa gợi ý vào Projects/<slug>/data/_summary/YYYY-MM_meta_batch.csv. Nêu file thiếu.
+    Đầu vào gồm: slug khách | thư mục run product | file Ahrefs trong run (mặc định ahrefs_volume.csv) | ghi chú chỉnh từ khóa của người (hoặc "không").
+    Đọc Projects/SEO-OPS.md và Projects/<slug>/PROJECT.md của đúng khách trong đầu vào. Chỉ làm cho khách đó. Thông tin đã có trong PROJECT.md (thị trường, ngôn ngữ, Google domain, tone, từ cấm, skill, đối thủ) thì dùng luôn, không hỏi lại; thiếu thì nói rõ cần điền mục nào vào PROJECT.md.
+    Đọc file Ahrefs (chỉ đọc) và product_keywords.csv trong thư mục run. Ghép search volume theo từ khóa (không phân biệt hoa thường). Ghi product_keywords_sv.csv vào thư mục run, cột: url, keyword, words, search_volume; từ khóa không có trong export thì ghi "không có". Chép nguyên văn ghi chú chỉnh từ khóa của người vào keyword_notes.md trong thư mục run (ghi "không" nếu không có).
+    Dòng đầu tiên của câu trả lời luôn là `Khách: <slug>`.
     Trả lời đúng 4 dòng:
     Khách: <slug>
-    Lô: <đường dẫn>
-    Số URL: <n>
-    Thiếu: <danh sách, hoặc không>
+    Run: <đường dẫn thư mục run>
+    Đã ghép: <số từ khóa có volume>/<tổng>
+    Thiếu: <ngắn, hoặc không>
 - agent: seo-writer
   task: |-
     Kết quả bước trước: {{prev}}
-    Mở file lô URL. Chạy skill harry-optimization cho từng URL (chỉ dùng thông tin có thật của sản phẩm, không bịa thông số). Ghi bảng URL, Keywords, Meta Title New, Meta Description New, Content New (nếu là sản phẩm), Note vào Projects/<slug>/outputs/YYYY-MM-DD_meta_<tên-lô>.md. Meta title 40 đến 60 ký tự, description 140 đến 160 ký tự.
-    Dòng đầu tiên của câu trả lời luôn là `Khách: <slug>`.
-    Trả lời đúng 3 dòng:
-    Khách: <slug>
-    Bảng: <đường dẫn>
-    Việc cần người: <ví dụ chỉnh từ khóa, hoặc không>
-- agent: seo-auditor
-  task: |-
-    Kết quả bước trước: {{prev}}
-    Mở bảng meta. Đếm ký tự thật của từng meta title và description. Kiểm claim cấm theo PROJECT.md và skill compliance của khách, kiểm thông số không có nguồn. Ghi báo cáo vào Projects/<slug>/outputs/YYYY-MM-DD_review_meta_<tên-lô>.md, nêu từng dòng lỗi.
+    Mở products.csv, product_analysis.md và product_keywords_sv.csv trong thư mục run, và keyword_notes.md (ghi chú chỉnh từ khóa của người; làm theo ghi chú này trước các quy tắc dưới đây nếu hai bên khác nhau).
+    Chọn từ khóa cho từng sản phẩm:
+    - Từ khóa chính dài 3 đến 4 từ, mô tả sát sản phẩm nhất và có search volume thực (lớn hơn 0). Ngoại lệ: khi từ khóa chính là tên sản phẩm thì được dùng dù không có volume; ghi rõ ở cột Note.
+    - Từ khóa chính không trùng từ khóa chính của collection hay sản phẩm khác trong keyword mapping hiện hành (file keyword_mapping_*.csv mới nhất trong Projects/<slug>/deliverables/, nếu có).
+    - Từ khóa volume 0 hoặc không có trong export: bỏ. Chỉ giữ làm từ khóa phụ khi là long-tail mô tả sát sản phẩm, và ghi "SV 0" cạnh từ khóa đó.
+    - Từ khóa chính đặt dòng đầu, rồi sắp các từ khóa còn lại theo ưu tiên.
+    Sau đó dùng skill ghi ở skill_product trong PROJECT.md, chạy phần meta, content và tự kiểm của skill (độ dài meta, cấu trúc content, bảng đầu ra theo đúng skill). Không bịa thông số; thiếu thì ghi theo cách skill quy định.
+    Ghi meta_table.csv vào thư mục run với các cột của bảng đầu ra trong skill. Với mỗi file .csv vừa ghi, tạo bản .xlsx bằng: python tools/seo_ops.py xlsx <file.csv>. Không tạo được thì giữ .csv và ghi "chưa có xlsx" trong câu trả lời.
+    Cập nhật RUN.md: python tools/seo_ops.py set-run <thư mục run> workflow=<slug workflow này> status=qa "next_step=Chạy seo-qa-fix trên meta_table.csv" (không chạy được lệnh thì sửa tay khối đầu RUN.md), thêm tên file vừa tạo vào mục "File trong run này", rồi chạy python tools/seo_ops.py build.
     Dòng đầu tiên của câu trả lời luôn là `Khách: <slug>`.
     Trả lời đúng 4 dòng:
     Khách: <slug>
-    Verdict: đạt hoặc không đạt
-    Số dòng lỗi: <n>/<tổng>
-    Báo cáo: <đường dẫn>
-updated: '2026-11-09'
+    Run: <đường dẫn thư mục run>
+    Bảng: <đường dẫn meta_table.csv>
+    Từ khóa chính không có volume: <số sản phẩm dùng tên sản phẩm, hoặc không>
+updated: '2026-11-13'
 ---
 
-Ba bước. Giữa bước 1 và 2, người có thể chỉnh từ khóa chính và phụ của từng URL dựa trên Ahrefs; nếu cần, chạy riêng từng bước. Dòng lỗi thì chạy lại `seo-meta-optimization` với lô nhỏ hơn hoặc nhờ `seo-writer` sửa riêng các dòng đó.
+Hai bước, chạy sau khi người đã lấy search volume trên Ahrefs. Bước kế tiếp là `seo-qa-fix` trên meta_table.csv. Luật từ khóa volume 0 nằm ở workflow này vì skill sản phẩm chưa có.

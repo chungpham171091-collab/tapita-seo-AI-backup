@@ -1,0 +1,5 @@
+client,run,task,topic,workflow,status,owner,created,updated,next_step,live_url,published_on,path
+tmf,2026-11-13_blog_hypothesis-qa,blog,hypothesis-qa,seo-content-draft,qa,Harry,2026-11-13,2026-11-13,Chạy seo-qa-fix trên draft.md,,,Projects/tmf/runs/2026-11-13_blog_hypothesis-qa
+tmf,2026-11-13_collection_hypothesis-published,collection,hypothesis-published,seo-qa-fix,published,Harry,2026-11-13,2026-11-13,Chạy seo-post-publish-check với thư mục run này,https://shop.truckmountforums.com/collections/hose-cuffs,2026-11-12,Projects/tmf/runs/2026-11-13_collection_hypothesis-published
+tmf,2026-11-13_planning_hypothesis,planning,hypothesis,seo-keyword-level,waiting,Harry,2026-11-13,2026-11-13,Chạy seo-keyword-mapping với thư mục run này (groups_us.csv đã có),,,Projects/tmf/runs/2026-11-13_planning_hypothesis
+tmf,2026-11-13_product_hypothesis,product,hypothesis,seo-product-keywords,waiting,Harry,2026-11-13,2026-11-13,Chạy seo-meta-optimization với thư mục run này (ahrefs_volume.csv đã có),,,Projects/tmf/runs/2026-11-13_product_hypothesis

@@ -1,4 +1,32 @@
+---
+slug: tmf
+client: TMF (TruckMountForums)
+stage: client
+domain: shop.truckmountforums.com
+canonical_url: https://shop.truckmountforums.com/
+market: en-US
+google_domain: google.com
+site_type: ecommerce
+platform: shopify
+theme: Dawn
+scope: seo;content
+owner: Harry
+approver: Rob
+priority: 1
+own_dr: 25
+branded_keywords: keep
+report_day: 5
+skill_blog: harry-content
+skill_collection: shopify-collection-seo-tmf
+skill_product: harry-optimization
+compliance:
+test_data: yes
+notes: Khách chạy thử đầu tiên. Đang dùng dữ liệu GIẢ ĐỊNH để test, danh sách trong Projects/tmf/HYPOTHESIS.md.
+---
+
 # PROJECT: TMF (TruckMountForums)
+
+> ĐANG CÓ DỮ LIỆU GIẢ ĐỊNH ĐỂ TEST (test_data: yes). Mọi giá trị và đoạn đánh dấu [GIẢ ĐỊNH] phải thay bằng dữ liệu thật trước khi giao khách. Danh sách đầy đủ: Projects/tmf/HYPOTHESIS.md.
 
 > Điền một lần, cập nhật khi khách đổi yêu cầu. Chỉ ghi điều đọc được từ trang hoặc do người dùng cung cấp. Mục nào chưa xác minh được ghi [CẦN XÁC NHẬN].
 > Lần cập nhật hồ sơ: 2026-11-09. Nguồn web: các URL ghi cạnh từng mục, đọc ngày 2026-11-09.
@@ -46,6 +74,8 @@ Số lượng là số trang hiển thị ngày 2026-11-09 và thay đổi theo 
 ## Mục tiêu và KPI
 [CẦN XÁC NHẬN] Chưa bổ sung (người dùng trả lời ngày 2026-11-09: "chưa bổ sung"). Không tự đặt KPI.
 
+[GIẢ ĐỊNH] Tăng 30% organic clicks của nhóm Hoses và Wands trong 6 tháng (đến 2027-05) so với 4 tuần đến 2026-11-08; 10 trang collection có từ khóa chính vào top 10.
+
 ## Đối thủ chính
 Người dùng chọn dùng 7 đề xuất dưới đây làm danh sách đối thủ (ngày 2026-11-09). Danh sách xuất phát từ web search ngày 2026-11-09 cho nhóm từ khóa "truck mount carpet cleaning equipment, chemicals, wands, hoses, jets, parts"; khách chưa xác nhận. Đây là các cửa hàng bán cùng nhóm hàng, chưa kiểm xếp hạng hay thị phần:
 - Jon-Don: https://jondon.com/ (kết quả: https://jondon.com/equipment-accessories/truck-mounts-and-accessories/new-truck-mounts/hydramaster-truck-mounts.html)
@@ -59,8 +89,12 @@ Người dùng chọn dùng 7 đề xuất dưới đây làm danh sách đối 
 ## Tone of voice và wording khách yêu cầu
 [CẦN XÁC NHẬN] Tạm thời chưa có (người dùng trả lời ngày 2026-11-09). Không tự đặt.
 
+[GIẢ ĐỊNH] Giọng thợ nói với thợ: thẳng, thực tế, dùng thuật ngữ nghề (truck mount, wand, prespray, PSI). Không văn quảng cáo, không chữ in hoa hét. Tiếng Anh Mỹ.
+
 ## Từ cấm và claim cấm
 [CẦN XÁC NHẬN] Tạm thời chưa có (người dùng trả lời ngày 2026-11-09). Không tự đặt claim cấm.
+
+[GIẢ ĐỊNH] Không: "guaranteed", "best in the industry", "never fails", "lifetime" (trừ khi trang sản phẩm ghi), claim y tế hoặc diệt khuẩn cho hóa chất, so sánh đích danh đối thủ. Không nêu năm thành lập.
 
 Quy tắc xác minh fact đang áp dụng cho nội dung collection TMF. Nguồn: skill `shopify-collection-seo-tmf` (SKILL.md và references/tmf-brand-facts.md). Đây là quy tắc của skill, không phải yêu cầu do khách nêu:
 - Mọi câu nêu fact phải truy được về một trong bốn tầng: A (trang sản phẩm TMF), B (hãng sản xuất hoặc nhà phân phối ủy quyền), C (trang của TMF: About, Contact, Military, Loyalty, Financing), D (thông lệ ngành nói chung, không gắn với sản phẩm cụ thể). Claim không có tầng thì xóa, không làm mềm.
@@ -74,6 +108,12 @@ Quy tắc xác minh fact đang áp dụng cho nội dung collection TMF. Nguồn
 - Long-form collection: shopify-collection-seo-tmf
 - Meta: harry-optimization
 - Compliance: theo mục Từ cấm ở trên (hiện chưa có)
+
+## Nhóm sản phẩm ưu tiên
+[GIẢ ĐỊNH] 1. Hoses (solution hose, vacuum hose, cuffs, quick connects). 2. Wands và wand parts (glide, jets, valve). 3. Sprayers. 4. Carpet cleaning chemicals.
+
+## Kỹ thuật
+[GIẢ ĐỊNH] Một ngôn ngữ, một thị trường (en-US), không hreflang. Theme Dawn (chưa xác minh). own_dr 25 là số giả định.
 
 ## Danh sách URL
 `Projects/tmf/data/inputs/site_urls.csv` (cột type,url; type gồm homepage, collection, product, blog, page). Lấy từ sitemap công khai ngày 2026-11-09: 1 homepage, 212 collection, 971 product, 64 page, 481 blog (471 bài và 10 trang blog gốc), tổng 1.729 URL. File cũ `Projects/tmf/inputs/site_urls.csv` đã được gộp từ lượt cài v3; sitemap hiện tại chứa toàn bộ URL của file cũ. Cập nhật khi site đổi.

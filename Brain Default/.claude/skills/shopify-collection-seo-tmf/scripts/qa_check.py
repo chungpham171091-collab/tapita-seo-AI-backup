@@ -6,7 +6,7 @@ Checks:
   - word count and primary keyword floor (2 per 1,000 words)
   - secondary keyword coverage (each at least once)
   - primary keyword present in Meta Title and Meta Description
-  - Meta Title <= 60 chars, Meta Description <= 155 chars
+  - Meta Title 40-60 chars, Meta Description 140-155 chars
   - banned dashes: em dash, en dash, double hyphen
   - surviving claim-tier markers ([?], [A], [B], [D])
   - every URL in the draft appears in the supplied site URL list
@@ -148,7 +148,7 @@ def main():
         fail("Meta Title missing")
     else:
         n = len(meta_title)
-        (ok if n <= 60 else fail)(f"Meta Title {n} chars (max 60)")
+        (ok if 40 <= n <= 60 else fail)(f"Meta Title {n} chars (40-60)")
         if primary not in meta_title.lower():
             fail("primary keyword missing from Meta Title")
         if args.brand_token.lower() not in meta_title.lower():
@@ -158,7 +158,7 @@ def main():
         fail("Meta Description missing")
     else:
         n = len(meta_desc)
-        (ok if n <= 155 else fail)(f"Meta Description {n} chars (max 155)")
+        (ok if 140 <= n <= 155 else fail)(f"Meta Description {n} chars (140-155)")
         if primary not in meta_desc.lower():
             fail("primary keyword missing from Meta Description")
         if PHONE_RE.search(meta_desc):

@@ -1,12 +1,3 @@
-slug,client,domain,market,type,platform,scope,owner,status,priority,compliance,content_skill,report_day,notes
-coway-de,Coway DE,,de-DE,ecommerce,,seo;content,,onboarding,,coway-content-compliance,harry-content,,"Thị trường Đức: rủi ro Abmahnung/HWG, theo skill compliance. CẦN ĐIỀN: domain, market, owner."
-coway-nl,Coway NL,,nl-NL,ecommerce,,seo;content,,onboarding,,coway-content-compliance,harry-content,,"Thị trường Hà Lan: ACM. CẦN ĐIỀN: domain, market, owner."
-coway-uk,Coway UK,,en-GB,ecommerce,,seo;content,,pilot,,coway-content-compliance,harry-content,,"Thị trường Anh: ASA. CẦN ĐIỀN: domain, market, owner."
-coway-fr,Coway FR,,fr-FR,ecommerce,,seo;content,,onboarding,,coway-content-compliance,harry-content,,"Thị trường Pháp: DGCCRF. CẦN ĐIỀN: domain, market, owner."
-tmf,TMF (TruckMountForums),shop.truckmountforums.com,en-US,ecommerce,shopify,seo;content,Harry,pilot,,,shopify-collection-seo-tmf,,"Collection dùng shopify-collection-seo-tmf (có Gate xác minh fact). Thị trường en-US đã xác nhận 2026-11-09. Người duyệt phía khách: Rob. 7 đối thủ đã chọn (xem PROJECT.md). Compliance, KPI, tone, từ cấm, Drive, GSC, GA4, Ahrefs chưa có."
-dreamdress,dreamdress,,,ecommerce,,seo;content,,onboarding,,,harry-content,," CẦN ĐIỀN: domain, market, owner."
-nursing-pin,Nursing Pin,,,ecommerce,,seo;content,,onboarding,,,harry-content,," CẦN ĐIỀN: domain, market, owner."
-caffeinecam,CaffeineCam,,,,,seo;content,,onboarding,,,harry-content,," CẦN ĐIỀN: domain, market, owner."
-crocs,Crocs,,,ecommerce,,seo;content,,onboarding,,,harry-content,," CẦN ĐIỀN: domain, market, owner."
-labfuria,LabFuria,,,,,seo;content,,onboarding,,,harry-content,," CẦN ĐIỀN: domain, market, owner."
-demo,DEMO (khách giả),example.com,en-GB,ecommerce,shopify,seo;content,team SEO,test,,,harry-content,,Chỉ để test workflow. Xóa dòng này sau khi test.
+slug,client,stage,domain,market,type,platform,scope,owner,approver,priority,compliance,content_skill,collection_skill,product_skill,report_day,notes
+demo,DEMO (khách giả),client,example.com,en-GB,ecommerce,shopify,seo;content,team SEO,,,,harry-content,,harry-optimization,,"Khách giả, chỉ để test workflow. Không phải khách thật."
+tmf,TMF (TruckMountForums),client,shop.truckmountforums.com,en-US,ecommerce,shopify,seo;content,Harry,Rob,1,,harry-content,shopify-collection-seo-tmf,harry-optimization,5,"Khách chạy thử đầu tiên. Đang dùng dữ liệu GIẢ ĐỊNH để test, danh sách trong Projects/tmf/HYPOTHESIS.md."

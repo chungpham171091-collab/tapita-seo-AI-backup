@@ -1,0 +1,8 @@
+template,url,file,note
+home,https://shop.truckmountforums.com/,home_1.html,Ảnh đầu trang đang lazy load
+collection,https://shop.truckmountforums.com/collections/high-pressure-solution-line-hoses,collection_1.html,Có H1 và CollectionPage
+collection,https://shop.truckmountforums.com/collections/hose-cuffs,collection_2.html,"Thiếu meta description, thiếu ItemList"
+collection,https://shop.truckmountforums.com/collections/wands-wand-parts,collection_3.html,Link sản phẩm render bằng JS
+product,https://shop.truckmountforums.com/products/carpet-cleaning-inline-sprayer,product_1.html,Product schema thiếu availability
+product,https://shop.truckmountforums.com/products/11001-hi-flow-ss-jets-for-carpet-cleaning-wands,product_2.html,Hai thẻ H1; canonical trỏ về URL có ?variant=
+product,https://shop.truckmountforums.com/products/hydro-force-pro-solution-hose-50-feet,product_3.html,Product schema trùng 2 lần; ảnh thiếu alt

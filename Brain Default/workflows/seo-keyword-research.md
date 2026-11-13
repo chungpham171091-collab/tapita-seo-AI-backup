@@ -2,8 +2,8 @@
 type: workflow
 name: SEO Keyword research
 slug: seo-keyword-research
-status: active
-description: Tóm tắt dữ liệu từ khóa của khách rồi cluster và ghi clusters.csv. Cần có export Ahrefs hoặc GSC trong data/.
+status: 'off'
+description: 'Đã thay bằng seo-keyword-seed, seo-keyword-level, seo-keyword-mapping và seo-priority-plan. Giữ lại để tham chiếu, không chạy.'
 steps:
 - agent: seo-extractor
   task: |-
@@ -26,7 +26,9 @@ steps:
     Clusters: <đường dẫn clusters.csv>
     Ghi chú: <đường dẫn file ghi chú>
     Việc cần người quyết: <ngắn, hoặc không>
-updated: '2026-11-09'
+updated: '2026-11-13'
 ---
 
 Hai bước, chạy một lượt. Số liệu thiếu thì giữ trống chứ không ước lượng. Người xem clusters.csv và chốt từ khóa chính, phụ cho từng URL trước khi chạy `seo-content-brief`.
+
+ĐÃ TẮT ngày 2026-11-13. Planning chạy theo bốn workflow mới: `seo-keyword-seed`, `seo-keyword-level`, `seo-keyword-mapping`, `seo-priority-plan`.

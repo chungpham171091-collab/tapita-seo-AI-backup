@@ -210,8 +210,8 @@ The article is one continuous piece. In the outline you may label heading levels
 ### F. On-page SEO
 
 - **Collection title (the H1):** confirm it contains the primary keyword. Set in Shopify, NOT written in the body. Flag to the user if the keyword is missing.
-- **Meta Title** (under 60 chars, primary keyword at start)
-- **Meta Description** (under 155 chars, primary keyword once, includes a soft CTA)
+- **Meta Title** (40-60 chars, primary keyword at start)
+- **Meta Description** (140-155 chars, primary keyword once, includes a soft CTA)
 
 ### G. Links + Related Blogs
 
@@ -356,8 +356,8 @@ for k in ['SECONDARY 1', 'SECONDARY 2']:
 for bad in ['\u2014', '\u2013', '--']:
     if bad in text:
         print(f'WARNING: found banned dash: {repr(bad)}')
-print(f'Meta Title: {len(meta_title)} chars (max 60)' + (' - TOO LONG' if len(meta_title) > 60 else ' - OK'))
-print(f'Meta Description: {len(meta_desc)} chars (max 155)' + (' - TOO LONG' if len(meta_desc) > 155 else ' - OK'))
+print(f'Meta Title: {len(meta_title)} chars (40-60)' + (' - TOO LONG' if len(meta_title) > 60 else ' - TOO SHORT' if len(meta_title) < 40 else ' - OK'))
+print(f'Meta Description: {len(meta_desc)} chars (140-155)' + (' - TOO LONG' if len(meta_desc) > 155 else ' - TOO SHORT' if len(meta_desc) < 140 else ' - OK'))
 if primary not in meta_title.lower():
     print('WARNING: primary keyword missing from Meta Title')
 if primary not in meta_desc.lower():
@@ -369,7 +369,7 @@ if primary not in meta_desc.lower():
 - Primary keyword below the floor -> add naturally in section openers, FAQ answers, table summaries. If it won't fit cleanly, use a variant / split the phrase and note it in the summary.
 - Any secondary keyword at 0 -> add once in the most natural spot; if it won't fit, use a variant and note it.
 - Any em dash, en dash, or double hyphen found -> rewrite the sentence.
-- Meta Title over 60 chars or Meta Description over 155 chars -> shorten before delivery. Cut modifiers, not the primary keyword.
+- Meta Title outside 40-60 chars or Meta Description outside 140-155 chars -> fix before delivery. Too long: cut modifiers, not the primary keyword. Too short: add a real attribute or benefit from the page, never filler.
 
 Do not deliver content that fails the checks. Fix inline first.
 
@@ -433,7 +433,7 @@ Default delivery is markdown in the chat. Only export to `.docx` if the user exp
 | Same offer ("free shipping over $X") repeated everywhere | Max 3 mentions: intro/early body, Why Buy, at most one FAQ |
 | Comparison or spec ladder with no takeaway | End every comparison block with an "In short, ..." decision sentence |
 | Skipping the information-gain points from Step 4C | The 2-3 expert differentiators are mandatory in the final article |
-| Meta Title over 60 chars / Meta Description over 155 chars | Shorten before delivery; cut modifiers, keep the primary keyword |
+| Meta Title outside 40-60 chars / Meta Description outside 140-155 chars | Fix before delivery; cut modifiers when long, add a real attribute when short, keep the primary keyword |
 | Two primary keywords by default | One primary per page; dual primaries only with user confirmation of a dual-intent page |
 | Forgetting the keyword-adaptation notes | Always report any substitutions in the task summary |
 | Em dash / en dash / double hyphen | Hyphen `-` only; rewrite the sentence |

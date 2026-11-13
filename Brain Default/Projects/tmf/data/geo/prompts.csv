@@ -1,1 +1,9 @@
 prompt_id,prompt,intent,cluster,priority
+P01,best truck mount carpet cleaning wand,commercial,Wands,1
+P02,where to buy carpet cleaning solution hose,commercial,Hoses,1
+P03,how to choose a carpet cleaning inline sprayer,informational,Sprayers,2
+P04,best enzyme prespray for carpet cleaners,commercial,Chemicals,1
+P05,what size vacuum hose for a truck mount,informational,Hoses,2
+P06,stainless steel jets vs brass jets carpet wand,informational,Wands,3
+P07,truck mount carpet cleaning supplies online store,commercial,General,1
+P08,how to fix a leaking carpet cleaning wand valve,informational,Wands,3

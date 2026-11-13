@@ -2,7 +2,7 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 5 agents · 90 skills · 12 workflows (12 bật) · 0 loops (0 bật) · 25 plugins (24 chạy)
+**Tổng quan:** 5 agents · 90 skills · 24 workflows (11 bật) · 0 loops (0 bật) · 25 plugins (24 chạy)
 
 ## Agents
 - **SEO Auditor** (`seo-auditor`) - Kiểm tra nội dung, trang và kỹ thuật SEO theo QRG và quy tắc riêng của khách. Chỉ báo lỗi, không viết lại. · model sonnet · tags: SEO-Ops
@@ -112,18 +112,30 @@ language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of
 - **HTML sang Webcake** (`html-to-webcake`) - Chuyển trang HTML thành file .pke mở được trong trình dựng Webcake, giữ đúng màu, cỡ chữ, ảnh và bố cục của bản gốc.
 
 ## Workflows
-- **SEO Content brief** (`seo-content-brief`) - active · 2 bước [seo-planner -> seo-reviewer] · Tạo brief cho một trang (blog hoặc collection) theo template, rồi reviewer kiểm tra brief đủ mục.
-- **SEO Viết nội dung (giai đoạn 2)** (`seo-content-draft`) - active · 1 bước [seo-writer] · Viết bản hoàn chỉnh từ outline đã được người duyệt, rồi ghi draft. Sau đó chạy seo-qa-fix.
-- **SEO Viết nội dung (giai đoạn 1)** (`seo-content-writing`) - active · 1 bước [seo-writer] · Chạy skill viết của khách đến điểm dừng duyệt đầu tiên (strategy và outline), ghi file và dừng chờ người duyệt.
-- **SEO Sửa theo feedback và bản địa hóa** (`seo-feedback-localization`) - active · 2 bước [seo-writer -> seo-auditor] · Sửa bài theo feedback của khách hoặc bản địa hóa sang thị trường đích, rồi kiểm lại.
+- **SEO Blog outline (giai đoạn 1b)** (`seo-blog-outline`) - off · 1 bước [seo-writer] · Blog: từ title người đã chọn, chạy bước outline của skill blog, dừng chờ duyệt outline.
+- **SEO Trang cạnh tranh từ khóa và internal link** (`seo-cannibalization-links`) - off · 3 bước [seo-extractor -> seo-auditor -> seo-planner] · Từ keyword mapping và GSC query theo trang: liệt kê trang cạnh tranh cùng từ khóa chính và internal link còn thiếu; planner đề xuất cách sửa.
+- **SEO Content brief** (`seo-content-brief`) - active · 2 bước [seo-planner -> seo-reviewer] · Tùy chọn: tạo brief cho một trang (blog hoặc collection) theo template trong thư mục run mới, rồi reviewer kiểm tra brief đủ mục.
+- **SEO Viết nội dung (giai đoạn 2)** (`seo-content-draft`) - active · 1 bước [seo-writer] · Viết bản hoàn chỉnh từ outline đã được người duyệt (blog hoặc collection), ghi draft.md trong thư mục run. Sau đó chạy seo-qa-fix.
+- **SEO Refresh 2 - làm mới một trang** (`seo-content-refresh-update`) - off · 1 bước [seo-writer] · Làm mới nội dung một trang người đã chọn, theo skill của loại trang, giữ phần đang tốt. Sau đó chạy seo-qa-fix.
+- **SEO Refresh 1 - tìm trang mất click và đề xuất** (`seo-content-refresh`) - off · 1 bước [seo-planner] · Tìm trang mất click (4 tuần gần nhất so với 4 tuần trước, từ tóm tắt GSC), mở trang và SERP thật, đề xuất làm mới hay để nguyên. Người quyết định.
+- **SEO Viết nội dung (giai đoạn 1)** (`seo-content-writing`) - active · 1 bước [seo-writer] · Blog: nghiên cứu SERP và đề xuất 3 đến 5 title, dừng chờ chọn title. Collection: chạy skill đến strategy report và outline, dừng chờ duyệt outline.
+- **SEO Tóm tắt dữ liệu theo kỳ** (`seo-data-summary`) - off · 1 bước [seo-extractor] · Extractor đọc file export thô của một nguồn, ghi bản tóm tắt của kỳ và ghi đè bản latest. Agent khác chỉ đọc bản latest.
+- **SEO Sửa theo feedback và bản địa hóa** (`seo-feedback-localization`) - active · 2 bước [seo-writer -> seo-auditor] · Sửa bài theo feedback của khách hoặc bản địa hóa sang thị trường đích trong thư mục run của bài, rồi kiểm lại.
 - **SEO Tối ưu GEO** (`seo-geo-optimization`) - active · 4 bước [seo-extractor -> seo-auditor -> seo-planner -> seo-writer] · Dựa vào prompts và citations đã theo dõi: tóm tắt, audit trang, xếp ưu tiên, đề xuất bản sửa answer-first.
 - **SEO Kế hoạch ảnh blog** (`seo-image-plan`) - active · 1 bước [seo-writer] · Tạo bảng kế hoạch ảnh cho một bài blog hoàn chỉnh: vị trí, tên file, alt, prompt tạo ảnh.
-- **SEO Keyword research** (`seo-keyword-research`) - active · 2 bước [seo-extractor -> seo-planner] · Tóm tắt dữ liệu từ khóa của khách rồi cluster và ghi clusters.csv. Cần có export Ahrefs hoặc GSC trong data/.
-- **SEO Tối ưu meta và content sản phẩm** (`seo-meta-optimization`) - active · 3 bước [seo-extractor -> seo-writer -> seo-auditor] · Tối ưu meta title, meta description và content sản phẩm cho một lô URL; auditor đếm ký tự và kiểm compliance.
-- **SEO Báo cáo tháng** (`seo-monthly-report`) - active · 4 bước [seo-extractor -> seo-planner -> seo-reviewer -> seo-extractor] · Báo cáo tháng theo template: tóm tắt số liệu từ GSC, GA4, rank, citations, viết báo cáo, reviewer kiểm số liệu, ghi một dòng portfolio_kpi.
-- **SEO Audit on-page** (`seo-onpage-audit`) - active · 3 bước [seo-extractor -> seo-auditor -> seo-reviewer] · Audit on-page cho danh sách URL: dữ liệu từ extractor, audit theo QRG, reviewer kiểm bằng chứng.
-- **SEO QA và sửa** (`seo-qa-fix`) - active · 3 bước [seo-auditor -> seo-writer -> seo-auditor] · Audit một bài đã viết, sửa lỗi P0 và P1, rồi kiểm lại. Chạy một vòng; cần vòng hai thì chạy lại với file _v2.
-- **SEO Audit kỹ thuật** (`seo-technical-audit`) - active · 3 bước [seo-extractor -> seo-auditor -> seo-planner] · Audit kỹ thuật từ file crawl đã export: tóm tắt, báo lỗi theo mức độ, xếp ưu tiên sửa.
+- **SEO Planning 2 - lọc và xếp level từ khóa** (`seo-keyword-level`) - off · 1 bước [seo-extractor] · Planning bước 2: từ export Ahrefs, bỏ từ khóa branded và local, xếp level theo lowest DR so với DR của site, ghi file cho công cụ nhóm từ khóa.
+- **SEO Planning 4-5 - keyword mapping và content cluster** (`seo-keyword-mapping`) - off · 3 bước [seo-extractor -> seo-planner -> seo-planner] · Planning bước 4 và 5: ghép nhóm từ khóa với URL collection và product (mỗi URL một từ khóa chính), rồi chia topic và sub-topic.
+- **SEO Keyword research** (`seo-keyword-research`) - off · 2 bước [seo-extractor -> seo-planner] · Đã thay bằng seo-keyword-seed, seo-keyword-level, seo-keyword-mapping và seo-priority-plan. Giữ lại để tham chiếu, không chạy.
+- **SEO Planning 1 - seed từ khóa** (`seo-keyword-seed`) - off · 2 bước [seo-extractor -> seo-planner] · Planning bước 1: lấy dữ liệu trang (H1, meta, mô tả) rồi gợi ý 3 đến 5 seed keyword cho mỗi trang collection và product. Kết thúc để người chạy Ahrefs.
+- **SEO Product 2 - chọn từ khóa chính, meta và content sản phẩm** (`seo-meta-optimization`) - active · 2 bước [seo-extractor -> seo-writer] · Quick optimization phần sau: ghép search volume từ Ahrefs, chọn từ khóa chính theo luật volume, viết meta và content sản phẩm theo skill. Sau đó chạy seo-qa-fix.
+- **SEO Báo cáo tháng** (`seo-monthly-report`) - active · 4 bước [seo-extractor -> seo-planner -> seo-reviewer -> seo-extractor] · Báo cáo tháng theo template: extractor tóm tắt GSC, GA4, rank, citations của tháng; planner viết; reviewer kiểm số liệu; ghi một dòng portfolio_kpi.
+- **SEO Off-page - hồ sơ backlink, link gap, outreach nháp** (`seo-offpage`) - off · 3 bước [seo-extractor -> seo-planner -> seo-writer] · Từ export backlink Ahrefs: tóm tắt hồ sơ, link gap so với đối thủ trong PROJECT.md, đề xuất mục tiêu và góc digital PR, viết nháp outreach. Người gửi.
+- **SEO Audit on-page** (`seo-onpage-audit`) - active · 3 bước [seo-extractor -> seo-auditor -> seo-reviewer] · Audit on-page cho danh sách URL: extractor lấy số liệu GSC và rank của các URL, auditor mở trang và audit, reviewer kiểm bằng chứng.
+- **SEO Kiểm tra sau khi đăng** (`seo-post-publish-check`) - off · 1 bước [seo-auditor] · Audit URL đã đăng so với file đã duyệt: meta, canonical, indexability, link, structured data, nội dung khớp bản duyệt.
+- **SEO Planning 6 - bản nháp kế hoạch ưu tiên** (`seo-priority-plan`) - off · 1 bước [seo-planner] · Planning bước 6: AI lập bản nháp thứ tự ưu tiên và timeline theo nhóm sản phẩm từ mapping và cluster. Người quyết định.
+- **SEO Product 1 - phân tích sản phẩm và bộ từ khóa** (`seo-product-keywords`) - off · 2 bước [seo-extractor -> seo-writer] · Quick optimization phần đầu: lấy dữ liệu sản phẩm từ Shopify export, phân tích và tạo bộ từ khóa theo skill sản phẩm. Kết thúc để người lấy search volume trên Ahrefs.
+- **SEO QA và sửa** (`seo-qa-fix`) - active · 3 bước [seo-auditor -> seo-writer -> seo-auditor] · Audit một bài theo thứ tự: kiểm nguồn trước, rồi E-E-A-T, compliance và quy tắc của skill; sửa P0 và P1 thành bản _v2; kiểm lại.
+- **SEO Audit kỹ thuật** (`seo-technical-audit`) - active · 3 bước [seo-extractor -> seo-auditor -> seo-planner] · Audit kỹ thuật từ HTML thô (view-source) của 3 đến 4 URL mỗi template trong data/tech/: rút dữ kiện, đánh giá theo tiêu chí, gộp theo template.
 
 ## Loops
 _(chưa có)_

@@ -1,3 +1,29 @@
+---
+slug: demo
+client: DEMO (khách giả)
+stage: client
+domain: example.com
+canonical_url:
+market: en-GB
+google_domain: google.co.uk
+site_type: ecommerce
+platform: shopify
+theme:
+scope: seo;content
+owner: team SEO
+approver:
+priority:
+own_dr:
+branded_keywords:
+report_day:
+skill_blog: harry-content
+skill_collection:
+skill_product: harry-optimization
+compliance:
+test_data: yes
+notes: Khách giả, chỉ để test workflow. Không phải khách thật.
+---
+
 # PROJECT: DEMO (khách giả để test, không phải khách thật)
 
 - slug: demo

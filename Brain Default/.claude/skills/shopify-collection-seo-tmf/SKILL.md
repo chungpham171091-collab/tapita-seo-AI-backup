@@ -183,7 +183,7 @@ Produce sections A-G, then **wait for explicit approval.**
 
 **E. Outline** - opening intro (50-70 words, primary keyword in first sentence), then the body H2s. Mandatory: **Why Buy [Product Group] at TMF Store**, **FAQ** (5-7 Q&As), **Related Blogs**, **META**. Optional: Shop by category / featured products (the only section where products are named), how-to-choose, applications by scenario, benefits, care/usage guide.
 
-**F. On-page SEO** - confirm the collection title contains the primary keyword and flag if not; Meta Title under 60 chars with keyword at the start; Meta Description under 155 chars with a soft CTA.
+**F. On-page SEO** - confirm the collection title contains the primary keyword and flag if not; Meta Title 40-60 chars with keyword at the start; Meta Description 140-155 chars with a soft CTA.
 
 TMF-specific meta rules:
 - Keep the brand token. Every page in the set should end `| TMF Store` or `| TMF`.
@@ -287,7 +287,7 @@ It reports word count, primary keyword floor, secondary coverage, banned dashes,
 Nothing ships until every box is ticked. Attach the completed checklist to the delivery. Full version in `references/verification.md`.
 
 **Structure**
-- [ ] Meta Title and Meta Description present (one audited page shipped without either), under 60 / 155 chars.
+- [ ] Meta Title and Meta Description present (one audited page shipped without either), 40-60 / 140-155 chars.
 - [ ] Meta Title keeps the brand token and does not drop a valuable term the live collection title already carries.
 - [ ] Target collection resolves; no other page in the batch targets the same URL or term.
 
