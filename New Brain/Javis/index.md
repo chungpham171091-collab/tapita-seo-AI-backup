@@ -2,7 +2,7 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 0 agents · 6 skills · 0 workflows (0 bật) · 0 loops (0 bật) · 25 plugins (24 chạy)
+**Tổng quan:** 0 agents · 6 skills · 0 workflows (0 bật) · 0 loops (0 bật) · 26 plugins (25 chạy)
 
 ## Agents
 _(chưa có)_
@@ -49,3 +49,4 @@ _(chưa có)_
 - **Tool usage log** (`tool-audit`) - bundled/tắt · tools: javis_tool_stats · hooks: post_tool_call · Counts how many times EACH tool is called by an engine (through the post_tool_call hook) and shows the most used tools. It is a demo of the plugin HOOK mechanism. OFF by default: turn it on with POST /plugins/toggle (slug=tool-audit) to try it.
 - **Voice notes** (`voice-note`) - bundled/chạy · tools: javis_voice_note · Javis records a short spoken message (up to 1000 characters) as an mp3 in attachments/voice/ and embeds it in the answer. The chat shows a player, Telegram receives the audio file. Uses the free Edge voices, picked by the language of the text.
 - **Read YouTube videos** (`youtube-read`) - bundled/chạy · tools: javis_youtube_read · Reads the transcript (subtitles) of a YouTube video from its link so it can be summarised. Cycles through 6 player types, then yt-dlp, when YouTube blocks the server. No sign-in, no API key.
+- **SEO Projects** (`seo-projects`) - user/chạy · Trang quản lý dự án SEO-Ops - hồ sơ khách, dữ liệu export theo kỳ, thùng rác. Đọc và ghi trong Projects/ của brain.

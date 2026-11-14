@@ -361,7 +361,28 @@ def cmd_check():
                 if not fields.get(key):
                     errors.append("%s/RUN.md: status is published but '%s' is empty" % (rel, key))
 
-    # 5. Generated files in step with their sources
+    # 5. Task forms of the Projects page match the workflows' input lines
+    forms_file = PROJECTS / "_templates" / "task_forms.json"
+    if forms_file.is_file():
+        import json
+        try:
+            forms = json.loads(read(forms_file)).get("forms", [])
+        except ValueError as e:
+            forms = []
+            errors.append("Projects/_templates/task_forms.json: not valid JSON (%s)" % e)
+        by_slug = {w["fields"].get("slug", w["file"].stem): w for w in workflows}
+        for form in forms:
+            slug = form.get("workflow", "")
+            wf = by_slug.get(slug)
+            if not wf:
+                errors.append("task_forms.json: workflow '%s' is not in workflows/" % slug)
+                continue
+            parts = len([x for x in wf["input"].split("|") if x.strip()])
+            if parts and parts != len(form.get("fields", [])) + 1:
+                errors.append("task_forms.json: '%s' has %d field(s), its input line has %d part(s) after the slug"
+                              % (slug, len(form.get("fields", [])), parts - 1))
+
+    # 6. Generated files in step with their sources
     for path, builder in GENERATED:
         rel = path.relative_to(ROOT).as_posix()
         if not path.is_file():

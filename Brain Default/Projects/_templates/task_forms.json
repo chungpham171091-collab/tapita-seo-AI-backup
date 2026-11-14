@@ -1,0 +1,735 @@
+{
+ "_doc": "Forms for the Projects page. One entry per workflow. The fields, in order, become the workflow's input line after the client slug. Keep the number of fields equal to the parts of the line 'Đầu vào gồm' in the workflow (python tools/seo_ops.py check verifies it).",
+ "groups": [
+  "Data",
+  "Planning",
+  "Content",
+  "Product",
+  "Technical",
+  "Maintain",
+  "Off-page",
+  "Report"
+ ],
+ "forms": [
+  {
+   "workflow": "seo-data-summary",
+   "group": "Data",
+   "title": "Summarise new data",
+   "what": "After uploading GSC, rank or GA4 files: writes the period summary and the latest summary that every other task reads.",
+   "needs": [],
+   "fields": [
+    {
+     "label": "Source",
+     "type": "select",
+     "options": [
+      "gsc",
+      "rank",
+      "ga4",
+      "keywords",
+      "backlinks"
+     ],
+     "default": "gsc",
+     "help": ""
+    },
+    {
+     "label": "Period",
+     "type": "text",
+     "default": "mới nhất",
+     "help": "YYYY-MM-DD (week end), YYYY-MM (month), or mới nhất for the newest file."
+    }
+   ],
+   "after": "Nothing. If the summary lists files older than 13 weeks, move them to an _archive folder yourself."
+  },
+  {
+   "workflow": "seo-keyword-seed",
+   "group": "Planning",
+   "title": "1. Seed keywords",
+   "what": "Suggests 3-5 seed keywords per collection and product page from page data.",
+   "needs": [
+    "site_urls",
+    "shopify_products"
+   ],
+   "fields": [
+    {
+     "label": "Scope",
+     "type": "select",
+     "options": [
+      "cả hai",
+      "collection",
+      "product"
+     ],
+     "default": "cả hai",
+     "help": ""
+    },
+    {
+     "label": "Run topic",
+     "type": "text",
+     "default": "toan-site",
+     "help": "Short name for this planning round: lowercase, hyphens.",
+     "slug": true
+    },
+    {
+     "label": "Max pages",
+     "type": "text",
+     "default": "tất cả",
+     "help": "A number, or tất cả."
+    }
+   ],
+   "after": "Take seed_for_ahrefs.txt to Ahrefs Keywords Explorer (client's country, Matching terms), export, and upload it in Data > Ahrefs keyword export. Then run 2. Filter and level."
+  },
+  {
+   "workflow": "seo-keyword-level",
+   "group": "Planning",
+   "title": "2. Filter and level keywords",
+   "what": "Drops local and branded terms, sets easy / medium / difficult against the site's DR, and writes the file for the grouping sheet.",
+   "needs": [
+    "ahrefs_keywords"
+   ],
+   "fields": [
+    {
+     "label": "Planning run",
+     "type": "run",
+     "tasks": [
+      "planning"
+     ],
+     "statuses": [],
+     "allow_new": false,
+     "help": ""
+    },
+    {
+     "label": "Ahrefs export",
+     "type": "text",
+     "default": "mới nhất",
+     "help": "mới nhất, or a file name in data/keywords/."
+    }
+   ],
+   "after": "Put for_grouping_<country>.csv through the team's grouping sheet, export the result and add it to the run as groups_<country>.csv (Runs > Add file). Then run 3. Mapping and cluster."
+  },
+  {
+   "workflow": "seo-keyword-mapping",
+   "group": "Planning",
+   "title": "3. Keyword mapping and cluster",
+   "what": "Maps one main keyword to each URL, flags duplicates, then groups by topic and sub-topic.",
+   "needs": [
+    "site_urls"
+   ],
+   "fields": [
+    {
+     "label": "Planning run",
+     "type": "run",
+     "tasks": [
+      "planning"
+     ],
+     "statuses": [],
+     "allow_new": false,
+     "help": ""
+    },
+    {
+     "label": "Grouped keywords file",
+     "type": "text",
+     "default": "groups_{country}.csv",
+     "help": "File name inside the run folder."
+    }
+   ],
+   "after": "Review keyword_mapping and content_cluster, edit them if needed, then run 4. Priority plan."
+  },
+  {
+   "workflow": "seo-priority-plan",
+   "group": "Planning",
+   "title": "4. Draft priority plan",
+   "what": "Drafts priority and timeline per product group from the mapping and cluster. A person decides.",
+   "needs": [],
+   "fields": [
+    {
+     "label": "Planning run",
+     "type": "run",
+     "tasks": [
+      "planning"
+     ],
+     "statuses": [],
+     "allow_new": false,
+     "help": ""
+    },
+    {
+     "label": "Months",
+     "type": "text",
+     "default": "3",
+     "help": ""
+    },
+    {
+     "label": "Your notes",
+     "type": "text",
+     "default": "không",
+     "help": ""
+    }
+   ],
+   "after": "Decide the plan. When agreed: Runs > Approve, and pick keyword_mapping, content_cluster and priority_plan."
+  },
+  {
+   "workflow": "seo-content-brief",
+   "group": "Content",
+   "title": "Brief (optional)",
+   "what": "Optional brief for one page, checked by the reviewer. Not required before writing.",
+   "needs": [
+    "site_urls"
+   ],
+   "fields": [
+    {
+     "label": "Target URL or topic",
+     "type": "text",
+     "default": "",
+     "help": ""
+    },
+    {
+     "label": "Main keyword",
+     "type": "text",
+     "default": "",
+     "help": ""
+    },
+    {
+     "label": "Type",
+     "type": "select",
+     "options": [
+      "collection",
+      "blog"
+     ],
+     "default": "collection",
+     "help": ""
+    }
+   ],
+   "after": "Approve the brief, then run Start blog or collection and pick this run."
+  },
+  {
+   "workflow": "seo-content-writing",
+   "group": "Content",
+   "title": "Start blog or collection",
+   "what": "Blog: real SERP research and 3-5 title options. Collection: strategy report and outline. Stops for your decision.",
+   "needs": [
+    "site_urls"
+   ],
+   "fields": [
+    {
+     "label": "Type",
+     "type": "select",
+     "options": [
+      "collection",
+      "blog"
+     ],
+     "default": "collection",
+     "help": ""
+    },
+    {
+     "label": "Main keyword",
+     "type": "text",
+     "default": "",
+     "help": ""
+    },
+    {
+     "label": "Secondary keywords",
+     "type": "text",
+     "default": "không",
+     "help": "Comma separated, or không."
+    },
+    {
+     "label": "Collection URL or blog topic",
+     "type": "text",
+     "default": "",
+     "help": ""
+    },
+    {
+     "label": "Run",
+     "type": "run",
+     "tasks": [
+      "blog",
+      "collection"
+     ],
+     "statuses": [],
+     "allow_new": true,
+     "help": "Pick the brief's run, or start a new one."
+    },
+    {
+     "label": "Notes",
+     "type": "text",
+     "default": "không",
+     "help": "Intent, top-sellers file name, or không."
+    }
+   ],
+   "after": "Blog: pick a title, then run Blog outline. Collection: approve the outline, then run Write the draft."
+  },
+  {
+   "workflow": "seo-blog-outline",
+   "group": "Content",
+   "title": "Blog outline",
+   "what": "Builds the outline from the title you chose. Stops for approval.",
+   "needs": [],
+   "fields": [
+    {
+     "label": "Blog run",
+     "type": "run",
+     "tasks": [
+      "blog"
+     ],
+     "statuses": [],
+     "allow_new": false,
+     "help": ""
+    },
+    {
+     "label": "Chosen title",
+     "type": "text",
+     "default": "",
+     "help": "Its number in titles.md, or the full title."
+    },
+    {
+     "label": "Your notes",
+     "type": "text",
+     "default": "không",
+     "help": ""
+    }
+   ],
+   "after": "Approve or edit outline.md, then run Write the draft."
+  },
+  {
+   "workflow": "seo-content-draft",
+   "group": "Content",
+   "title": "Write the draft",
+   "what": "Writes the full piece from the approved outline, with the meta package.",
+   "needs": [
+    "site_urls"
+   ],
+   "fields": [
+    {
+     "label": "Run",
+     "type": "run",
+     "tasks": [
+      "blog",
+      "collection"
+     ],
+     "statuses": [],
+     "allow_new": false,
+     "help": ""
+    },
+    {
+     "label": "Outline approval notes",
+     "type": "text",
+     "default": "duyệt nguyên bản",
+     "help": ""
+    }
+   ],
+   "after": "Run QA and fix on draft.md."
+  },
+  {
+   "workflow": "seo-qa-fix",
+   "group": "Content",
+   "title": "QA and fix",
+   "what": "Checks references first, then E-E-A-T, compliance and the skill's rules; fixes P0 and P1 into a _v2 file; re-checks.",
+   "needs": [],
+   "fields": [
+    {
+     "label": "Run",
+     "type": "run",
+     "tasks": [
+      "blog",
+      "collection",
+      "product",
+      "refresh",
+      "geo"
+     ],
+     "statuses": [],
+     "allow_new": false,
+     "help": ""
+    },
+    {
+     "label": "File to audit",
+     "type": "runfile",
+     "default": "draft.md",
+     "help": ""
+    },
+    {
+     "label": "Main keyword",
+     "type": "text",
+     "default": "",
+     "help": ""
+    }
+   ],
+   "after": "Check the source links by hand, then Runs > Approve. If it is not good enough, run QA again on the _v2 file."
+  },
+  {
+   "workflow": "seo-image-plan",
+   "group": "Content",
+   "title": "Blog image plan",
+   "what": "Table of images for a finished blog: position, file name, alt text, prompt.",
+   "needs": [],
+   "fields": [
+    {
+     "label": "Blog run",
+     "type": "run",
+     "tasks": [
+      "blog"
+     ],
+     "statuses": [],
+     "allow_new": false,
+     "help": ""
+    },
+    {
+     "label": "Finished blog file",
+     "type": "runfile",
+     "default": "draft_v2.md",
+     "help": ""
+    }
+   ],
+   "after": "Create the images outside Javis and place them in the post."
+  },
+  {
+   "workflow": "seo-feedback-localization",
+   "group": "Content",
+   "title": "Apply feedback or localise",
+   "what": "Edits a piece from client feedback or adapts it to another market, then re-checks.",
+   "needs": [],
+   "fields": [
+    {
+     "label": "Run",
+     "type": "run",
+     "tasks": [
+      "blog",
+      "collection",
+      "product",
+      "refresh",
+      "geo"
+     ],
+     "statuses": [],
+     "allow_new": false,
+     "help": ""
+    },
+    {
+     "label": "File",
+     "type": "runfile",
+     "default": "draft_v2.md",
+     "help": ""
+    },
+    {
+     "label": "Feedback",
+     "type": "text",
+     "default": "",
+     "help": "Write feedback: <text>, or a feedback file name in the run."
+    },
+    {
+     "label": "Target market",
+     "type": "text",
+     "default": "",
+     "help": "For example de-DE."
+    }
+   ],
+   "after": "Approve the new version in Runs."
+  },
+  {
+   "workflow": "seo-product-keywords",
+   "group": "Product",
+   "title": "1. Product analysis and keywords",
+   "what": "Reads the Shopify export, analyses each product and builds its keyword set.",
+   "needs": [
+    "shopify_products"
+   ],
+   "fields": [
+    {
+     "label": "Shopify export",
+     "type": "text",
+     "default": "mới nhất",
+     "help": ""
+    },
+    {
+     "label": "Product URLs or handles",
+     "type": "text",
+     "default": "",
+     "help": "Comma separated. Up to about 10 per batch."
+    },
+    {
+     "label": "Run topic",
+     "type": "text",
+     "default": "",
+     "help": "Short name for the batch: lowercase, hyphens.",
+     "slug": true
+    }
+   ],
+   "after": "Take keywords_for_ahrefs.txt to Ahrefs, export search volume, and add it to the run as ahrefs_volume.csv (Runs > Add file). Then run 2. Meta and content."
+  },
+  {
+   "workflow": "seo-meta-optimization",
+   "group": "Product",
+   "title": "2. Meta and content",
+   "what": "Picks the main keyword by the volume rule, then writes meta and product content.",
+   "needs": [],
+   "fields": [
+    {
+     "label": "Product run",
+     "type": "run",
+     "tasks": [
+      "product"
+     ],
+     "statuses": [],
+     "allow_new": false,
+     "help": ""
+    },
+    {
+     "label": "Ahrefs volume file",
+     "type": "text",
+     "default": "ahrefs_volume.csv",
+     "help": ""
+    },
+    {
+     "label": "Your keyword notes",
+     "type": "text",
+     "default": "không",
+     "help": ""
+    }
+   ],
+   "after": "Run QA and fix on meta_table.csv."
+  },
+  {
+   "workflow": "seo-technical-audit",
+   "group": "Technical",
+   "title": "Technical audit",
+   "what": "Audits the view-source HTML samples per template and writes a fix list for the developer.",
+   "needs": [
+    "tech_html"
+   ],
+   "fields": [
+    {
+     "label": "Run topic",
+     "type": "text",
+     "default": "{today}",
+     "help": "For example the sample date, or sau-fix-1.",
+     "slug": true
+    },
+    {
+     "label": "Scope",
+     "type": "text",
+     "default": "tất cả",
+     "help": "tất cả, or a note such as chỉ product."
+    }
+   ],
+   "after": "Approve the report and send it to the developer. After the fix, upload fresh HTML samples and run it again."
+  },
+  {
+   "workflow": "seo-onpage-audit",
+   "group": "Technical",
+   "title": "On-page audit",
+   "what": "Audits a list of live URLs with their GSC and rank data.",
+   "needs": [
+    "gsc_query_page"
+   ],
+   "fields": [
+    {
+     "label": "URLs",
+     "type": "text",
+     "default": "",
+     "help": "Comma separated, or a file name."
+    },
+    {
+     "label": "Main keyword",
+     "type": "text",
+     "default": "không",
+     "help": ""
+    },
+    {
+     "label": "Run topic",
+     "type": "text",
+     "default": "",
+     "help": "",
+     "slug": true
+    }
+   ],
+   "after": "Choose which findings to fix."
+  },
+  {
+   "workflow": "seo-content-refresh",
+   "group": "Maintain",
+   "title": "Find pages losing clicks",
+   "what": "Compares the last 4 weeks with the 4 before, opens each page and its real SERP, and recommends refresh or leave.",
+   "needs": [
+    "gsc_pages",
+    "gsc_queries"
+   ],
+   "fields": [
+    {
+     "label": "Max pages",
+     "type": "text",
+     "default": "10",
+     "help": ""
+    },
+    {
+     "label": "Your notes",
+     "type": "text",
+     "default": "không",
+     "help": ""
+    }
+   ],
+   "after": "Pick the pages to refresh, then run Refresh one page for each."
+  },
+  {
+   "workflow": "seo-content-refresh-update",
+   "group": "Maintain",
+   "title": "Refresh one page",
+   "what": "Updates one page you chose, keeping what works.",
+   "needs": [],
+   "fields": [
+    {
+     "label": "Refresh run",
+     "type": "run",
+     "tasks": [
+      "refresh"
+     ],
+     "statuses": [],
+     "allow_new": false,
+     "help": ""
+    },
+    {
+     "label": "Page URL",
+     "type": "text",
+     "default": "",
+     "help": ""
+    },
+    {
+     "label": "Main keyword",
+     "type": "text",
+     "default": "",
+     "help": ""
+    },
+    {
+     "label": "Direction",
+     "type": "text",
+     "default": "",
+     "help": "What to change and what to keep."
+    }
+   ],
+   "after": "Run QA and fix on the refresh file."
+  },
+  {
+   "workflow": "seo-post-publish-check",
+   "group": "Maintain",
+   "title": "Post-publish check",
+   "what": "Checks the live URL against the approved file: meta, canonical, indexability, links, structured data, content.",
+   "needs": [],
+   "fields": [
+    {
+     "label": "Published run",
+     "type": "run",
+     "tasks": [
+      "blog",
+      "collection",
+      "product",
+      "refresh",
+      "geo"
+     ],
+     "statuses": [
+      "published"
+     ],
+     "allow_new": false,
+     "help": ""
+    },
+    {
+     "label": "Live URL",
+     "type": "text",
+     "default": "theo RUN.md",
+     "help": ""
+    }
+   ],
+   "after": "Fix what the report lists."
+  },
+  {
+   "workflow": "seo-cannibalization-links",
+   "group": "Maintain",
+   "title": "Competing pages and internal links",
+   "what": "Finds pages competing for the same main keyword and missing internal links, and proposes fixes.",
+   "needs": [
+    "gsc_query_page"
+   ],
+   "fields": [
+    {
+     "label": "Run topic",
+     "type": "text",
+     "default": "{month}",
+     "help": "",
+     "slug": true
+    },
+    {
+     "label": "Max groups",
+     "type": "text",
+     "default": "20",
+     "help": ""
+    }
+   ],
+   "after": "Choose the fixes."
+  },
+  {
+   "workflow": "seo-offpage",
+   "group": "Off-page",
+   "title": "Backlink profile, gaps, outreach drafts",
+   "what": "Summarises the backlink profile, lists link gaps against the competitors, proposes targets and PR angles, drafts outreach.",
+   "needs": [
+    "backlinks",
+    "link_intersect"
+   ],
+   "fields": [
+    {
+     "label": "Run topic",
+     "type": "text",
+     "default": "{month}",
+     "help": "",
+     "slug": true
+    },
+    {
+     "label": "Backlink file",
+     "type": "text",
+     "default": "mới nhất",
+     "help": ""
+    },
+    {
+     "label": "Link gap file",
+     "type": "text",
+     "default": "mới nhất",
+     "help": ""
+    }
+   ],
+   "after": "Approve targets and drafts, find contacts and send everything yourself. Nothing is sent automatically."
+  },
+  {
+   "workflow": "seo-geo-optimization",
+   "group": "Report",
+   "title": "GEO optimisation",
+   "what": "From the tracked AI prompts and citation checks: audits pages and drafts answer-first fixes.",
+   "needs": [
+    "geo_prompts",
+    "geo_citations"
+   ],
+   "fields": [
+    {
+     "label": "Month",
+     "type": "text",
+     "default": "{prev_month}",
+     "help": "YYYY-MM"
+    }
+   ],
+   "after": "Approve the proposal, then run QA and fix on it."
+  },
+  {
+   "workflow": "seo-monthly-report",
+   "group": "Report",
+   "title": "Monthly report",
+   "what": "Builds the month's report from GSC, GA4, rank and citations; the reviewer checks every number.",
+   "needs": [
+    "gsc_pages",
+    "ga4_landing",
+    "rank"
+   ],
+   "fields": [
+    {
+     "label": "Month",
+     "type": "text",
+     "default": "{prev_month}",
+     "help": "YYYY-MM"
+    }
+   ],
+   "after": "Approve the report before it goes to the client."
+  }
+ ]
+}
