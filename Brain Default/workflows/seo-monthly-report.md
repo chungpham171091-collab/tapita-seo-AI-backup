@@ -10,7 +10,7 @@ steps:
     Đầu vào: {{input}}
     Đầu vào gồm: slug khách | tháng YYYY-MM.
     Đọc Projects/SEO-OPS.md và Projects/<slug>/PROJECT.md của đúng khách trong đầu vào. Chỉ làm cho khách đó. Thông tin đã có trong PROJECT.md (thị trường, ngôn ngữ, Google domain, tone, từ cấm, skill, đối thủ) thì dùng luôn, không hỏi lại; thiếu thì nói rõ cần điền mục nào vào PROJECT.md.
-    Tạo thư mục run bằng lệnh: python tools/seo_ops.py new-run <slug> report <YYYY-MM> seo-monthly-report (chữ thường, gạch ngang). Không chạy được lệnh thì tạo tay Projects/<slug>/runs/<YYYY-MM-DD>_report_<YYYY-MM>/RUN.md theo Projects/_templates/RUN.md. Mọi file của bước này ghi vào thư mục run đó.
+    Thư mục run: nếu đầu vào kết thúc bằng phần `run=<đường dẫn>` thì đó là thư mục run của việc này (đã có RUN.md); dùng đúng thư mục đó, không tạo thư mục mới. Nếu không có phần đó thì tạo bằng lệnh: python tools/seo_ops.py new-run <slug> report <YYYY-MM> seo-monthly-report (chữ thường, gạch ngang); không chạy được lệnh thì tạo tay Projects/<slug>/runs/<YYYY-MM-DD>_report_<YYYY-MM>/RUN.md theo Projects/_templates/RUN.md. Mọi file của bước này ghi vào thư mục run đó.
     Đọc trong Projects/<slug>/data/: các file tuần gsc và rank có ngày thuộc tháng này và tháng trước, file ga4 của tháng này và tháng trước, file citations của tháng trong geo/ (chỉ đọc). Tính KPI theo tháng, so với tháng trước và cùng kỳ năm trước nếu có dữ liệu; top trang và query tăng, giảm. Ghi vào Projects/<slug>/data/_summary/<YYYY-MM>_report-data.md. Nêu nguồn nào thiếu và tuần nào thiếu.
     Dòng đầu tiên của câu trả lời luôn là `Khách: <slug>`.
     Trả lời đúng 5 dòng:

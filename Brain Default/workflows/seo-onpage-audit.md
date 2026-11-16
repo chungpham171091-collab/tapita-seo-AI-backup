@@ -10,7 +10,7 @@ steps:
     Đầu vào: {{input}}
     Đầu vào gồm: slug khách | file hoặc danh sách URL cần audit | từ khóa chính (nếu có) | chủ đề run.
     Đọc Projects/SEO-OPS.md và Projects/<slug>/PROJECT.md của đúng khách trong đầu vào. Chỉ làm cho khách đó. Thông tin đã có trong PROJECT.md (thị trường, ngôn ngữ, Google domain, tone, từ cấm, skill, đối thủ) thì dùng luôn, không hỏi lại; thiếu thì nói rõ cần điền mục nào vào PROJECT.md.
-    Tạo thư mục run bằng lệnh: python tools/seo_ops.py new-run <slug> onpage <chủ đề run> seo-onpage-audit (chữ thường, gạch ngang). Không chạy được lệnh thì tạo tay Projects/<slug>/runs/<YYYY-MM-DD>_onpage_<chủ đề run>/RUN.md theo Projects/_templates/RUN.md. Mọi file của bước này ghi vào thư mục run đó.
+    Thư mục run: nếu đầu vào kết thúc bằng phần `run=<đường dẫn>` thì đó là thư mục run của việc này (đã có RUN.md); dùng đúng thư mục đó, không tạo thư mục mới. Nếu không có phần đó thì tạo bằng lệnh: python tools/seo_ops.py new-run <slug> onpage <chủ đề run> seo-onpage-audit (chữ thường, gạch ngang); không chạy được lệnh thì tạo tay Projects/<slug>/runs/<YYYY-MM-DD>_onpage_<chủ đề run>/RUN.md theo Projects/_templates/RUN.md. Mọi file của bước này ghi vào thư mục run đó.
     Với các URL đã nêu, lấy số liệu từ 4 file tuần gần nhất trong Projects/<slug>/data/gsc/ (pages và queries) và Projects/<slug>/data/rank/, cùng từ khóa chính trong keyword mapping hiện hành (deliverables/). Ghi onpage_input.md vào thư mục run. Nêu rõ URL nào không có dữ liệu.
     Dòng đầu tiên của câu trả lời luôn là `Khách: <slug>`.
     Trả lời đúng 4 dòng:

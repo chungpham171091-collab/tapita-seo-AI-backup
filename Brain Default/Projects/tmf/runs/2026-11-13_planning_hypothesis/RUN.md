@@ -3,6 +3,8 @@ client: tmf
 task: planning
 topic: hypothesis
 workflow: seo-keyword-level
+playbook: keyword_plan
+stage: mapping
 status: waiting
 owner: Harry
 created: 2026-11-13

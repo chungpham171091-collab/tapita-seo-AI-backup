@@ -10,7 +10,7 @@ steps:
     Đầu vào: {{input}}
     Đầu vào gồm: slug khách | tháng YYYY-MM.
     Đọc Projects/SEO-OPS.md và Projects/<slug>/PROJECT.md của đúng khách trong đầu vào. Chỉ làm cho khách đó. Thông tin đã có trong PROJECT.md (thị trường, ngôn ngữ, Google domain, tone, từ cấm, skill, đối thủ) thì dùng luôn, không hỏi lại; thiếu thì nói rõ cần điền mục nào vào PROJECT.md.
-    Tạo thư mục run bằng lệnh: python tools/seo_ops.py new-run <slug> geo <YYYY-MM> seo-geo-optimization (chữ thường, gạch ngang). Không chạy được lệnh thì tạo tay Projects/<slug>/runs/<YYYY-MM-DD>_geo_<YYYY-MM>/RUN.md theo Projects/_templates/RUN.md. Mọi file của bước này ghi vào thư mục run đó.
+    Thư mục run: nếu đầu vào kết thúc bằng phần `run=<đường dẫn>` thì đó là thư mục run của việc này (đã có RUN.md); dùng đúng thư mục đó, không tạo thư mục mới. Nếu không có phần đó thì tạo bằng lệnh: python tools/seo_ops.py new-run <slug> geo <YYYY-MM> seo-geo-optimization (chữ thường, gạch ngang); không chạy được lệnh thì tạo tay Projects/<slug>/runs/<YYYY-MM-DD>_geo_<YYYY-MM>/RUN.md theo Projects/_templates/RUN.md. Mọi file của bước này ghi vào thư mục run đó.
     Đọc Projects/<slug>/data/geo/prompts.csv và file citations của tháng trong data/geo/. Tóm tắt: số prompt theo cluster, tỷ lệ prompt có nhắc brand, URL của khách được trích, URL đối thủ được trích, prompt không có brand nào. Ghi vào Projects/<slug>/data/_summary/<YYYY-MM>_geo.md và ghi đè latest_geo.md trong cùng thư mục. Thiếu file thì dừng và báo.
     Dòng đầu tiên của câu trả lời luôn là `Khách: <slug>`.
     Trả lời đúng 5 dòng:

@@ -142,17 +142,21 @@ Các mục đánh dấu [CẦN XÁC NHẬN] trong PROJECT.md (số năm hoạt �
 | File | Giả định gì | Thay bằng |
 |---|---|---|
 | `runs/2026-11-13_planning_hypothesis/RUN.md` | Thư mục run planning dựng sẵn, đang chờ seo-keyword-mapping. | Tạo bằng seo-keyword-seed, seo-keyword-level với dữ liệu thật |
+| `runs/2026-11-13_planning_hypothesis/job.json` | Trạng thái job dựng sẵn (công đoạn mapping). | Job thật tạo từ trang Projects |
 | `runs/2026-11-13_planning_hypothesis/pages.csv` | Dữ liệu trang (kết quả bước seed) dựng từ url_list.csv giả định. | seo-keyword-seed sinh ra |
 | `runs/2026-11-13_planning_hypothesis/keywords_us.csv` | Kết quả bước level (own_dr giả định 25). | seo-keyword-level sinh ra từ export Ahrefs thật |
 | `runs/2026-11-13_planning_hypothesis/groups_us.csv` | Kết quả công cụ nhóm từ khóa của team, 15 nhóm. Cách nhóm là giả định. | Công cụ nhóm từ khóa của team (Google Sheet), export CSV |
 | `runs/2026-11-13_product_hypothesis/RUN.md` | Thư mục run product dựng sẵn, đang chờ seo-meta-optimization. | seo-product-keywords chạy với Shopify export thật |
+| `runs/2026-11-13_product_hypothesis/job.json` | Trạng thái job dựng sẵn (công đoạn meta). | Job thật tạo từ trang Projects |
 | `runs/2026-11-13_product_hypothesis/products.csv` | Dữ liệu 4 sản phẩm lấy từ Shopify export giả định. | seo-product-keywords sinh ra |
 | `runs/2026-11-13_product_hypothesis/product_keywords.csv` | Bộ từ khóa sản phẩm (rút gọn, chưa đủ 22-33 từ khóa như skill yêu cầu). | seo-product-keywords sinh ra theo harry-optimization |
 | `runs/2026-11-13_product_hypothesis/keywords_for_ahrefs.txt` | Danh sách từ khóa đưa vào Ahrefs. | seo-product-keywords sinh ra |
 | `runs/2026-11-13_product_hypothesis/ahrefs_volume.csv` | Export volume Ahrefs cho từ khóa sản phẩm; có từ khóa volume 0 và một từ khóa không có trong export để test luật SV 0. | Ahrefs Keywords Explorer, country us, Export CSV |
 | `runs/2026-11-13_product_hypothesis/product_analysis.md` | Bảng phân tích sản phẩm rút gọn. | seo-product-keywords sinh ra |
 | `runs/2026-11-13_collection_hypothesis-published/RUN.md` | Thư mục run collection 'đã đăng' để test kiểm tra sau khi đăng. Trang hose-cuffs thật CHƯA đăng bài này, nên kết quả kiểm sẽ báo lệch: đó là điều mong đợi. | Run thật sau khi người đăng bài và ghi live_url |
+| `runs/2026-11-13_collection_hypothesis-published/job.json` | Trạng thái job dựng sẵn (công đoạn postcheck). | Job thật tạo từ trang Projects |
 | `runs/2026-11-13_blog_hypothesis-qa/RUN.md` | Thư mục run blog có draft lỗi cố ý, để test seo-qa-fix. | Run thật từ seo-content-writing, seo-blog-outline, seo-content-draft |
+| `runs/2026-11-13_blog_hypothesis-qa/job.json` | Trạng thái job dựng sẵn (công đoạn qa). | Job thật tạo từ trang Projects |
 | `runs/2026-11-13_blog_hypothesis-qa/draft.md` | Bản nháp blog lỗi cố ý: meta sai độ dài, số liệu và nguồn bịa (.example), claim tuyệt đối, link nội bộ không có trong site_urls.csv, văn AI, nhãn [CẦN NGUỒN]. | seo-content-draft sinh ra |
 
 ## Điều cố ý trong dữ liệu giả định (để biết test có bắt được không)

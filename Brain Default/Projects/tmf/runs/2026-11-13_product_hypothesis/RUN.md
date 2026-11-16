@@ -3,6 +3,8 @@ client: tmf
 task: product
 topic: hypothesis
 workflow: seo-product-keywords
+playbook: product
+stage: meta
 status: waiting
 owner: Harry
 created: 2026-11-13

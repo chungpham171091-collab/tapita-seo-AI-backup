@@ -1,0 +1,59 @@
+{
+ "playbook": "collection",
+ "stage": "postcheck",
+ "values": {
+  "collection_url": "https://shop.truckmountforums.com/collections/hose-cuffs",
+  "main_keyword": "vacuum hose cuff",
+  "secondary_keywords": "không",
+  "topic": "hypothesis-published",
+  "notes": "không",
+  "outline_notes": "duyệt nguyên bản"
+ },
+ "created": "2026-11-13",
+ "by": "GIẢ ĐỊNH",
+ "history": [
+  {
+   "stage": "outline",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "approve_outline",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "draft",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "qa",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "approve",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "publish",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  }
+ ],
+ "feedback": []
+}

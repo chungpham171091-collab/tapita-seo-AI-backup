@@ -48,7 +48,7 @@ REGISTRY_COLS = [
 ]
 PROJECT_REQUIRED = ["slug", "client", "stage", "market"]
 PROJECT_SKILL_FIELDS = ["skill_blog", "skill_collection", "skill_product", "compliance"]
-BOARD_COLS = ["client", "run", "task", "topic", "workflow", "status", "owner",
+BOARD_COLS = ["client", "run", "task", "topic", "playbook", "stage", "workflow", "status", "owner",
               "created", "updated", "next_step", "live_url", "published_on", "path"]
 RUN_REQUIRED = ["client", "task", "topic", "workflow", "status", "owner", "next_step"]
 
@@ -382,7 +382,41 @@ def cmd_check():
                 errors.append("task_forms.json: '%s' has %d field(s), its input line has %d part(s) after the slug"
                               % (slug, len(form.get("fields", [])), parts - 1))
 
-    # 6. Generated files in step with their sources
+    # 6. Playbooks of the Projects page: every stage points at a real workflow with the right number of inputs
+    pb_file = PROJECTS / "_templates" / "playbooks.json"
+    stage_ids = {}
+    if pb_file.is_file():
+        import json
+        try:
+            playbooks = json.loads(read(pb_file)).get("playbooks", [])
+        except ValueError as e:
+            playbooks = []
+            errors.append("Projects/_templates/playbooks.json: not valid JSON (%s)" % e)
+        by_slug = {w["fields"].get("slug", w["file"].stem): w for w in workflows}
+        for pb in playbooks:
+            stage_ids[pb.get("id", "")] = {st.get("id") for st in pb.get("stages", [])}
+            for st in pb.get("stages", []):
+                refs = [(st.get("workflow"), st.get("input"))] if st.get("kind") == "ai" else []
+                if st.get("revise"):
+                    refs.append((st["revise"].get("workflow"), st["revise"].get("input")))
+                for slug, inp in refs:
+                    where = "playbooks.json: %s > %s" % (pb.get("id"), st.get("id"))
+                    wf = by_slug.get(slug)
+                    if not wf:
+                        errors.append("%s: workflow '%s' is not in workflows/" % (where, slug))
+                        continue
+                    parts = len([x for x in wf["input"].split("|") if x.strip()])
+                    if parts and parts != len(inp or []) + 1:
+                        errors.append("%s: %d input(s) given, workflow '%s' takes %d after the slug"
+                                      % (where, len(inp or []), slug, parts - 1))
+        for slug, run, fields in load_runs():
+            pbid = (fields or {}).get("playbook", "")
+            if pbid and pbid not in stage_ids:
+                errors.append("%s/RUN.md: playbook '%s' is not in playbooks.json" % (run.relative_to(ROOT).as_posix(), pbid))
+            elif pbid and fields.get("stage") and fields["stage"] not in stage_ids[pbid] and fields["stage"] != "done":
+                errors.append("%s/RUN.md: stage '%s' is not a stage of playbook '%s'" % (run.relative_to(ROOT).as_posix(), fields["stage"], pbid))
+
+    # 7. Generated files in step with their sources
     for path, builder in GENERATED:
         rel = path.relative_to(ROOT).as_posix()
         if not path.is_file():
@@ -399,7 +433,7 @@ def cmd_check():
     return 1 if errors else 0
 
 
-RUN_FIELDS = ["client", "task", "topic", "workflow", "status", "owner", "created",
+RUN_FIELDS = ["client", "task", "topic", "workflow", "playbook", "stage", "status", "owner", "created",
               "updated", "next_step", "live_url", "published_on"]
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 

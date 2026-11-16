@@ -3,6 +3,8 @@ client: tmf
 task: collection
 topic: hypothesis-published
 workflow: seo-qa-fix
+playbook: collection
+stage: postcheck
 status: published
 owner: Harry
 created: 2026-11-13

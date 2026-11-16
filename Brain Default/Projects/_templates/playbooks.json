@@ -1,0 +1,1363 @@
+{
+ "_doc": "Playbooks for the Projects page: one per job type. A job moves through the stages in order. kind: ai (runs a workflow), decision (a person answers), upload (a person adds a file to the job), upload_data (a person uploads a data source), approve (the project owner approves the deliverable), publish (a person publishes and records the URL). The input list of an ai stage becomes the workflow's input line after the client slug; python tools/seo_ops.py check verifies it.",
+ "groups": [
+  "Planning",
+  "Content",
+  "Maintain",
+  "Off-page",
+  "GEO",
+  "Report",
+  "Technical"
+ ],
+ "playbooks": [
+  {
+   "id": "keyword_plan",
+   "title": "Keyword plan",
+   "group": "Planning",
+   "task": "planning",
+   "what": "Seed keywords, Ahrefs, grouping, mapping one main keyword per URL, content cluster and a draft priority plan.",
+   "start": [
+    {
+     "key": "scope",
+     "label": "Pages to cover",
+     "default": "cả hai",
+     "help": "",
+     "type": "select",
+     "options": [
+      "cả hai",
+      "collection",
+      "product"
+     ]
+    },
+    {
+     "key": "topic",
+     "label": "Name of this round",
+     "default": "toan-site",
+     "help": "Lowercase and hyphens. Becomes the job's folder name.",
+     "slug": true
+    },
+    {
+     "key": "max_pages",
+     "label": "Max pages",
+     "default": "tất cả",
+     "help": "A number, or tất cả."
+    },
+    {
+     "key": "months",
+     "label": "Plan length in months",
+     "default": "3",
+     "help": ""
+    }
+   ],
+   "stages": [
+    {
+     "id": "seed",
+     "title": "Seed keywords",
+     "kind": "ai",
+     "workflow": "seo-keyword-seed",
+     "input": [
+      "{scope}",
+      "{topic}",
+      "{max_pages}"
+     ],
+     "outputs": [
+      "seed_keywords.csv",
+      "seed_for_ahrefs.txt"
+     ],
+     "checks": [],
+     "pass_run": true,
+     "needs": [
+      "site_urls",
+      "shopify_products"
+     ],
+     "what": "3-5 seed keywords per page, from page data."
+    },
+    {
+     "id": "ahrefs",
+     "title": "Ahrefs keyword export",
+     "kind": "upload_data",
+     "slot": "ahrefs_keywords",
+     "help": "Put seed_for_ahrefs.txt into Ahrefs Keywords Explorer (the client's country, Matching terms), export as CSV (UTF-8) and upload it here.",
+     "shows": [
+      "seed_for_ahrefs.txt"
+     ]
+    },
+    {
+     "id": "level",
+     "title": "Filter and level",
+     "kind": "ai",
+     "workflow": "seo-keyword-level",
+     "input": [
+      "{run}",
+      "mới nhất"
+     ],
+     "outputs": [
+      "keywords_{country}.csv",
+      "for_grouping_{country}*.csv"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "what": "Drops local and branded terms, sets easy / medium / difficult against the site's DR."
+    },
+    {
+     "id": "grouping",
+     "title": "Grouped keywords",
+     "kind": "upload",
+     "save_as": "groups_{country}.csv",
+     "accept": ".csv",
+     "help": "Put for_grouping_{country}.csv through the team's grouping sheet, export the result and upload it here.",
+     "shows": [
+      "for_grouping_{country}.csv"
+     ]
+    },
+    {
+     "id": "mapping",
+     "title": "Mapping and cluster",
+     "kind": "ai",
+     "workflow": "seo-keyword-mapping",
+     "input": [
+      "{run}",
+      "groups_{country}.csv"
+     ],
+     "outputs": [
+      "keyword_mapping_{country}.csv",
+      "content_cluster_{country}.csv"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "what": "One main keyword per URL, duplicates flagged, then topics and sub-topics."
+    },
+    {
+     "id": "review",
+     "title": "Review the mapping",
+     "kind": "decision",
+     "help": "Read both files. Edit them directly if needed, then continue.",
+     "ask": [
+      {
+       "key": "review_notes",
+       "label": "Notes for the plan",
+       "default": "không",
+       "help": ""
+      }
+     ],
+     "shows": [
+      "keyword_mapping_{country}.csv",
+      "content_cluster_{country}.csv"
+     ]
+    },
+    {
+     "id": "plan",
+     "title": "Draft priority plan",
+     "kind": "ai",
+     "workflow": "seo-priority-plan",
+     "input": [
+      "{run}",
+      "{months}",
+      "{review_notes}"
+     ],
+     "outputs": [
+      "priority_plan.csv",
+      "priority_plan.md"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "what": "A draft priority and timeline per product group."
+    },
+    {
+     "id": "approve",
+     "title": "Decide the plan",
+     "kind": "approve",
+     "deliver": [
+      "keyword_mapping_{country}.csv",
+      "content_cluster_{country}.csv",
+      "priority_plan.csv"
+     ],
+     "help": "Approving makes this the mapping every other job reads."
+    }
+   ]
+  },
+  {
+   "id": "collection",
+   "title": "Collection page",
+   "group": "Content",
+   "task": "collection",
+   "what": "Long-form content for one collection page.",
+   "start": [
+    {
+     "key": "collection_url",
+     "label": "Collection URL",
+     "default": "",
+     "help": "The live collection URL."
+    },
+    {
+     "key": "main_keyword",
+     "label": "Main keyword",
+     "default": "",
+     "help": ""
+    },
+    {
+     "key": "secondary_keywords",
+     "label": "Secondary keywords",
+     "default": "không",
+     "help": "Comma separated, or không."
+    },
+    {
+     "key": "topic",
+     "label": "Short name",
+     "default": "",
+     "help": "Lowercase and hyphens, usually the collection handle.",
+     "slug": true,
+     "from_url": "collection_url"
+    },
+    {
+     "key": "notes",
+     "label": "Notes",
+     "default": "không",
+     "help": "For example the top-sellers file name, or không."
+    }
+   ],
+   "vars": {
+    "target": "{collection_url}",
+    "page_type": "collection"
+   },
+   "stages": [
+    {
+     "id": "brief",
+     "title": "Brief",
+     "kind": "ai",
+     "workflow": "seo-content-brief",
+     "input": [
+      "{target}",
+      "{main_keyword}",
+      "{page_type}"
+     ],
+     "outputs": [
+      "brief.md"
+     ],
+     "checks": [
+      "serp_urls"
+     ],
+     "pass_run": true,
+     "optional": true,
+     "enabled": false,
+     "what": "Optional brief, checked by the reviewer."
+    },
+    {
+     "id": "outline",
+     "title": "Strategy and outline",
+     "kind": "ai",
+     "workflow": "seo-content-writing",
+     "input": [
+      "collection",
+      "{main_keyword}",
+      "{secondary_keywords}",
+      "{collection_url}",
+      "{run}",
+      "{notes}"
+     ],
+     "outputs": [
+      "outline.md"
+     ],
+     "checks": [
+      "serp_urls"
+     ],
+     "pass_run": false,
+     "needs": [
+      "site_urls"
+     ],
+     "what": "Real SERP research, links to use, strategy report and outline."
+    },
+    {
+     "id": "approve_outline",
+     "title": "Approve the outline",
+     "kind": "decision",
+     "help": "Read the outline. Write changes, or keep the default to accept it as is.",
+     "ask": [
+      {
+       "key": "outline_notes",
+       "label": "Your decision",
+       "default": "duyệt nguyên bản",
+       "help": ""
+      }
+     ],
+     "shows": [
+      "outline.md"
+     ]
+    },
+    {
+     "id": "draft",
+     "title": "Write the draft",
+     "kind": "ai",
+     "workflow": "seo-content-draft",
+     "input": [
+      "{run}",
+      "{outline_notes}"
+     ],
+     "outputs": [
+      "draft.md"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "what": "The full page copy with its meta."
+    },
+    {
+     "id": "qa",
+     "title": "QA and fix",
+     "kind": "ai",
+     "workflow": "seo-qa-fix",
+     "input": [
+      "{run}",
+      "draft.md",
+      "{main_keyword}"
+     ],
+     "outputs": [
+      "review*.md"
+     ],
+     "checks": [
+      "verdict"
+     ],
+     "pass_run": false,
+     "what": "Checks sources first, then quality, compliance and the skill's rules; fixes serious issues into a new version; re-checks."
+    },
+    {
+     "id": "approve",
+     "title": "Final approval",
+     "kind": "approve",
+     "deliver": [
+      "latest:draft*.md"
+     ],
+     "help": "Read the deliverable. Approve it, or write what must change.",
+     "revise": {
+      "workflow": "seo-feedback-localization",
+      "input": [
+       "{run}",
+       "{deliverable}",
+       "feedback: {feedback}",
+       "{market}"
+      ]
+     }
+    },
+    {
+     "id": "publish",
+     "title": "Publish",
+     "kind": "publish",
+     "help": "Publish the approved content yourself, then record the live URL and date."
+    },
+    {
+     "id": "postcheck",
+     "title": "Post-publish check",
+     "kind": "ai",
+     "workflow": "seo-post-publish-check",
+     "input": [
+      "{run}",
+      "theo RUN.md"
+     ],
+     "outputs": [
+      "postcheck*.md"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "what": "Compares the live page with the approved file: meta, canonical, indexability, links, structured data, content."
+    }
+   ]
+  },
+  {
+   "id": "blog",
+   "title": "Blog post",
+   "group": "Content",
+   "task": "blog",
+   "what": "One blog article from keyword to published post.",
+   "start": [
+    {
+     "key": "main_keyword",
+     "label": "Main keyword",
+     "default": "",
+     "help": ""
+    },
+    {
+     "key": "secondary_keywords",
+     "label": "Secondary keywords",
+     "default": "không",
+     "help": "Comma separated, or không."
+    },
+    {
+     "key": "topic_text",
+     "label": "Topic",
+     "default": "",
+     "help": "What the article is about, in a few words."
+    },
+    {
+     "key": "topic",
+     "label": "Short name",
+     "default": "",
+     "help": "Lowercase and hyphens. Becomes the job's folder name.",
+     "slug": true,
+     "from_text": "main_keyword"
+    },
+    {
+     "key": "notes",
+     "label": "Notes",
+     "default": "không",
+     "help": "Search intent or anything the writer must know, or không."
+    }
+   ],
+   "vars": {
+    "target": "{topic_text}",
+    "page_type": "blog"
+   },
+   "stages": [
+    {
+     "id": "brief",
+     "title": "Brief",
+     "kind": "ai",
+     "workflow": "seo-content-brief",
+     "input": [
+      "{target}",
+      "{main_keyword}",
+      "{page_type}"
+     ],
+     "outputs": [
+      "brief.md"
+     ],
+     "checks": [
+      "serp_urls"
+     ],
+     "pass_run": true,
+     "optional": true,
+     "enabled": false,
+     "what": "Optional brief, checked by the reviewer."
+    },
+    {
+     "id": "titles",
+     "title": "Research and titles",
+     "kind": "ai",
+     "workflow": "seo-content-writing",
+     "input": [
+      "blog",
+      "{main_keyword}",
+      "{secondary_keywords}",
+      "{topic_text}",
+      "{run}",
+      "{notes}"
+     ],
+     "outputs": [
+      "titles.md"
+     ],
+     "checks": [
+      "serp_urls"
+     ],
+     "pass_run": false,
+     "needs": [
+      "site_urls"
+     ],
+     "what": "Real SERP research and 3-5 title options."
+    },
+    {
+     "id": "pick_title",
+     "title": "Pick a title",
+     "kind": "decision",
+     "help": "Choose one title from the options.",
+     "ask": [
+      {
+       "key": "title",
+       "label": "Chosen title",
+       "default": "",
+       "help": "Its number in the table, or the full title.",
+       "required": true
+      },
+      {
+       "key": "title_notes",
+       "label": "Notes for the outline",
+       "default": "không",
+       "help": ""
+      }
+     ],
+     "shows": [
+      "titles.md"
+     ]
+    },
+    {
+     "id": "outline",
+     "title": "Outline",
+     "kind": "ai",
+     "workflow": "seo-blog-outline",
+     "input": [
+      "{run}",
+      "{title}",
+      "{title_notes}"
+     ],
+     "outputs": [
+      "outline.md"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "what": "The outline for the chosen title."
+    },
+    {
+     "id": "approve_outline",
+     "title": "Approve the outline",
+     "kind": "decision",
+     "help": "Read the outline. Write changes, or keep the default to accept it as is.",
+     "ask": [
+      {
+       "key": "outline_notes",
+       "label": "Your decision",
+       "default": "duyệt nguyên bản",
+       "help": ""
+      }
+     ],
+     "shows": [
+      "outline.md"
+     ]
+    },
+    {
+     "id": "draft",
+     "title": "Write the draft",
+     "kind": "ai",
+     "workflow": "seo-content-draft",
+     "input": [
+      "{run}",
+      "{outline_notes}"
+     ],
+     "outputs": [
+      "draft.md"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "what": "The full article with its meta package."
+    },
+    {
+     "id": "qa",
+     "title": "QA and fix",
+     "kind": "ai",
+     "workflow": "seo-qa-fix",
+     "input": [
+      "{run}",
+      "draft.md",
+      "{main_keyword}"
+     ],
+     "outputs": [
+      "review*.md"
+     ],
+     "checks": [
+      "verdict"
+     ],
+     "pass_run": false,
+     "what": "Checks sources first, then quality, compliance and the skill's rules; fixes serious issues into a new version; re-checks."
+    },
+    {
+     "id": "images",
+     "title": "Image plan",
+     "kind": "ai",
+     "workflow": "seo-image-plan",
+     "input": [
+      "{run}",
+      "{latest:draft*.md}"
+     ],
+     "outputs": [
+      "imageplan.md"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "optional": true,
+     "enabled": false,
+     "what": "Optional table of images: position, file name, alt text, prompt."
+    },
+    {
+     "id": "approve",
+     "title": "Final approval",
+     "kind": "approve",
+     "deliver": [
+      "latest:draft*.md"
+     ],
+     "help": "Read the deliverable. Approve it, or write what must change.",
+     "revise": {
+      "workflow": "seo-feedback-localization",
+      "input": [
+       "{run}",
+       "{deliverable}",
+       "feedback: {feedback}",
+       "{market}"
+      ]
+     }
+    },
+    {
+     "id": "publish",
+     "title": "Publish",
+     "kind": "publish",
+     "help": "Publish the approved content yourself, then record the live URL and date."
+    },
+    {
+     "id": "postcheck",
+     "title": "Post-publish check",
+     "kind": "ai",
+     "workflow": "seo-post-publish-check",
+     "input": [
+      "{run}",
+      "theo RUN.md"
+     ],
+     "outputs": [
+      "postcheck*.md"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "what": "Compares the live page with the approved file: meta, canonical, indexability, links, structured data, content."
+    }
+   ]
+  },
+  {
+   "id": "product",
+   "title": "Product batch",
+   "group": "Content",
+   "task": "product",
+   "what": "Meta and content for a batch of product pages.",
+   "start": [
+    {
+     "key": "products",
+     "label": "Product URLs or handles",
+     "default": "",
+     "help": "Comma separated. About 10 per batch."
+    },
+    {
+     "key": "topic",
+     "label": "Name of this batch",
+     "default": "",
+     "help": "Lowercase and hyphens.",
+     "slug": true
+    }
+   ],
+   "stages": [
+    {
+     "id": "keywords",
+     "title": "Analysis and keywords",
+     "kind": "ai",
+     "workflow": "seo-product-keywords",
+     "input": [
+      "mới nhất",
+      "{products}",
+      "{topic}"
+     ],
+     "outputs": [
+      "product_analysis.md",
+      "product_keywords.csv",
+      "keywords_for_ahrefs.txt"
+     ],
+     "checks": [],
+     "pass_run": true,
+     "needs": [
+      "shopify_products"
+     ],
+     "what": "Reads the Shopify export, analyses each product, builds its keyword set."
+    },
+    {
+     "id": "volume",
+     "title": "Ahrefs search volume",
+     "kind": "upload",
+     "save_as": "ahrefs_volume.csv",
+     "accept": ".csv",
+     "help": "Put keywords_for_ahrefs.txt into Ahrefs Keywords Explorer (the client's country), export the volumes as CSV and upload it here.",
+     "shows": [
+      "keywords_for_ahrefs.txt",
+      "product_analysis.md"
+     ],
+     "ask": [
+      {
+       "key": "keyword_notes",
+       "label": "Keyword notes",
+       "default": "không",
+       "help": "Anything to force or avoid when picking main keywords, or không."
+      }
+     ]
+    },
+    {
+     "id": "meta",
+     "title": "Meta and content",
+     "kind": "ai",
+     "workflow": "seo-meta-optimization",
+     "input": [
+      "{run}",
+      "ahrefs_volume.csv",
+      "{keyword_notes}"
+     ],
+     "outputs": [
+      "meta_table.csv"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "what": "Picks the main keyword by the volume rule, writes meta and product content."
+    },
+    {
+     "id": "qa",
+     "title": "QA and fix",
+     "kind": "ai",
+     "workflow": "seo-qa-fix",
+     "input": [
+      "{run}",
+      "meta_table.csv",
+      "theo bảng meta_table.csv"
+     ],
+     "outputs": [
+      "review*.md"
+     ],
+     "checks": [
+      "verdict"
+     ],
+     "pass_run": false,
+     "what": "Checks sources first, then quality, compliance and the skill's rules; fixes serious issues into a new version; re-checks."
+    },
+    {
+     "id": "approve",
+     "title": "Final approval",
+     "kind": "approve",
+     "deliver": [
+      "latest:meta_table*.csv"
+     ],
+     "help": "Read the deliverable. Approve it, or write what must change.",
+     "revise": {
+      "workflow": "seo-feedback-localization",
+      "input": [
+       "{run}",
+       "{deliverable}",
+       "feedback: {feedback}",
+       "{market}"
+      ]
+     }
+    },
+    {
+     "id": "shopify",
+     "title": "Update Shopify",
+     "kind": "decision",
+     "help": "Update the products in Shopify yourself, then confirm here.",
+     "ask": [
+      {
+       "key": "shopify_note",
+       "label": "What was updated",
+       "default": "",
+       "help": "For example: 8 of 10 products updated on 2026-11-20.",
+       "required": true
+      }
+     ],
+     "shows": []
+    }
+   ]
+  },
+  {
+   "id": "refresh",
+   "title": "Page refresh",
+   "group": "Maintain",
+   "task": "refresh",
+   "what": "Find a page that is losing clicks and refresh it.",
+   "start": [
+    {
+     "key": "max_pages",
+     "label": "Pages to examine",
+     "default": "10",
+     "help": ""
+    },
+    {
+     "key": "topic",
+     "label": "Name",
+     "default": "{today}",
+     "help": "Lowercase and hyphens.",
+     "slug": true
+    },
+    {
+     "key": "notes",
+     "label": "Notes",
+     "default": "không",
+     "help": ""
+    }
+   ],
+   "stages": [
+    {
+     "id": "scan",
+     "title": "Find pages losing clicks",
+     "kind": "ai",
+     "workflow": "seo-content-refresh",
+     "input": [
+      "{max_pages}",
+      "{notes}"
+     ],
+     "outputs": [
+      "refresh_candidates.csv",
+      "refresh_notes.md"
+     ],
+     "checks": [
+      "serp_urls:refresh_notes.md"
+     ],
+     "pass_run": true,
+     "needs": [
+      "gsc_pages",
+      "gsc_queries"
+     ],
+     "what": "Compares the last 4 weeks with the 4 before, opens each page and its real SERP."
+    },
+    {
+     "id": "pick",
+     "title": "Pick the page",
+     "kind": "decision",
+     "help": "Choose one page from the candidates and say what to change.",
+     "ask": [
+      {
+       "key": "page_url",
+       "label": "Page URL",
+       "default": "",
+       "help": "",
+       "required": true
+      },
+      {
+       "key": "main_keyword",
+       "label": "Main keyword",
+       "default": "",
+       "help": "",
+       "required": true
+      },
+      {
+       "key": "direction",
+       "label": "Direction",
+       "default": "",
+       "help": "What to change and what to keep.",
+       "required": true
+      }
+     ],
+     "shows": [
+      "refresh_candidates.csv"
+     ]
+    },
+    {
+     "id": "refresh",
+     "title": "Refresh the page",
+     "kind": "ai",
+     "workflow": "seo-content-refresh-update",
+     "input": [
+      "{run}",
+      "{page_url}",
+      "{main_keyword}",
+      "{direction}"
+     ],
+     "outputs": [
+      "refresh_*.md"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "what": "Updates the page, keeping what works."
+    },
+    {
+     "id": "qa",
+     "title": "QA and fix",
+     "kind": "ai",
+     "workflow": "seo-qa-fix",
+     "input": [
+      "{run}",
+      "{latest:refresh_*.md}",
+      "{main_keyword}"
+     ],
+     "outputs": [
+      "review*.md"
+     ],
+     "checks": [
+      "verdict"
+     ],
+     "pass_run": false,
+     "what": "Checks sources first, then quality, compliance and the skill's rules; fixes serious issues into a new version; re-checks."
+    },
+    {
+     "id": "approve",
+     "title": "Final approval",
+     "kind": "approve",
+     "deliver": [
+      "latest:refresh_*.md"
+     ],
+     "help": "Read the deliverable. Approve it, or write what must change.",
+     "revise": {
+      "workflow": "seo-feedback-localization",
+      "input": [
+       "{run}",
+       "{deliverable}",
+       "feedback: {feedback}",
+       "{market}"
+      ]
+     }
+    },
+    {
+     "id": "publish",
+     "title": "Publish",
+     "kind": "publish",
+     "help": "Publish the approved content yourself, then record the live URL and date."
+    },
+    {
+     "id": "postcheck",
+     "title": "Post-publish check",
+     "kind": "ai",
+     "workflow": "seo-post-publish-check",
+     "input": [
+      "{run}",
+      "theo RUN.md"
+     ],
+     "outputs": [
+      "postcheck*.md"
+     ],
+     "checks": [],
+     "pass_run": false,
+     "what": "Compares the live page with the approved file: meta, canonical, indexability, links, structured data, content."
+    }
+   ]
+  },
+  {
+   "id": "links",
+   "title": "Competing pages and links",
+   "group": "Maintain",
+   "task": "links",
+   "what": "Pages competing for the same main keyword, missing internal links, and proposed fixes.",
+   "start": [
+    {
+     "key": "topic",
+     "label": "Name",
+     "default": "{month}",
+     "help": "",
+     "slug": true
+    },
+    {
+     "key": "max_groups",
+     "label": "Max groups",
+     "default": "20",
+     "help": ""
+    }
+   ],
+   "stages": [
+    {
+     "id": "review",
+     "title": "Find and propose",
+     "kind": "ai",
+     "workflow": "seo-cannibalization-links",
+     "input": [
+      "{topic}",
+      "{max_groups}"
+     ],
+     "outputs": [
+      "links_plan.csv",
+      "links_plan.md"
+     ],
+     "checks": [],
+     "pass_run": true,
+     "needs": [
+      "gsc_query_page"
+     ],
+     "what": "Reads the mapping and GSC page-by-query data, opens the pages, proposes fixes."
+    },
+    {
+     "id": "approve",
+     "title": "Choose the fixes",
+     "kind": "approve",
+     "deliver": [
+      "links_plan.csv",
+      "links_plan.md"
+     ],
+     "help": "Approve the plan you will act on. Content or link changes are then separate jobs."
+    }
+   ]
+  },
+  {
+   "id": "offpage",
+   "title": "Off-page round",
+   "group": "Off-page",
+   "task": "offpage",
+   "what": "Backlink profile, link gaps against the competitors, targets, PR angles and outreach drafts.",
+   "start": [
+    {
+     "key": "topic",
+     "label": "Name",
+     "default": "{month}",
+     "help": "",
+     "slug": true
+    }
+   ],
+   "stages": [
+    {
+     "id": "plan",
+     "title": "Profile, gaps and drafts",
+     "kind": "ai",
+     "workflow": "seo-offpage",
+     "input": [
+      "{topic}",
+      "mới nhất",
+      "mới nhất"
+     ],
+     "outputs": [
+      "offpage_plan.md",
+      "outreach_drafts.md"
+     ],
+     "checks": [],
+     "pass_run": true,
+     "needs": [
+      "backlinks",
+      "link_intersect"
+     ],
+     "what": "Summarises the profile, lists link gaps, proposes targets, drafts outreach."
+    },
+    {
+     "id": "approve",
+     "title": "Approve targets and drafts",
+     "kind": "approve",
+     "deliver": [
+      "offpage_plan.md",
+      "offpage_plan.csv",
+      "outreach_drafts.md"
+     ],
+     "help": "Read the deliverable. Approve it, or write what must change."
+    },
+    {
+     "id": "sent",
+     "title": "Outreach sent",
+     "kind": "decision",
+     "help": "Find contacts and send everything yourself. Nothing is sent automatically.",
+     "ask": [
+      {
+       "key": "sent_note",
+       "label": "What was sent",
+       "default": "",
+       "help": "Who was contacted and when.",
+       "required": true
+      }
+     ],
+     "shows": []
+    }
+   ]
+  },
+  {
+   "id": "report",
+   "title": "Monthly report",
+   "group": "Report",
+   "task": "report",
+   "what": "The month's report from GSC, GA4, rank and AI citations, with every number checked.",
+   "start": [
+    {
+     "key": "topic",
+     "label": "Month",
+     "default": "{prev_month}",
+     "help": "YYYY-MM",
+     "slug": true
+    }
+   ],
+   "stages": [
+    {
+     "id": "report",
+     "title": "Build the report",
+     "kind": "ai",
+     "workflow": "seo-monthly-report",
+     "input": [
+      "{topic}"
+     ],
+     "outputs": [
+      "report.md",
+      "review_report.md"
+     ],
+     "checks": [],
+     "pass_run": true,
+     "needs": [
+      "gsc_pages",
+      "ga4_landing",
+      "rank"
+     ],
+     "what": "Extractor summarises, planner writes, reviewer checks each number."
+    },
+    {
+     "id": "approve",
+     "title": "Approve the report",
+     "kind": "approve",
+     "deliver": [
+      "report.md"
+     ],
+     "help": "Read the deliverable. Approve it, or write what must change."
+    },
+    {
+     "id": "sent",
+     "title": "Sent to client",
+     "kind": "decision",
+     "help": "Send the report yourself, then confirm.",
+     "ask": [
+      {
+       "key": "sent_note",
+       "label": "Sent on",
+       "default": "",
+       "help": "Date and channel.",
+       "required": true
+      }
+     ],
+     "shows": []
+    }
+   ]
+  },
+  {
+   "id": "technical",
+   "title": "Technical audit (Tapita tool)",
+   "group": "Technical",
+   "task": "tech",
+   "what": "The technical audit is done with Tapita's own tool. This job keeps the report as proof.",
+   "start": [
+    {
+     "key": "topic",
+     "label": "Name",
+     "default": "{today}",
+     "help": "Lowercase and hyphens.",
+     "slug": true
+    },
+    {
+     "key": "notes",
+     "label": "Notes",
+     "default": "không",
+     "help": "Scope or tool settings, or không."
+    }
+   ],
+   "stages": [
+    {
+     "id": "report",
+     "title": "Upload the audit report",
+     "kind": "upload",
+     "accept": ".pdf,.xlsx,.csv,.html,.md,.docx,.txt,.json,.zip",
+     "help": "Upload the report exported from the Tapita tool."
+    },
+    {
+     "id": "approve",
+     "title": "Confirm the audit",
+     "kind": "approve",
+     "deliver": [
+      "latest:*"
+     ],
+     "help": "Confirm the audit is done. The report is copied to deliverables as proof."
+    },
+    {
+     "id": "fixes",
+     "title": "Fixes sent",
+     "kind": "decision",
+     "help": "Send the fix list to the developer yourself, then confirm.",
+     "ask": [
+      {
+       "key": "fix_note",
+       "label": "Sent to and when",
+       "default": "",
+       "help": "",
+       "required": true
+      }
+     ],
+     "shows": []
+    }
+   ]
+  },
+  {
+   "id": "geo_prompts",
+   "title": "GEO: prompt set",
+   "group": "GEO",
+   "task": "geo-prompts",
+   "what": "The list of prompts to track in AI engines, built from the keyword mapping and the client profile.",
+   "start": [
+    {
+     "key": "topic",
+     "label": "Name",
+     "default": "{month}",
+     "help": "",
+     "slug": true
+    },
+    {
+     "key": "count",
+     "label": "Number of prompts",
+     "default": "30",
+     "help": ""
+    }
+   ],
+   "stages": [
+    {
+     "id": "draft",
+     "title": "Draft the prompt set",
+     "kind": "ai",
+     "workflow": "seo-geo-prompts",
+     "input": [
+      "{topic}",
+      "{count}"
+     ],
+     "outputs": [
+      "prompts_draft.csv",
+      "prompts_notes.md"
+     ],
+     "checks": [],
+     "pass_run": true,
+     "what": "Prompts as real people ask them, spread over priority groups and intents."
+    },
+    {
+     "id": "approve",
+     "title": "Approve the prompt set",
+     "kind": "approve",
+     "deliver": [
+      "prompts_draft.csv"
+     ],
+     "help": "Edit the file if needed. The approved list replaces data/geo/prompts.csv.",
+     "install_to": "data/geo/prompts.csv"
+    }
+   ]
+  },
+  {
+   "id": "geo_round",
+   "title": "GEO: monthly round",
+   "group": "GEO",
+   "task": "geo",
+   "what": "From the month's AI citation checks: audit the pages, propose answer-first fixes, QA, publish.",
+   "start": [
+    {
+     "key": "topic",
+     "label": "Month",
+     "default": "{prev_month}",
+     "help": "YYYY-MM",
+     "slug": true
+    }
+   ],
+   "stages": [
+    {
+     "id": "citations",
+     "title": "AI citation checks",
+     "kind": "upload_data",
+     "slot": "geo_citations",
+     "help": "Run the tracked prompts in ChatGPT, Perplexity, Gemini and AI Overviews for the month and upload the results."
+    },
+    {
+     "id": "audit",
+     "title": "Audit and propose fixes",
+     "kind": "ai",
+     "workflow": "seo-geo-optimization",
+     "input": [
+      "{topic}"
+     ],
+     "outputs": [
+      "audit_geo.md",
+      "plan_geo.md",
+      "draft_geo-fix.md"
+     ],
+     "checks": [],
+     "pass_run": true,
+     "needs": [
+      "geo_prompts",
+      "geo_citations"
+     ],
+     "what": "Summarises visibility, audits the pages, picks up to 5, drafts the fixes."
+    },
+    {
+     "id": "review",
+     "title": "Review the proposal",
+     "kind": "decision",
+     "help": "Read the plan and the proposed fixes before QA.",
+     "ask": [
+      {
+       "key": "geo_notes",
+       "label": "Notes",
+       "default": "không",
+       "help": ""
+      }
+     ],
+     "shows": [
+      "plan_geo.md",
+      "draft_geo-fix.md"
+     ]
+    },
+    {
+     "id": "qa",
+     "title": "QA and fix",
+     "kind": "ai",
+     "workflow": "seo-qa-fix",
+     "input": [
+      "{run}",
+      "draft_geo-fix.md",
+      "GEO {topic}"
+     ],
+     "outputs": [
+      "review*.md"
+     ],
+     "checks": [
+      "verdict"
+     ],
+     "pass_run": false,
+     "what": "Checks sources first, then quality, compliance and the skill's rules; fixes serious issues into a new version; re-checks."
+    },
+    {
+     "id": "approve",
+     "title": "Final approval",
+     "kind": "approve",
+     "deliver": [
+      "latest:draft_geo-fix*.md"
+     ],
+     "help": "Read the deliverable. Approve it, or write what must change.",
+     "revise": {
+      "workflow": "seo-feedback-localization",
+      "input": [
+       "{run}",
+       "{deliverable}",
+       "feedback: {feedback}",
+       "{market}"
+      ]
+     }
+    },
+    {
+     "id": "published",
+     "title": "Changes published",
+     "kind": "decision",
+     "help": "Apply the approved changes on the site yourself, then confirm.",
+     "ask": [
+      {
+       "key": "published_note",
+       "label": "What was published",
+       "default": "",
+       "help": "",
+       "required": true
+      }
+     ],
+     "shows": []
+    }
+   ]
+  },
+  {
+   "id": "geo_sources",
+   "title": "GEO: sources AI cites",
+   "group": "GEO",
+   "task": "geo-sources",
+   "what": "Which sources and competitors AI engines cite where the client is absent, and how to get mentioned.",
+   "start": [
+    {
+     "key": "topic",
+     "label": "Month",
+     "default": "{prev_month}",
+     "help": "YYYY-MM",
+     "slug": true
+    }
+   ],
+   "stages": [
+    {
+     "id": "plan",
+     "title": "Find sources and propose",
+     "kind": "ai",
+     "workflow": "seo-geo-sources",
+     "input": [
+      "{topic}"
+     ],
+     "outputs": [
+      "geo_sources_plan.md",
+      "geo_sources_plan.csv"
+     ],
+     "checks": [],
+     "pass_run": true,
+     "needs": [
+      "geo_citations"
+     ],
+     "what": "Counts cited sources and competitors, opens the top sources, proposes an approach for each."
+    },
+    {
+     "id": "approve",
+     "title": "Choose the sources",
+     "kind": "approve",
+     "deliver": [
+      "geo_sources_plan.md",
+      "geo_sources_plan.csv"
+     ],
+     "help": "Approve the list you will act on. You contact everyone yourself."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "playbook": "keyword_plan",
+ "stage": "mapping",
+ "values": {
+  "scope": "cả hai",
+  "topic": "hypothesis",
+  "max_pages": "tất cả",
+  "months": "3"
+ },
+ "created": "2026-11-13",
+ "by": "GIẢ ĐỊNH",
+ "history": [
+  {
+   "stage": "seed",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "ahrefs",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "level",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "grouping",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  }
+ ],
+ "feedback": []
+}

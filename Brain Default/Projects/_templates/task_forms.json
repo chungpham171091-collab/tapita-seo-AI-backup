@@ -1,5 +1,5 @@
 {
- "_doc": "Forms for the Projects page. One entry per workflow. The fields, in order, become the workflow's input line after the client slug. Keep the number of fields equal to the parts of the line 'Đầu vào gồm' in the workflow (python tools/seo_ops.py check verifies it).",
+ "_doc": "Forms for running ONE workflow on its own from the Projects page (the 'single workflow' list). Normal work goes through playbooks.json. The fields, in order, become the workflow's input line after the client slug (python tools/seo_ops.py check verifies the count).",
  "groups": [
   "Data",
   "Planning",
@@ -8,6 +8,7 @@
   "Technical",
   "Maintain",
   "Off-page",
+  "GEO",
   "Report"
  ],
  "forms": [
@@ -485,31 +486,6 @@
    "after": "Run QA and fix on meta_table.csv."
   },
   {
-   "workflow": "seo-technical-audit",
-   "group": "Technical",
-   "title": "Technical audit",
-   "what": "Audits the view-source HTML samples per template and writes a fix list for the developer.",
-   "needs": [
-    "tech_html"
-   ],
-   "fields": [
-    {
-     "label": "Run topic",
-     "type": "text",
-     "default": "{today}",
-     "help": "For example the sample date, or sau-fix-1.",
-     "slug": true
-    },
-    {
-     "label": "Scope",
-     "type": "text",
-     "default": "tất cả",
-     "help": "tất cả, or a note such as chỉ product."
-    }
-   ],
-   "after": "Approve the report and send it to the developer. After the fix, upload fresh HTML samples and run it again."
-  },
-  {
    "workflow": "seo-onpage-audit",
    "group": "Technical",
    "title": "On-page audit",
@@ -694,7 +670,7 @@
   },
   {
    "workflow": "seo-geo-optimization",
-   "group": "Report",
+   "group": "GEO",
    "title": "GEO optimisation",
    "what": "From the tracked AI prompts and citation checks: audits pages and drafts answer-first fixes.",
    "needs": [
@@ -730,6 +706,47 @@
     }
    ],
    "after": "Approve the report before it goes to the client."
+  },
+  {
+   "workflow": "seo-geo-prompts",
+   "group": "GEO",
+   "title": "GEO prompt set",
+   "what": "Drafts the list of prompts to track in AI engines.",
+   "needs": [],
+   "fields": [
+    {
+     "label": "Run topic",
+     "type": "text",
+     "default": "{month}",
+     "help": "",
+     "slug": true
+    },
+    {
+     "label": "Number of prompts",
+     "type": "text",
+     "default": "30",
+     "help": ""
+    }
+   ],
+   "after": "Review the draft and approve it."
+  },
+  {
+   "workflow": "seo-geo-sources",
+   "group": "GEO",
+   "title": "GEO sources AI cites",
+   "what": "Sources and competitors cited where the client is absent, with a proposed approach.",
+   "needs": [
+    "geo_citations"
+   ],
+   "fields": [
+    {
+     "label": "Month",
+     "type": "text",
+     "default": "{prev_month}",
+     "help": "YYYY-MM"
+    }
+   ],
+   "after": "Choose the sources and contact them yourself."
   }
  ]
 }

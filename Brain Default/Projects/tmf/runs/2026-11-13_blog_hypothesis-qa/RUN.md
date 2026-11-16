@@ -3,6 +3,8 @@ client: tmf
 task: blog
 topic: hypothesis-qa
 workflow: seo-content-draft
+playbook: blog
+stage: qa
 status: qa
 owner: Harry
 created: 2026-11-13

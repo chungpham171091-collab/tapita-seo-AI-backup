@@ -10,7 +10,7 @@ steps:
     Đầu vào: {{input}}
     Đầu vào gồm: slug khách | chủ đề run (ví dụ YYYY-MM) | số nhóm tối đa cần xem (ví dụ 20).
     Đọc Projects/SEO-OPS.md và Projects/<slug>/PROJECT.md của đúng khách trong đầu vào. Chỉ làm cho khách đó. Thông tin đã có trong PROJECT.md (thị trường, ngôn ngữ, Google domain, tone, từ cấm, skill, đối thủ) thì dùng luôn, không hỏi lại; thiếu thì nói rõ cần điền mục nào vào PROJECT.md.
-    Tạo thư mục run bằng lệnh: python tools/seo_ops.py new-run <slug> links <chủ đề run> seo-cannibalization-links (chữ thường, gạch ngang). Không chạy được lệnh thì tạo tay Projects/<slug>/runs/<YYYY-MM-DD>_links_<chủ đề run>/RUN.md theo Projects/_templates/RUN.md. Mọi file của bước này ghi vào thư mục run đó.
+    Thư mục run: nếu đầu vào kết thúc bằng phần `run=<đường dẫn>` thì đó là thư mục run của việc này (đã có RUN.md); dùng đúng thư mục đó, không tạo thư mục mới. Nếu không có phần đó thì tạo bằng lệnh: python tools/seo_ops.py new-run <slug> links <chủ đề run> seo-cannibalization-links (chữ thường, gạch ngang); không chạy được lệnh thì tạo tay Projects/<slug>/runs/<YYYY-MM-DD>_links_<chủ đề run>/RUN.md theo Projects/_templates/RUN.md. Mọi file của bước này ghi vào thư mục run đó.
     Đọc keyword mapping hiện hành (file keyword_mapping_*.csv mới nhất trong Projects/<slug>/deliverables/) và content cluster cùng ngày nếu có. Không có mapping thì dừng và báo.
     Đọc 4 file tuần query_page_*.csv mới nhất trong Projects/<slug>/data/gsc/ (chỉ đọc) và cộng số liệu 4 tuần.
     a) Với mỗi từ khóa chính và từ khóa phụ trong mapping: tìm query trùng hoặc chứa từ khóa đó mà có từ 2 URL của site trở lên có impressions. Ghi: query, url, clicks, impressions, position (trung bình có trọng số impressions), mapped_url (URL được gán trong mapping).

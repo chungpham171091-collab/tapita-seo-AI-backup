@@ -3,6 +3,8 @@ client:
 task:
 topic:
 workflow:
+playbook:
+stage:
 status: open
 owner:
 created:
@@ -17,6 +19,7 @@ published_on:
 > Mỗi lượt chạy một tác vụ có một thư mục `Projects/<slug>/runs/YYYY-MM-DD_<task>_<topic>/` và một file RUN.md này.
 > Các dòng trong khối đầu file được dùng để sinh bảng run (board.csv): mỗi dòng một giá trị, không xuống dòng.
 > status: open (đang làm) | waiting (chờ người quyết định) | qa (đang audit, sửa) | approved (người đã duyệt, file đã vào deliverables/) | published (đã đăng) | cancelled.
+> playbook và stage: loại việc và công đoạn hiện tại, do trang Projects ghi (Projects/_templates/playbooks.json); để trống nếu chạy workflow lẻ.
 > workflow: slug của workflow vừa chạy gần nhất. next_step: việc kế tiếp và ai làm (người hoặc tên workflow).
 
 ## Đầu vào

@@ -1,0 +1,54 @@
+{
+ "playbook": "blog",
+ "stage": "qa",
+ "values": {
+  "main_keyword": "how to repair carpet cleaning hose",
+  "secondary_keywords": "không",
+  "topic_text": "how to repair a carpet cleaning hose",
+  "topic": "hypothesis-qa",
+  "notes": "không",
+  "title": "1",
+  "title_notes": "không",
+  "outline_notes": "duyệt nguyên bản"
+ },
+ "created": "2026-11-13",
+ "by": "GIẢ ĐỊNH",
+ "history": [
+  {
+   "stage": "titles",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "pick_title",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "outline",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "approve_outline",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "draft",
+   "at": "2026-11-13 15:00",
+   "by": "GIẢ ĐỊNH",
+   "result": "done",
+   "note": "Dựng sẵn để test, không phải kết quả thật"
+  }
+ ],
+ "feedback": []
+}
