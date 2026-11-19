@@ -2,10 +2,11 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 6 agents · 90 skills · 27 workflows (11 bật) · 0 loops (0 bật) · 26 plugins (25 chạy)
+**Tổng quan:** 7 agents · 90 skills · 28 workflows (12 bật) · 0 loops (0 bật) · 26 plugins (25 chạy)
 
 ## Agents
 - **SEO Auditor** (`seo-auditor`) - Kiểm tra nội dung, trang và kỹ thuật SEO theo QRG và quy tắc riêng của khách. Chỉ báo lỗi, không viết lại. · model sonnet · tags: SEO-Ops
+- **SEO Config Assistant** (`seo-config`) - Soạn bản nháp thay đổi cấu hình SEO-Ops (job type, workflow, data source, team) theo yêu cầu của người. Không tự áp dụng. · model sonnet · tags: SEO-Ops
 - **SEO Extractor** (`seo-extractor`) - Đọc file dữ liệu lớn (CSV, export, log), lọc, đếm, so kỳ và tóm tắt. Không đưa khuyến nghị. · model haiku · tags: SEO-Ops
 - **SEO Project Lead** (`seo-lead`) - Trợ lý của một dự án khách - trả lời về tình trạng dự án, sửa file theo góp ý của người thành bản mới. Không duyệt, không đăng. · model opus · tags: SEO-Ops
 - **SEO Planner** (`seo-planner`) - Lập kế hoạch, cluster từ khóa, brief, chia việc và xếp ưu tiên cho một khách. Không viết bài hoàn chỉnh. · model opus · tags: SEO-Ops
@@ -113,6 +114,7 @@ language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of
 - **HTML sang Webcake** (`html-to-webcake`) - Chuyển trang HTML thành file .pke mở được trong trình dựng Webcake, giữ đúng màu, cỡ chữ, ảnh và bố cục của bản gốc.
 
 ## Workflows
+### Chung
 - **SEO Blog outline (giai đoạn 1b)** (`seo-blog-outline`) - off · 1 bước [seo-writer] · Blog: từ title người đã chọn, chạy bước outline của skill blog, dừng chờ duyệt outline.
 - **SEO Trang cạnh tranh từ khóa và internal link** (`seo-cannibalization-links`) - off · 3 bước [seo-extractor -> seo-auditor -> seo-planner] · Từ keyword mapping và GSC query theo trang: liệt kê trang cạnh tranh cùng từ khóa chính và internal link còn thiếu; planner đề xuất cách sửa.
 - **SEO Content brief** (`seo-content-brief`) - active · 2 bước [seo-planner -> seo-reviewer] · Tùy chọn: tạo brief cho một trang (blog hoặc collection) theo template trong thư mục run mới, rồi reviewer kiểm tra brief đủ mục.
@@ -140,6 +142,8 @@ language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of
 - **SEO Trợ lý dự án** (`seo-project-assistant`) - active · 1 bước [seo-lead] · Trợ lý của MỘT dự án: trả lời câu hỏi về dự án hoặc một run, sửa file theo góp ý thành bản mới. Không duyệt, không đăng, không chạy cả một công đoạn.
 - **SEO QA và sửa** (`seo-qa-fix`) - active · 3 bước [seo-auditor -> seo-writer -> seo-auditor] · Audit một bài theo thứ tự: kiểm nguồn trước, rồi E-E-A-T, compliance và quy tắc của skill; sửa P0 và P1 thành bản _v2; kiểm lại.
 - **SEO Audit kỹ thuật** (`seo-technical-audit`) - off · 3 bước [seo-extractor -> seo-auditor -> seo-planner] · Audit kỹ thuật từ HTML thô (view-source) của 3 đến 4 URL mỗi template trong data/tech/: rút dữ kiện, đánh giá theo tiêu chí, gộp theo template.
+### SEO-Ops
+- **SEO Trợ lý cấu hình** (`seo-config-assistant`) - active · 1 bước [seo-config] · Soạn bản nháp thay đổi một file cấu hình SEO-Ops (job type, workflow, data source, team) theo yêu cầu bằng lời. Người xem và bấm Apply ở trang Projects.
 
 ## Loops
 _(chưa có)_

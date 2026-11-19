@@ -4,12 +4,12 @@ task: report
 topic: 2026-10
 workflow: seo-monthly-report
 playbook: report
-stage: approve
-status: waiting
+stage: done
+status: approved
 owner: Harry
 created: 2026-11-19
 updated: 2026-11-19
-next_step: Approve the report - Harry
+next_step: Xong. Không còn công đoạn nào
 live_url:
 published_on:
 ---
@@ -35,6 +35,8 @@ published_on:
 ## Quyết định của người
 (Ngày, ai, quyết định gì: chọn title, duyệt outline, duyệt bản cuối.)
 - 2026-11-19 Harry: quay lại công đoạn Build the report. Rerun with the rebuilt test data (real export layouts)
+- 2026-11-19 Harry: duyệt report.md -> deliverables/
+- 2026-11-19 Harry: Sent to client. Sent on: keenan@tapita.io
 
 ## Đăng
 (Người đăng ghi: URL đã đăng, ngày đăng. Đồng thời thêm một dòng vào `data/changelog.csv` của khách.)

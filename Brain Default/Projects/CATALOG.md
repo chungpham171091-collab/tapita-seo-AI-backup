@@ -7,6 +7,7 @@
 |---|---|---|---|---|---|
 | `seo-blog-outline` | SEO Blog outline (giai đoạn 1b) | off | seo-writer | slug khách \| thư mục run blog \| title đã chọn (số thứ tự trong titles.md hoặc nguyên văn) \| ghi chú chỉnh của người (hoặc "không") | skill_blog (PROJECT.md) |
 | `seo-cannibalization-links` | SEO Trang cạnh tranh từ khóa và internal link | off | seo-extractor -> seo-auditor -> seo-planner | slug khách \| chủ đề run (ví dụ YYYY-MM) \| số nhóm tối đa cần xem (ví dụ 20) |  |
+| `seo-config-assistant` | SEO Trợ lý cấu hình | active | seo-config | config \| file đích \| file gốc để bắt đầu \| thư mục đề xuất \| tên người hỏi \| yêu cầu |  |
 | `seo-content-brief` | SEO Content brief | active | seo-planner -> seo-reviewer | slug khách \| URL đích hoặc chủ đề \| từ khóa chính \| loại (blog hoặc collection) |  |
 | `seo-content-draft` | SEO Viết nội dung (giai đoạn 2) | active | seo-writer | slug khách \| thư mục run \| ghi chú duyệt outline của người (hoặc "duyệt nguyên bản") | skill_blog (PROJECT.md), skill_collection (PROJECT.md) |
 | `seo-content-refresh-update` | SEO Refresh 2 - làm mới một trang | off | seo-writer | slug khách \| thư mục run refresh \| URL trang \| từ khóa chính \| hướng làm mới của người | skill_blog (PROJECT.md), skill_collection (PROJECT.md), skill_product (PROJECT.md) |
@@ -37,6 +38,7 @@
 
 - `seo-blog-outline`: Một bước, kết thúc để người duyệt outline. Bước kế tiếp là `seo-content-draft`.
 - `seo-cannibalization-links`: Ba bước. Cần keyword mapping đã duyệt trong `deliverables/` và các file tuần `query_page_*.csv` trong `data/gsc/`. Kiểm link chỉ trong các trang đã mở, không thay cho crawl toàn site.
+- `seo-config-assistant`: Một bước, do agent seo-config làm. Gọi từ nút "Change with AI" ở trang Projects (trình sửa job type và workflow). Không có gì được áp dụng cho tới khi người bấm Apply; trang Projects lưu bản cũ để quay lại.
 - `seo-content-brief`: Brief là tùy chọn, không bắt buộc trước khi viết. Nếu dùng, người duyệt brief rồi chạy `seo-content-writing` với thư mục run của brief.
 - `seo-content-draft`: Một bước. Bước kế tiếp luôn là `seo-qa-fix` trên draft.md.
 - `seo-content-refresh-update`: Một bước. Bước kế tiếp là `seo-qa-fix` trên file refresh, rồi người duyệt và đăng như mọi bài khác.

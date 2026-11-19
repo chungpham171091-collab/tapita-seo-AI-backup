@@ -1,8 +1,9 @@
 {
  "playbook": "report",
- "stage": "approve",
+ "stage": "done",
  "values": {
-  "topic": "2026-10"
+  "topic": "2026-10",
+  "sent_note": "keenan@tapita.io"
  },
  "created": "2026-11-19 21:02",
  "by": "Harry",
@@ -63,6 +64,26 @@
     }
    ],
    "started_by": "Harry"
+  },
+  {
+   "stage": "approve",
+   "title": "Approve the report",
+   "kind": "approve",
+   "at": "2026-11-19 22:58",
+   "by": "Harry",
+   "result": "approved",
+   "files": [
+    "2026-11-19_report_2026-10_report.md"
+   ]
+  },
+  {
+   "stage": "sent",
+   "title": "Sent to client",
+   "kind": "decision",
+   "at": "2026-11-19 22:58",
+   "by": "Harry",
+   "result": "done",
+   "note": "Sent on: keenan@tapita.io"
   }
  ],
  "feedback": []

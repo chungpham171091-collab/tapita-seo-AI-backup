@@ -1072,19 +1072,12 @@
     },
     {
      "id": "sent",
-     "title": "Sent to client",
-     "kind": "decision",
-     "help": "Send the report yourself, then confirm.",
-     "ask": [
-      {
-       "key": "sent_note",
-       "label": "Sent on",
-       "default": "",
-       "help": "Date and channel.",
-       "required": true
-      }
-     ],
-     "shows": []
+     "title": "Deliver to client",
+     "kind": "deliver",
+     "help": "Javis does not send anything. Make a link to the approved report (or download it), send it yourself, then record who got it.",
+     "requires": [
+      "share"
+     ]
     }
    ]
   },
@@ -1128,19 +1121,12 @@
     },
     {
      "id": "fixes",
-     "title": "Fixes sent",
-     "kind": "decision",
-     "help": "Send the fix list to the developer yourself, then confirm.",
-     "ask": [
-      {
-       "key": "fix_note",
-       "label": "Sent to and when",
-       "default": "",
-       "help": "",
-       "required": true
-      }
-     ],
-     "shows": []
+     "title": "Send to the developer",
+     "kind": "deliver",
+     "help": "Javis does not send anything. Make a link to the approved audit report (or download it), send it yourself, then record who got it.",
+     "requires": [
+      "share"
+     ]
     }
    ]
   },

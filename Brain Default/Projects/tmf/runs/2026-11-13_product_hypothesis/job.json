@@ -1,6 +1,6 @@
 {
  "playbook": "product",
- "stage": "meta",
+ "stage": "qa",
  "values": {
   "products": "tmf-hi-flo-2-supra-flex-hose-carpet-cleaning, hydro-force-pro-solution-hose-50-feet, hydro-force-pro-solution-hose-100-feet, super-truckmount-vacuum-hose-2-x-50-blue-with-cuffs",
   "topic": "hypothesis",
@@ -22,7 +22,65 @@
    "by": "GIẢ ĐỊNH",
    "result": "done",
    "note": "Dựng sẵn để test, không phải kết quả thật"
+  },
+  {
+   "stage": "meta",
+   "title": "Meta and content",
+   "kind": "ai",
+   "at": "2026-11-20 00:46",
+   "by": "AI",
+   "result": "done",
+   "workflow": "seo-meta-optimization",
+   "wf_run": "42a2458a2c2c480f8889646c47a56eb8",
+   "message": "Khách: tmf\nRun: Projects/tmf/runs/2026-11-13_product_hypothesis\nBảng: Projects/tmf/runs/2026-11-13_product_hypothesis/meta_table.csv (đã có meta_table.xlsx)\nTừ khóa chính không có volume: không\n\nBa điểm cần biết trước khi qua QA:\n- **Số từ khóa:** mỗi sản phẩm chỉ có 8 đến 10 từ khóa, ít hơn mức 22 đến 33 của skill. Tôi chỉ dùng từ khóa có trong export. Bước tự kiểm của skill đòi 2–3 từ 2 chữ, 10–15 từ 3 chữ và 10–15 từ 4 chữ, nên bảng sẽ không qua được phần này. Tôi không chạy `validate.py`. Độ dài meta thì đã đo bằng code: tiêu đề 51–57 ký tự, mô tả 128–132 ký tự, đều trong giới hạn.\n- **Sản phẩm vacuum hose:** sản phẩm này không có trong `products.csv`, và trang bị chặn 429. Content chỉ dựa vào tên sản phẩm, các thông số khác ghi [CẦN XÁC NHẬN]. Từ khóa chính tôi chọn là `truck mount vacuum hose`, còn `carpet cleaning vacuum hose` (mapping hiện hành) đứng đầu danh sách phụ. Cần người chốt.\n- **Bản tôi tự chọn:**\n  - Tên workflow ghi trong RUN.md là `seo-meta-optimization`, lấy từ `next_step` cũ.\n  - Mô tả ảnh trong alt text chưa có ảnh thật nên ghi [CẦN XÁC NHẬN].\n  - Tiêu đề và mô tả của sản phẩm Hydro-Force 100 ft không chứa nguyên cụm `hydro force hose`, vì thương hiệu viết có gạch nối (Hydro-Force).",
+   "checks": [
+    {
+     "label": "Output meta_table.csv",
+     "ok": true,
+     "detail": "meta_table.csv"
+    }
+   ],
+   "started_by": "Harry"
+  },
+  {
+   "stage": "qa",
+   "title": "QA and fix",
+   "kind": "ai",
+   "at": "2026-11-20 01:04",
+   "by": "AI",
+   "result": "needs attention",
+   "workflow": "seo-qa-fix",
+   "wf_run": "83f632f9fe73436da5a8d9113950a175",
+   "message": "Khách: tmf\nVerdict: không đạt\nLỗi còn lại: P1 lỗi 1 (số từ khóa 7–9 cụm mỗi sản phẩm, khung yêu cầu 22–33; chờ người chấp nhận hoặc export thêm) và P1 lỗi 3 (Hose 4 chỉ có spec lấy từ tên sản phẩm, cần mô tả listing thật). Còn P2: Hose 2 meta desc vẫn ghi \"carpet cleaning setups\", Hose 3 cụm chính \"hydro force hose\" chưa xuất hiện nguyên cụm, và người chưa chốt từ khóa chính Hose 4 và bộ 4 sản phẩm. Còn P3: FAQ Hose 2–3 lặp \"Not listed. Not listed.\", \"(SV 0)\" còn trong ô từ khóa.\nBản cuối: Projects/tmf/runs/2026-11-13_product_hypothesis/meta_table_v2.csv",
+   "checks": [
+    {
+     "label": "Output review*.md",
+     "ok": true,
+     "detail": "review.md"
+    },
+    {
+     "label": "QA verdict",
+     "ok": false,
+     "detail": "KHÔNG ĐẠT in review.md"
+    }
+   ],
+   "started_by": "Harry"
   }
  ],
- "feedback": []
+ "feedback": [],
+ "attention": {
+  "reason": "The workflow finished but 1 check(s) failed.",
+  "checks": [
+   {
+    "label": "Output review*.md",
+    "ok": true,
+    "detail": "review.md"
+   },
+   {
+    "label": "QA verdict",
+    "ok": false,
+    "detail": "KHÔNG ĐẠT in review.md"
+   }
+  ]
+ }
 }

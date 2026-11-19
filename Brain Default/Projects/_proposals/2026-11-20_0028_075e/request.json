@@ -1,0 +1,11 @@
+{
+ "id": "2026-11-20_0028_075e",
+ "target": "workflows/seo-monthly-report--tmf.md",
+ "start": "workflows/seo-monthly-report.md",
+ "scope": "client",
+ "client": "tmf",
+ "by": "Harry",
+ "at": "2026-11-20 00:28",
+ "request": "Thêm vào bước của planner: báo cáo phải có một mục ngắn 'Rủi ro tháng tới' (tối đa 3 gạch đầu dòng), chỉ dựa trên số liệu trong file tóm tắt.",
+ "status": "drafting"
+}

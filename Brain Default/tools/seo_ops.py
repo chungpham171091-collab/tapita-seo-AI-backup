@@ -393,14 +393,28 @@ def cmd_check():
             playbooks = []
             errors.append("Projects/_templates/playbooks.json: not valid JSON (%s)" % e)
         by_slug = {w["fields"].get("slug", w["file"].stem): w for w in workflows}
+        client_ids = {}                       # a client's own job types (Projects/<slug>/playbooks.json)
+        for cf in sorted(PROJECTS.glob("*/playbooks.json")):
+            if cf.parent.name.startswith("_"):
+                continue
+            try:
+                mine = json.loads(read(cf)).get("playbooks", [])
+            except ValueError as e:
+                errors.append("%s: not valid JSON (%s)" % (cf.relative_to(ROOT).as_posix(), e))
+                continue
+            for pb in mine:
+                pb["_where"] = cf.relative_to(ROOT).as_posix()
+                client_ids.setdefault(cf.parent.name, {})[pb.get("id", "")] = {st.get("id") for st in pb.get("stages", [])}
+            playbooks = playbooks + mine
         for pb in playbooks:
-            stage_ids[pb.get("id", "")] = {st.get("id") for st in pb.get("stages", [])}
+            if not pb.get("_where"):
+                stage_ids[pb.get("id", "")] = {st.get("id") for st in pb.get("stages", [])}
             for st in pb.get("stages", []):
                 refs = [(st.get("workflow"), st.get("input"))] if st.get("kind") == "ai" else []
                 if st.get("revise"):
                     refs.append((st["revise"].get("workflow"), st["revise"].get("input")))
                 for slug, inp in refs:
-                    where = "playbooks.json: %s > %s" % (pb.get("id"), st.get("id"))
+                    where = "%s: %s > %s" % (pb.get("_where", "playbooks.json"), pb.get("id"), st.get("id"))
                     wf = by_slug.get(slug)
                     if not wf:
                         errors.append("%s: workflow '%s' is not in workflows/" % (where, slug))
@@ -411,9 +425,10 @@ def cmd_check():
                                       % (where, len(inp or []), slug, parts - 1))
         for slug, run, fields in load_runs():
             pbid = (fields or {}).get("playbook", "")
-            if pbid and pbid not in stage_ids:
+            ids = dict(stage_ids, **client_ids.get(slug, {}))
+            if pbid and pbid not in ids:
                 errors.append("%s/RUN.md: playbook '%s' is not in playbooks.json" % (run.relative_to(ROOT).as_posix(), pbid))
-            elif pbid and fields.get("stage") and fields["stage"] not in stage_ids[pbid] and fields["stage"] != "done":
+            elif pbid and fields.get("stage") and fields["stage"] not in ids[pbid] and fields["stage"] != "done":
                 errors.append("%s/RUN.md: stage '%s' is not a stage of playbook '%s'" % (run.relative_to(ROOT).as_posix(), fields["stage"], pbid))
 
     # 7. Generated files in step with their sources

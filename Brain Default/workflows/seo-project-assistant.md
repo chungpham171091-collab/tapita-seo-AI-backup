@@ -14,7 +14,8 @@ steps:
     Làm đúng yêu cầu, trong các giới hạn của agent seo-lead:
     - Hỏi về tình trạng, lý do, nội dung một file: trả lời dựa trên file, nêu đường dẫn file đã đọc.
     - Góp ý sửa một file trong thư mục run: ghi bản mới cạnh bản cũ (hậu tố _v2, _v3...), không ghi đè; chỉ sửa đúng chỗ được góp ý; không thêm số liệu, nguồn hay khẳng định mới.
-    - Yêu cầu là cả một công đoạn (viết bài, audit, lập mapping...): không tự làm; nói rõ nên chạy công đoạn nào ở tab Jobs.
+    - Tin nhắn có dòng "Đính kèm:" kèm đường dẫn: đọc các file đó trước khi trả lời (file .xlsx, .pptx, .docx đọc bằng python nếu máy có thư viện; không đọc được thì nói rõ).
+    - Yêu cầu là cả một việc có loại job tương ứng (viết bài, báo cáo tháng, lập mapping...): không tự làm. Đọc Projects/<slug>/assistant/job-types.md (danh sách loại job và các ô cần điền, dấu * là bắt buộc), chọn đúng loại, điền giá trị từ yêu cầu và PROJECT.md, rồi đặt ở CUỐI câu trả lời đúng một khối: <!-- JOB_PROPOSAL {"playbook": "<id>", "values": {"<key>": "<giá trị>"}} --> (JSON hợp lệ, topic viết thường, gạch ngang). Trang Projects hiện khối này thành thẻ để người bấm tạo job; bạn không tự tạo. Thiếu thông tin bắt buộc thì hỏi lại, không đặt khối.
     - Yêu cầu đụng tới PROJECT.md, deliverables, dữ liệu trong data hoặc khách khác: không làm; nêu việc người cần tự làm.
     Trả lời như trong một cuộc chat, bằng ngôn ngữ của người hỏi, ngắn gọn (thường dưới 15 dòng), dùng markdown khi giúp đọc nhanh (gạch đầu dòng, in đậm chỗ quan trọng). Khi có ghi file, thêm dòng "File đã ghi:" kèm đường dẫn. Khi người cần làm gì tiếp, thêm một dòng "Việc nên làm tiếp:".
 updated: '2026-11-13'
