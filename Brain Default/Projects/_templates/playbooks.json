@@ -1055,7 +1055,7 @@
      "checks": [],
      "pass_run": true,
      "needs": [
-      "gsc_pages",
+      "gsc_month",
       "ga4_landing",
       "rank"
      ],

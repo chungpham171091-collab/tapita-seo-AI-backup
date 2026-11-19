@@ -1,0 +1,69 @@
+{
+ "playbook": "report",
+ "stage": "approve",
+ "values": {
+  "topic": "2026-10"
+ },
+ "created": "2026-11-19 21:02",
+ "by": "Harry",
+ "history": [
+  {
+   "stage": "report",
+   "title": "Build the report",
+   "kind": "ai",
+   "at": "2026-11-19 21:17",
+   "by": "AI",
+   "result": "done",
+   "workflow": "seo-monthly-report",
+   "wf_run": "850a90c9796d49f38bfe93968e1ffbb2",
+   "message": "Khách: tmf\nKết quả: đã thêm (dòng 2026-10 vào portfolio_kpi.csv; số lấy từ bản tóm tắt test data, nên xoá dòng này khi có dữ liệu thật)",
+   "checks": [
+    {
+     "label": "Output report.md",
+     "ok": true,
+     "detail": "report.md"
+    },
+    {
+     "label": "Output review_report.md",
+     "ok": true,
+     "detail": "review_report.md"
+    }
+   ],
+   "started_by": "Harry"
+  },
+  {
+   "stage": "report",
+   "title": "Build the report",
+   "kind": "ai",
+   "at": "2026-11-19 21:32",
+   "by": "Harry",
+   "result": "reopened",
+   "note": "Rerun with the rebuilt test data (real export layouts)"
+  },
+  {
+   "stage": "report",
+   "title": "Build the report",
+   "kind": "ai",
+   "at": "2026-11-19 21:37",
+   "by": "AI",
+   "result": "done",
+   "workflow": "seo-monthly-report",
+   "wf_run": "fbf14c27242a4b248ad85a722a97b719",
+   "message": "Khách: tmf\nKết quả: Bỏ qua: dữ liệu thử (PROJECT.md có test_data: yes, nên không ghi vào portfolio_kpi.csv. RUN.md đã đặt status=waiting và build lại board.)",
+   "checks": [
+    {
+     "label": "Output report.md",
+     "ok": true,
+     "detail": "report.md"
+    },
+    {
+     "label": "Output review_report.md",
+     "ok": true,
+     "detail": "review_report.md"
+    }
+   ],
+   "started_by": "Harry"
+  }
+ ],
+ "feedback": []
+}

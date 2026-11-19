@@ -1,0 +1,28 @@
+# ----------------------------------------
+# Landing page
+# Account: TMF Store
+# Property: shop.truckmountforums.com - GA4
+# ----------------------------------------
+#
+# Session default channel group: Organic Search
+# Start date: 20251001
+# End date: 20251031
+Landing page,Sessions,Active users,New users,Average engagement time per session,Key events,Total revenue
+/,308,243,162,50.9006,4,1054.89
+/collections/wands-wand-parts,150,129,85,74.4930,2,469.72
+/collections/carpet-cleaning-chemicals,124,103,65,78.4956,3,337.72
+/collections/high-pressure-solution-line-hoses,120,108,77,53.6468,2,746.13
+/blogs/news/orbot-sprayborg-vs-orbot-vibe,104,83,54,78.2566,1,114.90
+/products/carpet-cleaning-inline-sprayer,81,72,50,32.1606,1,115.66
+/collections/hoses-accessories,52,46,25,35.6204,1,363.33
+/collections/machines,49,42,23,34.7111,1,90.28
+/products/11001-hi-flow-ss-jets-for-carpet-cleaning-wands,41,35,24,80.2140,1,175.93
+/collections/sprayers,35,29,17,90.2575,0,0
+/products/super-truckmount-vacuum-hose-2-x-50-blue-with-cuffs,32,27,14,56.5527,0,0
+/collections/hose-cuffs,30,24,14,94.0615,0,0
+/products/tmf-revolution-wand-14-glide,30,24,13,90.8196,0,0
+/products/hydro-force-pro-solution-hose-50-feet,18,16,9,41.6362,0,0
+/collections/glides-slides-lips,17,14,8,32.0153,0,0
+(not set),17,11,11,5.5360,0,0
+/products/hydro-force-pro-solution-hose-100-feet,13,11,7,72.6339,0,0
+/products/flash-cuff-2-in-female,5,4,3,54.9199,0,0

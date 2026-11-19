@@ -5,6 +5,8 @@
 > Lệnh `python tools/seo_ops.py hypotheses tmf` liệt kê các file giả định còn trên đĩa. Lệnh check cảnh báo khi còn.
 > Trong lúc test_data: yes, mọi file kết quả của TMF ghi dòng đầu "DỮ LIỆU GIẢ ĐỊNH - KHÔNG GIAO KHÁCH" và không gửi khách.
 
+> Cập nhật 2026-11-19: file GSC, GA4, rank, GEO và Shopify được làm lại theo đúng bố cục file export thật của từng công cụ; thêm GSC cả tháng và tháng 10/2025 để báo cáo tháng so được tháng trước và cùng kỳ. Ahrefs (keywords, backlinks, link intersect) giữ nguyên, chờ một file thật để khớp cột.
+
 ## Hồ sơ khách: giá trị giả định trong PROJECT.md
 
 | Mục | Giá trị giả định | Thay bằng |
@@ -27,7 +29,7 @@ Các mục đánh dấu [CẦN XÁC NHẬN] trong PROJECT.md (số năm hoạt �
 
 | File | Giả định gì | Thay bằng |
 |---|---|---|
-| `data/inputs/shopify_products_2026-11-10.csv` | Shopify product export, 12 sản phẩm thật (handle thật). Giá, SKU, mô tả, tồn kho, SEO title/description là giả định trừ Inline Sprayer PRO (SKU 70109, 284.99) và V-JET (17.99) lấy từ PROJECT.md. | Shopify Admin > Products > Export (CSV), lưu đúng tên shopify_products_YYYY-MM-DD.csv |
+| `data/inputs/shopify_products_2026-11-10.csv` | Shopify product export, đủ 39 cột như file Shopify xuất ra. Handle thật; giá, SKU, mô tả, tồn kho, SEO title/description là giả định trừ Inline Sprayer PRO (SKU 70109, 284.99) và V-JET (17.99) lấy từ PROJECT.md. | Shopify Admin > Products > Export > All products > CSV for Excel, Numbers or other spreadsheet programs |
 | `data/inputs/url_list.csv` | Meta và nội dung hiện tại của 8 collection và 12 product. URL thật; title collection lấy theo PROJECT.md; meta description, nội dung là giả định. | Shopify export hoặc tool crawl meta (title, meta description, nội dung hiện tại) |
 | `data/inputs/top-sellers_high-pressure-solution-line-hoses.csv` | Top sellers của collection high-pressure-solution-line-hoses. Thứ tự bán chạy là giả định. | Shopify Analytics > sản phẩm bán chạy theo collection |
 
@@ -39,60 +41,104 @@ Các mục đánh dấu [CẦN XÁC NHẬN] trong PROJECT.md (số năm hoạt �
 
 ## GSC hằng tuần (data/gsc)
 
+13 tuần, từ tuần kết thúc 2026-08-23 đến 2026-11-15. Bố cục cột giống file Search Console xuất ra; query x page theo bố cục của Search Analytics for Sheets.
+
 | File | Giả định gì | Thay bằng |
 |---|---|---|
-| `data/gsc/query_page_2026-09-20.csv` | GSC tuần kết thúc 2026-09-20: page x query. Số liệu giả định; có 2 trang giảm click (collection solution hose, blog orbot) và 2 cặp trang cạnh tranh cùng query. | Search Console > Performance, 7 ngày, xuất theo page và query (hoặc qua API/Looker Studio) |
-| `data/gsc/pages_2026-09-20.csv` | GSC tuần 2026-09-20 theo trang. Giả định. | Search Console > Performance > Pages, 7 ngày, Export |
-| `data/gsc/queries_2026-09-20.csv` | GSC tuần 2026-09-20 theo query. Giả định. | Search Console > Performance > Queries, 7 ngày, Export |
-| `data/gsc/query_page_2026-09-27.csv` | GSC tuần kết thúc 2026-09-27: page x query. Số liệu giả định; có 2 trang giảm click (collection solution hose, blog orbot) và 2 cặp trang cạnh tranh cùng query. | Search Console > Performance, 7 ngày, xuất theo page và query (hoặc qua API/Looker Studio) |
-| `data/gsc/pages_2026-09-27.csv` | GSC tuần 2026-09-27 theo trang. Giả định. | Search Console > Performance > Pages, 7 ngày, Export |
-| `data/gsc/queries_2026-09-27.csv` | GSC tuần 2026-09-27 theo query. Giả định. | Search Console > Performance > Queries, 7 ngày, Export |
-| `data/gsc/query_page_2026-10-04.csv` | GSC tuần kết thúc 2026-10-04: page x query. Số liệu giả định; có 2 trang giảm click (collection solution hose, blog orbot) và 2 cặp trang cạnh tranh cùng query. | Search Console > Performance, 7 ngày, xuất theo page và query (hoặc qua API/Looker Studio) |
-| `data/gsc/pages_2026-10-04.csv` | GSC tuần 2026-10-04 theo trang. Giả định. | Search Console > Performance > Pages, 7 ngày, Export |
-| `data/gsc/queries_2026-10-04.csv` | GSC tuần 2026-10-04 theo query. Giả định. | Search Console > Performance > Queries, 7 ngày, Export |
-| `data/gsc/query_page_2026-10-11.csv` | GSC tuần kết thúc 2026-10-11: page x query. Số liệu giả định; có 2 trang giảm click (collection solution hose, blog orbot) và 2 cặp trang cạnh tranh cùng query. | Search Console > Performance, 7 ngày, xuất theo page và query (hoặc qua API/Looker Studio) |
-| `data/gsc/pages_2026-10-11.csv` | GSC tuần 2026-10-11 theo trang. Giả định. | Search Console > Performance > Pages, 7 ngày, Export |
-| `data/gsc/queries_2026-10-11.csv` | GSC tuần 2026-10-11 theo query. Giả định. | Search Console > Performance > Queries, 7 ngày, Export |
-| `data/gsc/query_page_2026-10-18.csv` | GSC tuần kết thúc 2026-10-18: page x query. Số liệu giả định; có 2 trang giảm click (collection solution hose, blog orbot) và 2 cặp trang cạnh tranh cùng query. | Search Console > Performance, 7 ngày, xuất theo page và query (hoặc qua API/Looker Studio) |
-| `data/gsc/pages_2026-10-18.csv` | GSC tuần 2026-10-18 theo trang. Giả định. | Search Console > Performance > Pages, 7 ngày, Export |
-| `data/gsc/queries_2026-10-18.csv` | GSC tuần 2026-10-18 theo query. Giả định. | Search Console > Performance > Queries, 7 ngày, Export |
-| `data/gsc/query_page_2026-10-25.csv` | GSC tuần kết thúc 2026-10-25: page x query. Số liệu giả định; có 2 trang giảm click (collection solution hose, blog orbot) và 2 cặp trang cạnh tranh cùng query. | Search Console > Performance, 7 ngày, xuất theo page và query (hoặc qua API/Looker Studio) |
-| `data/gsc/pages_2026-10-25.csv` | GSC tuần 2026-10-25 theo trang. Giả định. | Search Console > Performance > Pages, 7 ngày, Export |
-| `data/gsc/queries_2026-10-25.csv` | GSC tuần 2026-10-25 theo query. Giả định. | Search Console > Performance > Queries, 7 ngày, Export |
-| `data/gsc/query_page_2026-11-01.csv` | GSC tuần kết thúc 2026-11-01: page x query. Số liệu giả định; có 2 trang giảm click (collection solution hose, blog orbot) và 2 cặp trang cạnh tranh cùng query. | Search Console > Performance, 7 ngày, xuất theo page và query (hoặc qua API/Looker Studio) |
-| `data/gsc/pages_2026-11-01.csv` | GSC tuần 2026-11-01 theo trang. Giả định. | Search Console > Performance > Pages, 7 ngày, Export |
-| `data/gsc/queries_2026-11-01.csv` | GSC tuần 2026-11-01 theo query. Giả định. | Search Console > Performance > Queries, 7 ngày, Export |
-| `data/gsc/query_page_2026-11-08.csv` | GSC tuần kết thúc 2026-11-08: page x query. Số liệu giả định; có 2 trang giảm click (collection solution hose, blog orbot) và 2 cặp trang cạnh tranh cùng query. | Search Console > Performance, 7 ngày, xuất theo page và query (hoặc qua API/Looker Studio) |
-| `data/gsc/pages_2026-11-08.csv` | GSC tuần 2026-11-08 theo trang. Giả định. | Search Console > Performance > Pages, 7 ngày, Export |
-| `data/gsc/queries_2026-11-08.csv` | GSC tuần 2026-11-08 theo query. Giả định. | Search Console > Performance > Queries, 7 ngày, Export |
+| `data/gsc/queries_2026-08-23.csv` | Queries.csv tuần 2026-08-17 đến 2026-08-23, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-08-23.csv` | Pages.csv tuần 2026-08-17 đến 2026-08-23. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-08-23.csv` | Query x page tuần kết thúc 2026-08-23, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-08-30.csv` | Queries.csv tuần 2026-08-24 đến 2026-08-30, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-08-30.csv` | Pages.csv tuần 2026-08-24 đến 2026-08-30. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-08-30.csv` | Query x page tuần kết thúc 2026-08-30, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-09-06.csv` | Queries.csv tuần 2026-08-31 đến 2026-09-06, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-09-06.csv` | Pages.csv tuần 2026-08-31 đến 2026-09-06. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-09-06.csv` | Query x page tuần kết thúc 2026-09-06, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-09-13.csv` | Queries.csv tuần 2026-09-07 đến 2026-09-13, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-09-13.csv` | Pages.csv tuần 2026-09-07 đến 2026-09-13. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-09-13.csv` | Query x page tuần kết thúc 2026-09-13, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-09-20.csv` | Queries.csv tuần 2026-09-14 đến 2026-09-20, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-09-20.csv` | Pages.csv tuần 2026-09-14 đến 2026-09-20. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-09-20.csv` | Query x page tuần kết thúc 2026-09-20, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-09-27.csv` | Queries.csv tuần 2026-09-21 đến 2026-09-27, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-09-27.csv` | Pages.csv tuần 2026-09-21 đến 2026-09-27. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-09-27.csv` | Query x page tuần kết thúc 2026-09-27, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-10-04.csv` | Queries.csv tuần 2026-09-28 đến 2026-10-04, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-10-04.csv` | Pages.csv tuần 2026-09-28 đến 2026-10-04. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-10-04.csv` | Query x page tuần kết thúc 2026-10-04, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-10-11.csv` | Queries.csv tuần 2026-10-05 đến 2026-10-11, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-10-11.csv` | Pages.csv tuần 2026-10-05 đến 2026-10-11. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-10-11.csv` | Query x page tuần kết thúc 2026-10-11, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-10-18.csv` | Queries.csv tuần 2026-10-12 đến 2026-10-18, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-10-18.csv` | Pages.csv tuần 2026-10-12 đến 2026-10-18. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-10-18.csv` | Query x page tuần kết thúc 2026-10-18, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-10-25.csv` | Queries.csv tuần 2026-10-19 đến 2026-10-25, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-10-25.csv` | Pages.csv tuần 2026-10-19 đến 2026-10-25. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-10-25.csv` | Query x page tuần kết thúc 2026-10-25, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-11-01.csv` | Queries.csv tuần 2026-10-26 đến 2026-11-01, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-11-01.csv` | Pages.csv tuần 2026-10-26 đến 2026-11-01. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-11-01.csv` | Query x page tuần kết thúc 2026-11-01, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-11-08.csv` | Queries.csv tuần 2026-11-02 đến 2026-11-08, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-11-08.csv` | Pages.csv tuần 2026-11-02 đến 2026-11-08. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-11-08.csv` | Query x page tuần kết thúc 2026-11-08, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+| `data/gsc/queries_2026-11-15.csv` | Queries.csv tuần 2026-11-09 đến 2026-11-15, đúng cột của Search Console (Top queries, Clicks, Impressions, CTR dạng %, Position). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/pages_2026-11-15.csv` | Pages.csv tuần 2026-11-09 đến 2026-11-15. Tổng theo trang lớn hơn tổng theo query như export thật (Google ẩn một phần query). Số giả định. | Search Console > Performance > Search results, 7 ngày kết thúc Chủ nhật > Export > Download CSV (file zip: Queries.csv, Pages.csv). Tải zip lên ô GSC ở tab Data |
+| `data/gsc/query_page_2026-11-15.csv` | Query x page tuần kết thúc 2026-11-15, cột như Search Analytics for Sheets hoặc API (CTR dạng số thập phân). Có 2 trang giảm click từ 19/10 và 2 cặp trang cạnh tranh cùng query. Số giả định. | Search Analytics for Sheets hoặc Search Console API, dimensions query + page, cùng 7 ngày |
+
+## GSC cả tháng (data/gsc, month_*)
+
+Bốn tháng: 2026-08, 2026-09, 2026-10 và 2025-10 (để so cùng kỳ năm trước). Mỗi tháng ba file như trong zip Search Console: Pages, Queries, Dates.
+
+| File | Giả định gì | Thay bằng |
+|---|---|---|
+| `data/gsc/month_pages_2025-10.csv` | Pages.csv cả tháng 2025-10. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
+| `data/gsc/month_queries_2025-10.csv` | Queries.csv cả tháng 2025-10. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
+| `data/gsc/month_dates_2025-10.csv` | Dates.csv cả tháng 2025-10: tổng theo ngày của cả site, nguồn đúng cho tổng clicks và impressions của tháng. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
+| `data/gsc/month_pages_2026-08.csv` | Pages.csv cả tháng 2026-08. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
+| `data/gsc/month_queries_2026-08.csv` | Queries.csv cả tháng 2026-08. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
+| `data/gsc/month_dates_2026-08.csv` | Dates.csv cả tháng 2026-08: tổng theo ngày của cả site, nguồn đúng cho tổng clicks và impressions của tháng. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
+| `data/gsc/month_pages_2026-09.csv` | Pages.csv cả tháng 2026-09. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
+| `data/gsc/month_queries_2026-09.csv` | Queries.csv cả tháng 2026-09. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
+| `data/gsc/month_dates_2026-09.csv` | Dates.csv cả tháng 2026-09: tổng theo ngày của cả site, nguồn đúng cho tổng clicks và impressions của tháng. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
+| `data/gsc/month_pages_2026-10.csv` | Pages.csv cả tháng 2026-10. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
+| `data/gsc/month_queries_2026-10.csv` | Queries.csv cả tháng 2026-10. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
+| `data/gsc/month_dates_2026-10.csv` | Dates.csv cả tháng 2026-10: tổng theo ngày của cả site, nguồn đúng cho tổng clicks và impressions của tháng. Số giả định. | Search Console > Performance, Custom: ngày 1 đến cuối tháng > Export > Download CSV; tải zip lên ô Search Console - whole month |
 
 ## Rank hằng tuần (data/rank)
 
 | File | Giả định gì | Thay bằng |
 |---|---|---|
-| `data/rank/rank_2026-09-20.csv` | Thứ hạng tuần 2026-09-20 của 14 từ khóa chính đã mapping. Giả định. | Tool rank tracking (Ahrefs Rank Tracker hoặc tương đương), xuất hằng tuần |
-| `data/rank/rank_2026-09-27.csv` | Thứ hạng tuần 2026-09-27 của 14 từ khóa chính đã mapping. Giả định. | Tool rank tracking (Ahrefs Rank Tracker hoặc tương đương), xuất hằng tuần |
-| `data/rank/rank_2026-10-04.csv` | Thứ hạng tuần 2026-10-04 của 14 từ khóa chính đã mapping. Giả định. | Tool rank tracking (Ahrefs Rank Tracker hoặc tương đương), xuất hằng tuần |
-| `data/rank/rank_2026-10-11.csv` | Thứ hạng tuần 2026-10-11 của 14 từ khóa chính đã mapping. Giả định. | Tool rank tracking (Ahrefs Rank Tracker hoặc tương đương), xuất hằng tuần |
-| `data/rank/rank_2026-10-18.csv` | Thứ hạng tuần 2026-10-18 của 14 từ khóa chính đã mapping. Giả định. | Tool rank tracking (Ahrefs Rank Tracker hoặc tương đương), xuất hằng tuần |
-| `data/rank/rank_2026-10-25.csv` | Thứ hạng tuần 2026-10-25 của 14 từ khóa chính đã mapping. Giả định. | Tool rank tracking (Ahrefs Rank Tracker hoặc tương đương), xuất hằng tuần |
-| `data/rank/rank_2026-11-01.csv` | Thứ hạng tuần 2026-11-01 của 14 từ khóa chính đã mapping. Giả định. | Tool rank tracking (Ahrefs Rank Tracker hoặc tương đương), xuất hằng tuần |
-| `data/rank/rank_2026-11-08.csv` | Thứ hạng tuần 2026-11-08 của 14 từ khóa chính đã mapping. Giả định. | Tool rank tracking (Ahrefs Rank Tracker hoặc tương đương), xuất hằng tuần |
+| `data/rank/rank_2026-08-23.csv` | Thứ hạng tuần 2026-08-23 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-08-30.csv` | Thứ hạng tuần 2026-08-30 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-09-06.csv` | Thứ hạng tuần 2026-09-06 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-09-13.csv` | Thứ hạng tuần 2026-09-13 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-09-20.csv` | Thứ hạng tuần 2026-09-20 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-09-27.csv` | Thứ hạng tuần 2026-09-27 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-10-04.csv` | Thứ hạng tuần 2026-10-04 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-10-11.csv` | Thứ hạng tuần 2026-10-11 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-10-18.csv` | Thứ hạng tuần 2026-10-18 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-10-25.csv` | Thứ hạng tuần 2026-10-25 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-11-01.csv` | Thứ hạng tuần 2026-11-01 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-11-08.csv` | Thứ hạng tuần 2026-11-08 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
+| `data/rank/rank_2026-11-15.csv` | Thứ hạng tuần 2026-11-15 của 14 từ khóa chính đã mapping, lấy từ vị trí trung bình của đúng trang đó trong GSC giả định. Định dạng theo data_sources.csv (keyword, url, position, search_volume, date). | Export hằng tuần của tool rank tracking team dùng (cần xác nhận tool để khớp đúng cột) |
 
 ## GA4 hằng tháng (data/ga4)
 
 | File | Giả định gì | Thay bằng |
 |---|---|---|
-| `data/ga4/landing_2026-09.csv` | GA4 organic theo landing page tháng 2026-09. Giả định. | GA4 > Reports > Landing page, lọc Session default channel group = Organic Search, Export CSV |
-| `data/ga4/landing_2026-10.csv` | GA4 organic theo landing page tháng 2026-10. Giả định. | GA4 > Reports > Landing page, lọc Session default channel group = Organic Search, Export CSV |
+| `data/ga4/landing_2025-10.csv` | GA4 Landing page, organic, tháng 2025-10, theo bố cục file CSV GA4 tải về (khối dòng # ở đầu, rồi bảng). Sessions khớp tương đối với clicks GSC cùng tháng. Số giả định. | GA4 > Reports > Engagement > Landing page, lọc Session default channel group = Organic Search, cả tháng > Share > Download File > CSV |
+| `data/ga4/landing_2026-08.csv` | GA4 Landing page, organic, tháng 2026-08, theo bố cục file CSV GA4 tải về (khối dòng # ở đầu, rồi bảng). Sessions khớp tương đối với clicks GSC cùng tháng. Số giả định. | GA4 > Reports > Engagement > Landing page, lọc Session default channel group = Organic Search, cả tháng > Share > Download File > CSV |
+| `data/ga4/landing_2026-09.csv` | GA4 Landing page, organic, tháng 2026-09, theo bố cục file CSV GA4 tải về (khối dòng # ở đầu, rồi bảng). Sessions khớp tương đối với clicks GSC cùng tháng. Số giả định. | GA4 > Reports > Engagement > Landing page, lọc Session default channel group = Organic Search, cả tháng > Share > Download File > CSV |
+| `data/ga4/landing_2026-10.csv` | GA4 Landing page, organic, tháng 2026-10, theo bố cục file CSV GA4 tải về (khối dòng # ở đầu, rồi bảng). Sessions khớp tương đối với clicks GSC cùng tháng. Số giả định. | GA4 > Reports > Engagement > Landing page, lọc Session default channel group = Organic Search, cả tháng > Share > Download File > CSV |
 
 ## Tóm tắt (data/_summary)
 
 | File | Giả định gì | Thay bằng |
 |---|---|---|
-| `data/_summary/2026-11-08_gsc.md` | Tóm tắt GSC kỳ 2026-11-08, tính đúng từ file GSC giả định. | seo-data-summary với nguồn gsc |
-| `data/_summary/latest_gsc.md` | Bản latest GSC (giống file trên). | seo-data-summary ghi đè |
-| `data/_summary/latest_rank.md` | Bản latest rank giữ chỗ. | seo-data-summary với nguồn rank |
+| `data/_summary/2026-11-15_gsc.md` | Tóm tắt GSC kỳ 2026-11-15, tính đúng từ file GSC giả định. | seo-data-summary với nguồn gsc |
+| `data/_summary/2026-11-08_gsc.md` | Tóm tắt GSC kỳ 2026-11-08, tính lại từ file GSC giả định mới. | seo-data-summary với nguồn gsc |
+| `data/_summary/latest_gsc.md` | Bản latest GSC (giống bản 2026-11-15). | seo-data-summary ghi đè |
+| `data/_summary/latest_rank.md` | Tóm tắt rank tuần 2026-11-15 so với 4 tuần trước, tính từ file rank giả định. | seo-data-summary với nguồn rank |
 
 ## HTML mẫu kỹ thuật (data/tech)
 
@@ -119,7 +165,8 @@ Các mục đánh dấu [CẦN XÁC NHẬN] trong PROJECT.md (số năm hoạt �
 | File | Giả định gì | Thay bằng |
 |---|---|---|
 | `data/geo/prompts.csv` | 8 prompt GEO cần theo dõi. Giả định. | Team chọn prompt theo cluster và hỏi khách |
-| `data/geo/citations_2026-10.csv` | Kết quả kiểm 4 engine AI cho 8 prompt, tháng 10/2026. Giả định. | Người hoặc tool kiểm ChatGPT, Perplexity, Gemini, AI Overviews theo prompts.csv |
+| `data/geo/citations_2026-09.csv` | Kiểm 4 engine AI cho 8 prompt, tháng 2026-09, có cột source_urls. Nguồn là trang có thật nhưng việc chúng được trích là giả định. | Người hoặc tool kiểm ChatGPT, Perplexity, Gemini, AI Overviews theo prompts.csv |
+| `data/geo/citations_2026-10.csv` | Kiểm 4 engine AI cho 8 prompt, tháng 2026-10, có cột source_urls. Nguồn là trang có thật nhưng việc chúng được trích là giả định. | Người hoặc tool kiểm ChatGPT, Perplexity, Gemini, AI Overviews theo prompts.csv |
 
 ## Nhật ký dữ liệu
 

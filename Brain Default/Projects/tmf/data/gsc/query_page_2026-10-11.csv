@@ -1,29 +1,29 @@
-page,query,clicks,impressions,ctr,position
-https://shop.truckmountforums.com/collections/high-pressure-solution-line-hoses,truck mount solution hose,19,939,0.0202,7.8
-https://shop.truckmountforums.com/products/hydro-force-pro-solution-hose-50-feet,truck mount solution hose,6,477,0.0126,11.6
-https://shop.truckmountforums.com/collections/high-pressure-solution-line-hoses,carpet cleaning solution hose,17,647,0.0263,7.0
-https://shop.truckmountforums.com/products/hydro-force-pro-solution-hose-100-feet,carpet cleaning solution hose,3,231,0.0130,14.4
-https://shop.truckmountforums.com/products/hydro-force-pro-solution-hose-100-feet,solution hose 100 ft,5,98,0.0510,4.2
-https://shop.truckmountforums.com/collections/hoses-accessories,carpet cleaning hose,16,1477,0.0108,9.2
-https://shop.truckmountforums.com/products/super-truckmount-vacuum-hose-2-x-50-blue-with-cuffs,carpet cleaning vacuum hose,10,637,0.0157,10.5
-https://shop.truckmountforums.com/collections/hose-cuffs,vacuum hose cuff,8,274,0.0292,5.0
-https://shop.truckmountforums.com/products/flash-cuff-2-in-female,flash cuff,4,84,0.0476,4.1
-https://shop.truckmountforums.com/products/hose-cuff-2-in-standard,2 inch hose cuff,3,112,0.0268,6.5
-https://shop.truckmountforums.com/collections/wands-wand-parts,carpet cleaning wand,31,2822,0.0110,12.0
-https://shop.truckmountforums.com/products/tmf-revolution-wand-14-glide,carpet cleaning wand,7,1373,0.0051,15.4
-https://shop.truckmountforums.com/collections/wands-wand-parts,truck mount wand,10,531,0.0188,8.6
-https://shop.truckmountforums.com/collections/glides-slides-lips,carpet wand glide,6,326,0.0184,7.1
-https://shop.truckmountforums.com/products/11001-hi-flow-ss-jets-for-carpet-cleaning-wands,carpet cleaning jets,8,339,0.0236,5.6
-https://shop.truckmountforums.com/products/11001-hi-flow-ss-jets-for-carpet-cleaning-wands,v jet carpet cleaning,6,103,0.0583,3.0
-https://shop.truckmountforums.com/products/universal-carpet-cleaning-wand-bypass-valve,wand bypass valve,2,37,0.0541,3.2
-https://shop.truckmountforums.com/collections/sprayers,carpet cleaning sprayer,11,891,0.0123,10.2
-https://shop.truckmountforums.com/products/carpet-cleaning-inline-sprayer,inline sprayer carpet cleaning,12,448,0.0268,3.4
-https://shop.truckmountforums.com/products/carpet-cleaning-inline-sprayer,hydro force inline sprayer,11,190,0.0579,1.8
-https://shop.truckmountforums.com/collections/carpet-cleaning-chemicals,carpet cleaning chemicals,26,4011,0.0065,14.1
-https://shop.truckmountforums.com/collections/carpet-cleaning-chemicals,carpet prespray,9,1024,0.0088,12.4
-https://shop.truckmountforums.com/collections/machines,truck mount carpet cleaning machine,15,2325,0.0065,13.3
-https://shop.truckmountforums.com/blogs/news/orbot-sprayborg-vs-orbot-vibe,orbot sprayborg vs orbot vibe,17,405,0.0420,2.4
-https://shop.truckmountforums.com/blogs/news/orbot-sprayborg-vs-orbot-vibe,orbot sprayborg,10,255,0.0392,3.8
-https://shop.truckmountforums.com/,truckmountforums,58,715,0.0811,1.1
-https://shop.truckmountforums.com/,tmf store,25,322,0.0776,1.2
-https://shop.truckmountforums.com/products/quick-connects-hydro-force-female,quick connect carpet cleaning,3,153,0.0196,8.3
+Query,Page,Clicks,Impressions,CTR,Position
+truckmountforums,https://shop.truckmountforums.com/,66,795,0.0830,1.11
+carpet cleaning wand,https://shop.truckmountforums.com/collections/wands-wand-parts,31,3034,0.0102,12.23
+carpet cleaning chemicals,https://shop.truckmountforums.com/collections/carpet-cleaning-chemicals,26,4553,0.0057,15.62
+truck mount solution hose,https://shop.truckmountforums.com/collections/high-pressure-solution-line-hoses,22,922,0.0239,7.72
+orbot sprayborg vs orbot vibe,https://shop.truckmountforums.com/blogs/news/orbot-sprayborg-vs-orbot-vibe,22,396,0.0556,2.39
+tmf store,https://shop.truckmountforums.com/,21,281,0.0747,1.25
+carpet cleaning hose,https://shop.truckmountforums.com/collections/hoses-accessories,20,1436,0.0139,9.77
+truck mount carpet cleaning machine,https://shop.truckmountforums.com/collections/machines,17,2488,0.0068,13.53
+carpet cleaning solution hose,https://shop.truckmountforums.com/collections/high-pressure-solution-line-hoses,15,668,0.0225,6.98
+inline sprayer carpet cleaning,https://shop.truckmountforums.com/products/carpet-cleaning-inline-sprayer,15,367,0.0409,3.66
+carpet cleaning sprayer,https://shop.truckmountforums.com/collections/sprayers,12,1042,0.0115,9.81
+hydro force inline sprayer,https://shop.truckmountforums.com/products/carpet-cleaning-inline-sprayer,12,193,0.0622,1.78
+carpet prespray,https://shop.truckmountforums.com/collections/carpet-cleaning-chemicals,10,1100,0.0091,12.17
+carpet cleaning vacuum hose,https://shop.truckmountforums.com/products/super-truckmount-vacuum-hose-2-x-50-blue-with-cuffs,10,652,0.0153,11.14
+orbot sprayborg,https://shop.truckmountforums.com/blogs/news/orbot-sprayborg-vs-orbot-vibe,10,264,0.0379,3.85
+truck mount wand,https://shop.truckmountforums.com/collections/wands-wand-parts,9,501,0.0180,8.78
+carpet cleaning jets,https://shop.truckmountforums.com/products/11001-hi-flow-ss-jets-for-carpet-cleaning-wands,9,348,0.0259,5.49
+vacuum hose cuff,https://shop.truckmountforums.com/collections/hose-cuffs,9,292,0.0308,5.36
+carpet cleaning wand,https://shop.truckmountforums.com/products/tmf-revolution-wand-14-glide,7,1543,0.0045,15.03
+truck mount solution hose,https://shop.truckmountforums.com/products/hydro-force-pro-solution-hose-50-feet,7,509,0.0138,10.82
+solution hose 100 ft,https://shop.truckmountforums.com/products/hydro-force-pro-solution-hose-100-feet,6,84,0.0714,4.00
+carpet wand glide,https://shop.truckmountforums.com/collections/glides-slides-lips,5,309,0.0162,7.13
+v jet carpet cleaning,https://shop.truckmountforums.com/products/11001-hi-flow-ss-jets-for-carpet-cleaning-wands,5,102,0.0490,3.03
+flash cuff,https://shop.truckmountforums.com/products/flash-cuff-2-in-female,5,93,0.0538,3.91
+quick connect carpet cleaning,https://shop.truckmountforums.com/products/quick-connects-hydro-force-female,3,150,0.0200,8.32
+2 inch hose cuff,https://shop.truckmountforums.com/products/hose-cuff-2-in-standard,3,125,0.0240,6.63
+carpet cleaning solution hose,https://shop.truckmountforums.com/products/hydro-force-pro-solution-hose-100-feet,1,238,0.0042,14.41
+wand bypass valve,https://shop.truckmountforums.com/products/universal-carpet-cleaning-wand-bypass-valve,0,45,0.0000,3.34

@@ -693,7 +693,7 @@
    "title": "Monthly report",
    "what": "Builds the month's report from GSC, GA4, rank and citations; the reviewer checks every number.",
    "needs": [
-    "gsc_pages",
+    "gsc_month",
     "ga4_landing",
     "rank"
    ],
