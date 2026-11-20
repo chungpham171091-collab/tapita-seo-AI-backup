@@ -3,6 +3,7 @@ type: workflow
 name: SEO Audit on-page
 slug: seo-onpage-audit
 status: active
+group: Maintain
 description: 'Audit on-page cho danh sách URL: extractor lấy số liệu GSC và rank của các URL, auditor mở trang và audit, reviewer kiểm bằng chứng.'
 steps:
 - agent: seo-extractor

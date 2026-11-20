@@ -3,6 +3,7 @@ type: workflow
 name: SEO Product 2 - chọn từ khóa chính, meta và content sản phẩm
 slug: seo-meta-optimization
 status: active
+group: Product
 description: 'Quick optimization phần sau: ghép search volume từ Ahrefs, chọn từ khóa chính theo luật volume, viết meta và content sản phẩm theo skill. Sau đó chạy seo-qa-fix.'
 steps:
 - agent: seo-extractor

@@ -3,6 +3,7 @@ type: workflow
 name: SEO Content brief
 slug: seo-content-brief
 status: active
+group: Content
 description: 'Tùy chọn: tạo brief cho một trang (blog hoặc collection) theo template trong thư mục run mới, rồi reviewer kiểm tra brief đủ mục.'
 steps:
 - agent: seo-planner

@@ -1,6 +1,6 @@
 {
  "playbook": "product",
- "stage": "qa",
+ "stage": "shopify",
  "values": {
   "products": "tmf-hi-flo-2-supra-flex-hose-carpet-cleaning, hydro-force-pro-solution-hose-50-feet, hydro-force-pro-solution-hose-100-feet, super-truckmount-vacuum-hose-2-x-50-blue-with-cuffs",
   "topic": "hypothesis",
@@ -65,22 +65,26 @@
     }
    ],
    "started_by": "Harry"
+  },
+  {
+   "stage": "qa",
+   "title": "QA and fix",
+   "kind": "ai",
+   "at": "2026-11-20 14:06",
+   "by": "Harry",
+   "result": "accepted as is"
+  },
+  {
+   "stage": "approve",
+   "title": "Final approval",
+   "kind": "approve",
+   "at": "2026-11-20 14:06",
+   "by": "Harry",
+   "result": "approved",
+   "files": [
+    "2026-11-13_product_hypothesis_meta_table_v2.csv"
+   ]
   }
  ],
- "feedback": [],
- "attention": {
-  "reason": "The workflow finished but 1 check(s) failed.",
-  "checks": [
-   {
-    "label": "Output review*.md",
-    "ok": true,
-    "detail": "review.md"
-   },
-   {
-    "label": "QA verdict",
-    "ok": false,
-    "detail": "KHÔNG ĐẠT in review.md"
-   }
-  ]
- }
+ "feedback": []
 }

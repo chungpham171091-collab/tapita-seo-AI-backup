@@ -3,6 +3,7 @@ type: workflow
 name: SEO Tóm tắt dữ liệu theo kỳ
 slug: seo-data-summary
 status: 'off'
+group: Data
 description: Extractor đọc file export thô của một nguồn, ghi bản tóm tắt của kỳ và ghi đè bản latest. Agent khác chỉ đọc bản latest.
 steps:
 - agent: seo-extractor

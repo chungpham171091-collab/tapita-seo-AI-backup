@@ -3,6 +3,7 @@ type: workflow
 name: SEO Kiểm tra sau khi đăng
 slug: seo-post-publish-check
 status: 'off'
+group: Maintain
 description: 'Audit URL đã đăng so với file đã duyệt: meta, canonical, indexability, link, structured data, nội dung khớp bản duyệt.'
 steps:
 - agent: seo-auditor

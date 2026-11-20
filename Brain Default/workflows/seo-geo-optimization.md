@@ -3,6 +3,7 @@ type: workflow
 name: SEO Tối ưu GEO
 slug: seo-geo-optimization
 status: active
+group: GEO
 description: 'Dựa vào prompts và citations đã theo dõi: tóm tắt, audit trang, xếp ưu tiên, đề xuất bản sửa answer-first.'
 steps:
 - agent: seo-extractor

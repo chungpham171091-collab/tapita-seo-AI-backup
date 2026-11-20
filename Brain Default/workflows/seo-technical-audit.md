@@ -3,6 +3,7 @@ type: workflow
 name: SEO Audit kỹ thuật
 slug: seo-technical-audit
 status: 'off'
+group: Technical
 description: 'Audit kỹ thuật từ HTML thô (view-source) của 3 đến 4 URL mỗi template trong data/tech/: rút dữ kiện, đánh giá theo tiêu chí, gộp theo template.'
 steps:
 - agent: seo-extractor

@@ -3,6 +3,7 @@ type: workflow
 name: SEO GEO - bộ prompt theo dõi
 slug: seo-geo-prompts
 status: 'off'
+group: GEO
 description: 'Soạn bản nháp danh sách prompt cần theo dõi trên các công cụ AI, từ keyword mapping, content cluster và hồ sơ khách. Người duyệt rồi mới dùng.'
 steps:
 - agent: seo-planner

@@ -3,6 +3,7 @@ type: workflow
 name: SEO Planning 1 - seed từ khóa
 slug: seo-keyword-seed
 status: 'off'
+group: Planning
 description: 'Planning bước 1: lấy dữ liệu trang (H1, meta, mô tả) rồi gợi ý 3 đến 5 seed keyword cho mỗi trang collection và product. Kết thúc để người chạy Ahrefs.'
 steps:
 - agent: seo-extractor

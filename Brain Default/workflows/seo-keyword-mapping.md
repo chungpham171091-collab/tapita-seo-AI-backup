@@ -3,6 +3,7 @@ type: workflow
 name: SEO Planning 4-5 - keyword mapping và content cluster
 slug: seo-keyword-mapping
 status: 'off'
+group: Planning
 description: 'Planning bước 4 và 5: ghép nhóm từ khóa với URL collection và product (mỗi URL một từ khóa chính), rồi chia topic và sub-topic.'
 steps:
 - agent: seo-extractor

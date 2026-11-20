@@ -33,6 +33,7 @@
 | `seo-project-assistant` | SEO Trợ lý dự án | active | seo-lead | slug khách \| thư mục run (hoặc "không") \| tên người hỏi \| file hội thoại \| yêu cầu |  |
 | `seo-qa-fix` | SEO QA và sửa | active | seo-auditor -> seo-writer -> seo-auditor | slug khách \| thư mục run \| file bài trong run (mặc định draft.md) \| từ khóa chính | harry-reference-check, tapita-eeat-check, compliance (PROJECT.md) |
 | `seo-technical-audit` | SEO Audit kỹ thuật | off | seo-extractor -> seo-auditor -> seo-planner | slug khách \| chủ đề run (ví dụ ngày lấy mẫu hoặc "sau-fix-1") \| ghi chú phạm vi (ví dụ chỉ product, hoặc "tất cả") |  |
+| `seo-technical-report` | SEO Technical - báo cáo cho dev từ Tapita tool | active | seo-extractor -> seo-planner | slug khách \| file báo cáo của Tapita tool trong thư mục run (tên file, hoặc "mới nhất") \| ghi chú phạm vi của người (hoặc "không") |  |
 
 ## Ghi chú từng workflow
 
@@ -64,3 +65,4 @@
 - `seo-project-assistant`: Một bước, do agent seo-lead làm. Dùng từ tab Assistant của trang Projects: mỗi cuộc trò chuyện là một file `Projects/<slug>/assistant/<id>.md`, trang đó ghi tin của người và câu trả lời vào file. Trợ lý không thay cho công đoạn của playbook và không thay người duyệt.
 - `seo-qa-fix`: Ba bước, một vòng sửa. Kiểm nguồn chạy trước E-E-A-T trong cùng một lượt audit vì nguồn sai kéo điểm Trust xuống. Dùng chung cho blog, collection, product (bảng meta và content) và bản refresh. Mỗi bước chỉ truyền vài dòng kết quả (đường dẫn file) sang bước sau. Theo sheet, người vẫn nên kiểm tay các link nguồn trước khi duyệt.
 - `seo-technical-audit`: Ba bước. Phạm vi theo sheet: chỉ đánh giá dựa trên code, bỏ qua App và dữ liệu GSC. Người chuẩn bị trước: chọn 3 đến 4 URL mỗi template (homepage có thể 1) từ sitemap, lấy HTML bằng view-source (không lấy bản Inspect sau khi JS chạy), lưu vào `data/tech/` (home_1.html, collection_1.html, product_1.html...) với URL gốc ở dòng đầu, và điền `data/tech/samples.csv`. Không dùng file crawl. ĐÃ TẮT ngày 2026-11-16: team audit kỹ thuật bằng công cụ riêng của Tapita. Trên trang Projects, việc "Technical audit" chỉ gồm tải báo cáo lên làm bằng chứng. File này giữ lại để tham chiếu.
+- `seo-technical-report`: Dùng trong job Technical audit: người tải file của Tapita tool lên, workflow này biến nó thành danh sách việc cho dev theo template (bước 4 của sheet Technical SEO).

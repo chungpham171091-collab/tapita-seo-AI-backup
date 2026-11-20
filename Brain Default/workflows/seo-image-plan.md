@@ -3,6 +3,7 @@ type: workflow
 name: SEO Kế hoạch ảnh blog
 slug: seo-image-plan
 status: active
+group: Content
 description: 'Tạo bảng kế hoạch ảnh cho một bài blog hoàn chỉnh: vị trí, tên file, alt, prompt tạo ảnh.'
 steps:
 - agent: seo-writer

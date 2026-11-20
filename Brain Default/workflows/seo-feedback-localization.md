@@ -3,6 +3,7 @@ type: workflow
 name: SEO Sửa theo feedback và bản địa hóa
 slug: seo-feedback-localization
 status: active
+group: Content
 description: 'Sửa bài theo feedback của khách hoặc bản địa hóa sang thị trường đích trong thư mục run của bài, rồi kiểm lại.'
 steps:
 - agent: seo-writer

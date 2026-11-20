@@ -3,6 +3,7 @@ type: workflow
 name: SEO Refresh 1 - tìm trang mất click và đề xuất
 slug: seo-content-refresh
 status: 'off'
+group: Maintain
 description: 'Tìm trang mất click (4 tuần gần nhất so với 4 tuần trước, từ tóm tắt GSC), mở trang và SERP thật, đề xuất làm mới hay để nguyên. Người quyết định.'
 steps:
 - agent: seo-planner

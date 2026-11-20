@@ -4,7 +4,7 @@ name: SEO Trợ lý cấu hình
 slug: seo-config-assistant
 status: active
 description: 'Soạn bản nháp thay đổi một file cấu hình SEO-Ops (job type, workflow, data source, team) theo yêu cầu bằng lời. Người xem và bấm Apply ở trang Projects.'
-group: SEO-Ops
+group: Assistant
 steps:
 - agent: seo-config
   task: |-

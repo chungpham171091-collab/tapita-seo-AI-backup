@@ -3,6 +3,7 @@ type: workflow
 name: SEO Keyword research
 slug: seo-keyword-research
 status: 'off'
+group: Planning
 description: 'Đã thay bằng seo-keyword-seed, seo-keyword-level, seo-keyword-mapping và seo-priority-plan. Giữ lại để tham chiếu, không chạy.'
 steps:
 - agent: seo-extractor

@@ -3,6 +3,7 @@ type: workflow
 name: SEO Product 1 - phân tích sản phẩm và bộ từ khóa
 slug: seo-product-keywords
 status: 'off'
+group: Product
 description: 'Quick optimization phần đầu: lấy dữ liệu sản phẩm từ Shopify export, phân tích và tạo bộ từ khóa theo skill sản phẩm. Kết thúc để người lấy search volume trên Ahrefs.'
 steps:
 - agent: seo-extractor

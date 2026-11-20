@@ -3,6 +3,7 @@ type: workflow
 name: SEO Blog outline (giai đoạn 1b)
 slug: seo-blog-outline
 status: 'off'
+group: Content
 description: 'Blog: từ title người đã chọn, chạy bước outline của skill blog, dừng chờ duyệt outline.'
 steps:
 - agent: seo-writer

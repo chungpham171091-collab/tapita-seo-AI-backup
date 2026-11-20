@@ -3,6 +3,7 @@ type: workflow
 name: SEO Refresh 2 - làm mới một trang
 slug: seo-content-refresh-update
 status: 'off'
+group: Maintain
 description: 'Làm mới nội dung một trang người đã chọn, theo skill của loại trang, giữ phần đang tốt. Sau đó chạy seo-qa-fix.'
 steps:
 - agent: seo-writer

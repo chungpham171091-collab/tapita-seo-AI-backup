@@ -3,6 +3,7 @@ type: workflow
 name: SEO Off-page - hồ sơ backlink, link gap, outreach nháp
 slug: seo-offpage
 status: 'off'
+group: Off-page
 description: 'Từ export backlink Ahrefs: tóm tắt hồ sơ, link gap so với đối thủ trong PROJECT.md, đề xuất mục tiêu và góc digital PR, viết nháp outreach. Người gửi.'
 steps:
 - agent: seo-extractor

@@ -3,6 +3,7 @@ type: workflow
 name: SEO Planning 2 - lọc và xếp level từ khóa
 slug: seo-keyword-level
 status: 'off'
+group: Planning
 description: 'Planning bước 2: từ export Ahrefs, bỏ từ khóa branded và local, xếp level theo lowest DR so với DR của site, ghi file cho công cụ nhóm từ khóa.'
 steps:
 - agent: seo-extractor

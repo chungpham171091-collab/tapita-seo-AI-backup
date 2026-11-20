@@ -3,6 +3,7 @@ type: workflow
 name: SEO Trang cạnh tranh từ khóa và internal link
 slug: seo-cannibalization-links
 status: 'off'
+group: Maintain
 description: 'Từ keyword mapping và GSC query theo trang: liệt kê trang cạnh tranh cùng từ khóa chính và internal link còn thiếu; planner đề xuất cách sửa.'
 steps:
 - agent: seo-extractor

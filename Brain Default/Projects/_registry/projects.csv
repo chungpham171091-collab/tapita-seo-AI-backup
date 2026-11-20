@@ -1,3 +1,2 @@
 slug,client,stage,domain,market,type,platform,scope,owner,approver,priority,compliance,content_skill,collection_skill,product_skill,report_day,notes
-demo,DEMO (khách giả),client,example.com,en-GB,ecommerce,shopify,seo;content,team SEO,,,,harry-content,,harry-optimization,,"Khách giả, chỉ để test workflow. Không phải khách thật."
 tmf,TMF (TruckMountForums),client,shop.truckmountforums.com,en-US,ecommerce,shopify,seo;content,Harry,Rob,1,,harry-content,shopify-collection-seo-tmf,harry-optimization,5,"Khách chạy thử đầu tiên. Đang dùng dữ liệu GIẢ ĐỊNH để test, danh sách trong Projects/tmf/HYPOTHESIS.md."

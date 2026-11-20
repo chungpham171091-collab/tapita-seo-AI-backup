@@ -387,6 +387,19 @@
      "help": "What the article is about, in a few words."
     },
     {
+     "key": "intent",
+     "label": "Search intent",
+     "default": "theo SERP",
+     "options": [
+      "theo SERP",
+      "informational",
+      "commercial",
+      "transactional"
+     ],
+     "type": "select",
+     "help": "What the searcher wants. 'theo SERP' lets the AI decide from the real Google results and write down why."
+    },
+    {
      "key": "topic",
      "label": "Short name",
      "default": "",
@@ -398,7 +411,7 @@
      "key": "notes",
      "label": "Notes",
      "default": "không",
-     "help": "Search intent or anything the writer must know, or không."
+     "help": "Anything the writer must know (angle, products to mention, things to avoid), or không."
     }
    ],
    "vars": {
@@ -425,7 +438,8 @@
      "pass_run": true,
      "optional": true,
      "enabled": false,
-     "what": "Optional brief, checked by the reviewer."
+     "what": "Optional brief, checked by the reviewer.",
+     "needs": []
     },
     {
      "id": "titles",
@@ -438,7 +452,7 @@
       "{secondary_keywords}",
       "{topic_text}",
       "{run}",
-      "{notes}"
+      "intent: {intent}; {notes}"
      ],
      "outputs": [
       "titles.md"
@@ -446,7 +460,6 @@
      "checks": [
       "serp_urls"
      ],
-     "pass_run": false,
      "needs": [
       "site_urls"
      ],
@@ -490,8 +503,8 @@
       "outline.md"
      ],
      "checks": [],
-     "pass_run": false,
-     "what": "The outline for the chosen title."
+     "what": "The outline for the chosen title.",
+     "needs": []
     },
     {
      "id": "approve_outline",
@@ -523,8 +536,8 @@
       "draft.md"
      ],
      "checks": [],
-     "pass_run": false,
-     "what": "The full article with its meta package."
+     "what": "The full article with its meta package.",
+     "needs": []
     },
     {
      "id": "qa",
@@ -542,8 +555,8 @@
      "checks": [
       "verdict"
      ],
-     "pass_run": false,
-     "what": "Checks sources first, then quality, compliance and the skill's rules; fixes serious issues into a new version; re-checks."
+     "what": "Checks sources first, then quality, compliance and the skill's rules; fixes serious issues into a new version; re-checks.",
+     "needs": []
     },
     {
      "id": "images",
@@ -558,10 +571,10 @@
       "imageplan.md"
      ],
      "checks": [],
-     "pass_run": false,
      "optional": true,
      "enabled": false,
-     "what": "Optional table of images: position, file name, alt text, prompt."
+     "what": "Optional table of images: position, file name, alt text, prompt.",
+     "needs": []
     },
     {
      "id": "approve",
@@ -600,8 +613,8 @@
       "postcheck*.md"
      ],
      "checks": [],
-     "pass_run": false,
-     "what": "Compares the live page with the approved file: meta, canonical, indexability, links, structured data, content."
+     "what": "Compares the live page with the approved file: meta, canonical, indexability, links, structured data, content.",
+     "needs": []
     }
    ]
   },
@@ -1086,7 +1099,7 @@
    "title": "Technical audit (Tapita tool)",
    "group": "Technical",
    "task": "tech",
-   "what": "The technical audit is done with Tapita's own tool. This job keeps the report as proof.",
+   "what": "Upload the Tapita tool report; AI groups the findings by template and the 13 technical criteria into a fix list for the developer; you approve and send it.",
    "start": [
     {
      "key": "topic",
@@ -1105,25 +1118,45 @@
    "stages": [
     {
      "id": "report",
-     "title": "Upload the audit report",
+     "title": "Upload the Tapita tool report",
      "kind": "upload",
      "accept": ".pdf,.xlsx,.csv,.html,.md,.docx,.txt,.json,.zip",
-     "help": "Upload the report exported from the Tapita tool."
+     "help": "Run the Tapita tool on the site (3 to 4 URLs per template: homepage, collection, product, blog) and upload the file it exports."
+    },
+    {
+     "id": "summary",
+     "title": "Fix list for the developer",
+     "kind": "ai",
+     "what": "Reads the Tapita report, sorts every finding into the 13 technical criteria, groups repeats by template, sets priority and the theme file to fix.",
+     "workflow": "seo-technical-report",
+     "input": [
+      "mới nhất",
+      "{notes}"
+     ],
+     "pass_run": true,
+     "outputs": [
+      "tech_findings.csv",
+      "tech_report.csv",
+      "tech_report.md"
+     ],
+     "checks": [],
+     "needs": []
     },
     {
      "id": "approve",
-     "title": "Confirm the audit",
+     "title": "Approve the fix list",
      "kind": "approve",
      "deliver": [
-      "latest:*"
+      "tech_report.md",
+      "tech_report.csv"
      ],
-     "help": "Confirm the audit is done. The report is copied to deliverables as proof."
+     "help": "Check the priorities and the 'criteria not checked' list. Approving copies the fix list to deliverables/."
     },
     {
      "id": "fixes",
      "title": "Send to the developer",
      "kind": "deliver",
-     "help": "Javis does not send anything. Make a link to the approved audit report (or download it), send it yourself, then record who got it.",
+     "help": "Javis does not send anything. Make a link to the approved fix list (or download it), send it yourself, then record who got it. After the fixes, run the Tapita tool again and create a new job to confirm.",
      "requires": [
       "share"
      ]

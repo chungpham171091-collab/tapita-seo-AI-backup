@@ -3,6 +3,7 @@ type: workflow
 name: SEO Báo cáo tháng
 slug: seo-monthly-report
 status: active
+group: Report
 description: 'Báo cáo tháng theo template: extractor tóm tắt GSC, GA4, rank, citations của tháng; planner viết; reviewer kiểm số liệu; ghi một dòng portfolio_kpi.'
 steps:
 - agent: seo-extractor

@@ -4,12 +4,12 @@ task: product
 topic: hypothesis
 workflow: seo-qa-fix
 playbook: product
-stage: qa
-status: qa
+stage: shopify
+status: waiting
 owner: Harry
 created: 2026-11-13
 updated: 2026-11-20
-next_step: QA and fix - AI (cần người xem: công đoạn chưa đạt kiểm tra)
+next_step: Update Shopify - Harry
 live_url: 
 published_on: 
 ---
@@ -30,5 +30,6 @@ published_on:
 | meta_table_v2.csv | seo-qa-fix | Bản sửa của meta_table.csv |
 
 ## Quyết định của người
+- 2026-11-20 Harry: duyệt meta_table_v2.csv -> deliverables/
 
 ## Đăng

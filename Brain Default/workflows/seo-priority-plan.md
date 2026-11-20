@@ -3,6 +3,7 @@ type: workflow
 name: SEO Planning 6 - bản nháp kế hoạch ưu tiên
 slug: seo-priority-plan
 status: 'off'
+group: Planning
 description: 'Planning bước 6: AI lập bản nháp thứ tự ưu tiên và timeline theo nhóm sản phẩm từ mapping và cluster. Người quyết định.'
 steps:
 - agent: seo-planner

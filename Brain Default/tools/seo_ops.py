@@ -125,6 +125,17 @@ def load_runs():
     return out
 
 
+def task_text(raw):
+    """The step tasks as text. Javis's Workflows page re-saves files with long lines wrapped, so the
+    frontmatter is parsed with PyYAML when it is installed; otherwise the raw block is used."""
+    try:
+        import yaml
+        meta = yaml.safe_load(raw) or {}
+        return "\n".join(str(s.get("task", "")) for s in meta.get("steps") or [] if isinstance(s, dict))
+    except Exception:
+        return raw
+
+
 def load_workflows():
     out = []
     wdir = ROOT / "workflows"
@@ -135,7 +146,7 @@ def load_workflows():
         fields, raw, body = frontmatter(text)
         fields = fields or {}
         agents = re.findall(r"^\s*-?\s*(?:verify_)?agent:\s*([A-Za-z0-9_-]+)", raw, re.M)
-        m = re.search(r"Đầu vào gồm:\s*(.+)", raw)
+        m = re.search(r"Đầu vào gồm:\s*(.+)", task_text(raw))
         out.append({
             "file": wfile, "text": text, "fields": fields, "agents": agents,
             "input": m.group(1).strip().rstrip(".") if m else "",

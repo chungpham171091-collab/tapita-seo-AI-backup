@@ -3,6 +3,7 @@ type: workflow
 name: SEO GEO - nguồn AI đang trích
 slug: seo-geo-sources
 status: 'off'
+group: GEO
 description: 'Từ kết quả kiểm công cụ AI của tháng: liệt kê nguồn và đối thủ được trích ở các prompt khách vắng mặt, phân loại nguồn, đề xuất cách để khách được nhắc tới. Người quyết định và tự liên hệ.'
 steps:
 - agent: seo-extractor

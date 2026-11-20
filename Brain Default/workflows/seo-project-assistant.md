@@ -3,6 +3,7 @@ type: workflow
 name: SEO Trợ lý dự án
 slug: seo-project-assistant
 status: active
+group: Assistant
 description: 'Trợ lý của MỘT dự án: trả lời câu hỏi về dự án hoặc một run, sửa file theo góp ý thành bản mới. Không duyệt, không đăng, không chạy cả một công đoạn.'
 steps:
 - agent: seo-lead

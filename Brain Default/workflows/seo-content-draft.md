@@ -3,6 +3,7 @@ type: workflow
 name: SEO Viết nội dung (giai đoạn 2)
 slug: seo-content-draft
 status: active
+group: Content
 description: 'Viết bản hoàn chỉnh từ outline đã được người duyệt (blog hoặc collection), ghi draft.md trong thư mục run. Sau đó chạy seo-qa-fix.'
 steps:
 - agent: seo-writer

@@ -3,6 +3,7 @@ type: workflow
 name: SEO QA và sửa
 slug: seo-qa-fix
 status: active
+group: Content
 description: 'Audit một bài theo thứ tự: kiểm nguồn trước, rồi E-E-A-T, compliance và quy tắc của skill; sửa P0 và P1 thành bản _v2; kiểm lại.'
 steps:
 - agent: seo-auditor
@@ -16,7 +17,8 @@ steps:
     3. Compliance: skill compliance của khách (chế độ Audit) nếu PROJECT.md có; không có thì kiểm theo mục Từ cấm và claim cấm trong PROJECT.md.
     4. Quy tắc của skill viết của loại trang: độ dài, cấu trúc, vị trí từ khóa, độ dài meta theo đúng skill đó (đếm ký tự thật và ghi số). Collection có checklist trước khi giao trong skill thì đi hết checklist đó. Product: cột và quy tắc bảng theo skill.
     5. Nhãn còn sót: [CẦN NGUỒN], [CẦN SỐ LIỆU], SUBSTANTIATION NEEDED.
-    Mỗi lỗi: vị trí (trích ngắn), vấn đề, mức P0 đến P3, cách sửa. Nguồn FAIL là P0 hoặc P1.
+    Mỗi lỗi: vị trí (trích ngắn), vấn đề, mức P0 đến P3, cách sửa. Nguồn FAIL là P0 hoặc P1. Vi phạm Từ cấm, claim cấm hoặc lưu ý của brand trong PROJECT.md là P1.
+    Ghi ở đầu báo cáo điểm của tapita-eeat-check: Page Quality, Needs Met, mức YMYL.
     Ghi review.md vào thư mục run (đã có thì ghi review_2.md).
     Dòng đầu tiên của câu trả lời luôn là `Khách: <slug>`.
     Trả lời đúng 4 dòng:
@@ -37,7 +39,8 @@ steps:
 - agent: seo-auditor
   task: |-
     Kết quả bước trước: {{prev}}
-    Đọc lại toàn bộ file bài sửa từ đầu. Kiểm lại từng lỗi P0 và P1 trong báo cáo cũ và quét lỗi mới phát sinh (đặc biệt khẳng định, số liệu hay nguồn mới). Ghi kết quả thành mục "Kiểm lại" ở cuối file báo cáo, kèm Verdict.
+    Đọc lại toàn bộ file bài sửa từ đầu. Kiểm lại từng lỗi P0 và P1 trong báo cáo cũ và quét lỗi mới phát sinh (đặc biệt khẳng định, số liệu hay nguồn mới). Chạy lại tapita-eeat-check trên bài sửa. Ghi kết quả thành mục "Kiểm lại" ở cuối file báo cáo, kèm điểm Page Quality và Needs Met mới và Verdict.
+    Verdict là "đạt" chỉ khi đủ cả: không còn lỗi P0 và P1; không còn nguồn FAIL; không vi phạm Từ cấm, claim cấm, lưu ý của brand; Page Quality từ Medium+ trở lên (Medium-High với product và collection); Needs Met từ Highly Meets trở lên với blog và refresh. Thiếu một điều kiện là "không đạt", ghi rõ điều kiện nào.
     Cập nhật RUN.md: python tools/seo_ops.py set-run <thư mục run> workflow=<slug workflow này> status=waiting "next_step=Người: duyệt <file bài sửa> (kiểm tay lại các link nguồn). Duyệt thì chép vào Projects/<slug>/deliverables/ và đặt status=approved; chưa đạt thì chạy lại seo-qa-fix trên file bài sửa" (không chạy được lệnh thì sửa tay khối đầu RUN.md), thêm tên file vừa tạo vào mục "File trong run này", rồi chạy python tools/seo_ops.py build.
     Dòng đầu tiên của câu trả lời luôn là `Khách: <slug>`.
     Trả lời đúng 4 dòng:
